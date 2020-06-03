@@ -1,0 +1,760 @@
+/*
+TinyMCE 1medialist
+*/
+.cls1medialist{
+	height:80px !important;
+	width:80px !important;
+}
+
+/*
+TinyMCE 1medialist --- ENDE
+*/
+
+
+html, body {
+	height: 100%;
+}
+
+.btn-margin-menu{
+	margin-right:5px;
+	margin-left:5px;
+}
+.TotalWidth{
+	width:100%;
+}
+
+.navbar-toggle {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px !important;
+}
+
+.navbar_Button{
+	padding: 9px 10px;
+	margin-top: 8px;
+	margin-right: 15px;
+	margin-bottom: 8px;
+}
+
+.navmenu {
+	z-index: 1;
+}
+
+.loginCanv {
+	z-index: 1;
+}
+
+
+.canvas {
+	position: relative;
+	left: 0;
+	z-index: 2;
+	min-height: 100%;
+	padding: 50px 0 0 0;
+	background: #fff;
+}
+
+.read-more-state {
+	display: none;
+}
+
+.read-more-trigger {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 .5em;
+	color: #666;
+	font-size: .9em;
+	line-height: 2;
+	border: 1px solid #ddd;
+	border-radius: .25em;
+}
+.read-more-state ~ .read-more-trigger:before {
+	content: 'Aufgabe ausblenden';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+	content: 'Aufgabe einblenden';
+}
+
+
+@media (min-width: 0) {
+
+	.navbar-toggle {
+
+		display: block; /* force showing the toggle */
+	}
+
+	.container{
+		padding-top:50px;
+		padding-bottom:50px;
+		/* 		margin-top:70px;
+		margin-bottom:150px; */
+		width:100%;
+	}
+
+	.hr_mobile{
+		color:black;
+		line-height:8px;
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+
+}
+
+
+@media (min-width: 992px) {
+	.hr_mobile{
+		display:none;
+	}
+
+	body {
+		padding: 0;
+	}
+	.container{
+		padding-top:0;
+		margin-top:20px;
+		padding-bottom:20px;
+		/* margin-bottom:50px; */
+		width:100%;
+	}
+	.navbar {
+		right: auto;
+		/* 		background: none;
+		border: none;
+		*/	}
+}
+
+/*
+==============================================
+quadratische BUTTONS
+==============================================
+*/
+
+
+.btn-sq-lg {
+	width: 200px !important;
+	height: 200px !important;
+	padding: 40 0;
+}
+
+.btn-sq {
+	width: 100px !important;
+	height: 100px !important;
+	font-size: 10px;
+}
+
+.btn-sq-sm {
+	width: 75px !important;
+	height: 75px !important;
+	font-size: 10px;
+	padding: 29 0;
+}
+
+.btn-sq-xs {
+	width: 25px !important;
+	height: 25px !important;
+	padding:2px;
+}
+
+.btn-sq-margin{
+	margin-right:15px;
+
+}
+
+.btn-sq-margin:last-of-type{
+	margin-right:0;
+}
+
+
+/*
+==============================================
+FRAGEN - BEGINN
+==============================================
+*/
+
+.slider_noAnswer .slider-handle {
+	background: gray;
+	background-image:none;
+}
+
+.slider_noAnswer_firstTick .slider-tick-container div{
+	background: lightgray;
+	/* Dieser Style kann auskommentiert werden um danach wieder die Standard-Formatierung zu erhalten */
+
+}
+
+.slider_noAnswer_firstTick .slider-tick-container div:first-child {
+	/* background: #ffbfbf; */
+	background: white;
+	background-image:none;
+	box-shadow:none;
+
+}
+
+.slider_noAnswer_firstTick .slider-tick-container div:first-child:after{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/*  content: "\274c"; */ 
+	font-size: 15px; 
+	color: red;
+	line-height: 20px;
+	text-align: center;
+
+}
+.max_lab_right{
+	position: relative;
+	width: 50px;
+	text-align: right;
+	right: 25px;
+}
+
+.hideTrack .slider-track{
+	display:none;
+}
+
+.hideSelection .slider-selection {
+	display:none;
+}
+
+
+
+/*
+==============================================
+FRAGEN - ENDE
+==============================================
+*/
+
+.usergroupEllipsis{
+	max-width:50px;
+	white-space: nowrap;
+	overflow:hidden !important;
+	text-overflow: ellipsis;
+	/* 	display:inline-block; */
+}
+
+.schuleEllipsis{
+	max-width:200px;
+	white-space: nowrap;
+	overflow:hidden !important;
+	text-overflow: ellipsis;
+	/* 	display:inline-block; */
+}
+
+
+/*
+==============================================
+MODALBOX - SHARE KURS
+==============================================
+*/
+
+.modal.modal-wide .modal-dialog {
+	width: 90%;
+}
+.modal-wide .modal-body {
+	overflow-y: auto;
+}
+
+/* irrelevant styling */
+#normalModal body { text-align: center; }
+#normalModal body p { 
+	max-width: 400px; 
+	margin: 20px auto; 
+}
+#tallModal .modal-body p { margin-bottom: 900px }
+
+
+
+
+/*
+==============================================
+KURSWAHL
+==============================================
+*/
+
+.arrow-down {
+	position: relative;
+	margin-bottom:55px;
+}
+.arrow-down:after, .arrow-down:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow-down:after {
+	border-color: rgba(235,204,209, 0);
+	border-top-color: #f2dede;
+	border-width: 50px;
+	margin-left: -50px;
+}
+.arrow-down:before {
+	border-color: rgba(235,204,209, 0);
+	border-top-color: #f2dede;
+	border-width: 56px;
+	margin-left: -56px;
+}
+/*
+==============================================
+KURSWAHL - ENDE
+==============================================
+*/
+
+
+/*
+==============================================
+TEILNEHMER ERSTELLEN
+==============================================
+*/
+
+.tn_icon_used{
+	display:block;
+	width:16px;
+	height:16px;
+}
+
+.tn_used {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url('/images/on_off32.png');
+}
+.tn_not_used {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url('/images/on_off32.png');
+	background-position:-16px 50%;
+} */
+
+/*
+==============================================
+TEILNEHMER ERSTELLEN - ENDE
+==============================================
+*/
+
+
+/*
+==============================================
+PRÄSENTATION
+==============================================
+*/
+
+
+.iframe70{
+	/*	    zoom: 0.75;*/
+	/* -moz-transform: scale(0.70); */
+	-moz-transform-origin: 0 0;
+	/* -o-transform: scale(0.75); */
+	-o-transform-origin: 0 0;
+	/* -webkit-transform: scale(0.75); */
+	-webkit-transform-origin: 0 0;
+	overflow:hidden; 
+	display:block; 
+	/* position: absolute; */
+	height: 100%;
+	/* 	max-width:65%; */
+	width: 100%;
+}
+
+.iframe_container{
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 75%;
+}
+
+.iframe_window{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	border: none;
+
+
+}
+
+.intrinsic-container {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+}
+
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+	padding-bottom: 56.25%;
+}
+
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+	padding-bottom: 75%;
+}
+
+.intrinsic-container iframe {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.textarea_div_abgegeben{
+	background: lightgray;
+	padding: 15px;
+	border-radius: 5px;
+	/* 	margin: 3 0 3 0; */
+}
+
+.textarea_div_abgegeben_margin{
+	margin: 3 0 3 0;
+}
+
+
+.FolieSelected{
+	background-color:lightgreen;
+}
+
+.noOrder{
+	background-color:lightpink;
+}
+
+.FolieButton{
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;
+	width:26px;
+}
+
+
+/* .red-tooltip + .tooltip > .tooltip-inner {background-color: #f00;}
+.red-tooltip + .tooltip > .tooltip-arrow { border-bottom-color:#f00; }
+*/
+
+.PraesNavBarButtons{
+	position: relative;
+	margin-top: 8px;
+	margin-right: 15px;
+	margin-bottom: 8px;
+}
+
+
+.btn-arrow-right,
+.btn-arrow-left {
+	position: relative;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+.btn-arrow-right {
+	padding-left: 20px;
+}
+.btn-arrow-left {
+	padding-right: 20px;
+}
+.btn-arrow-right:before,
+.btn-arrow-right:after,
+.btn-arrow-left:before,
+.btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+	content:"";
+	position: absolute;
+	top: 5px; /* move it down because of rounded corners */
+	width: 22px; /* same as height */
+	height: 22px; /* button_outer_height / sqrt(2) */
+	background: inherit; /* use parent background */
+	border: inherit; /* use parent border */
+	border-left-color: transparent; /* hide left border */
+	border-bottom-color: transparent; /* hide bottom border */
+	border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+	-webkit-border-radius: 0px 4px 0px 0px;
+	-moz-border-radius: 0px 4px 0px 0px;
+}
+.btn-arrow-right:before,
+.btn-arrow-right:after {
+	transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+}
+.btn-arrow-left:before,
+.btn-arrow-left:after {
+	transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+	-webkit-transform: rotate(225deg);
+	-moz-transform: rotate(225deg);
+	-o-transform: rotate(225deg);
+	-ms-transform: rotate(225deg);
+}
+.btn-arrow-right:before,
+.btn-arrow-left:before { /* align the "before" square to the left */
+	left: -11px;
+}
+.btn-arrow-right:after,
+.btn-arrow-left:after { /* align the "after" square to the right */
+	right: -11px;
+}
+.btn-arrow-right:after,
+.btn-arrow-left:before { /* bring arrow pointers to front */
+	z-index: 1;
+}
+.btn-arrow-right:before,
+.btn-arrow-left:after { /* hide arrow tails background */
+	background-color: #f8f8f8;
+}
+/*
+==============================================
+SWITCHES / CHECKBOXES
+==============================================
+*/
+
+.material-switch > input[type="checkbox"] {
+	display: none;   
+}
+
+.material-switch > label {
+	cursor: pointer;
+	height: 0px;
+	position: relative; 
+	width: 40px;  
+}
+
+.material-switch > label::before {
+	background: rgb(0, 0, 0);
+	box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+	content: '';
+	height: 16px;
+	margin-top: -8px;
+	position:absolute;
+	opacity: 0.3;
+	transition: all 0.4s ease-in-out;
+	width: 40px;
+}
+.material-switch > label::after {
+	background: rgb(255, 255, 255);
+	border-radius: 16px;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+	content: '';
+	height: 24px;
+	left: -4px;
+	margin-top: -8px;
+	position: absolute;
+	top: -4px;
+	transition: all 0.3s ease-in-out;
+	width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+	background: inherit;
+	opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+	background: inherit;
+	left: 20px;
+}
+
+/*
+==============================================
+SWITCHES / CHECKBOXES  -- E N D E
+==============================================
+*/
+/*
+==============================================
+RADIO BUTTON
+==============================================
+*/
+
+.funkyradio div {
+	clear: both;
+	overflow: hidden;
+}
+
+.funkyradio label {
+	width: 100%;
+	border-radius: 3px;
+	border: 1px solid #D1D3D4;
+	font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+	display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+	position: relative;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	/*  margin-top: 2em; */
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+	content: '\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+	color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+	content: '\2714';
+	text-indent: .9em;
+	color: #333;
+	background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+	color: #333;
+	background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+	color: #fff;
+	background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+	color: #fff;
+	background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+	color: #fff;
+	background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+	color: #fff;
+	background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+	color: #fff;
+	background-color: #5bc0de;
+}
+
+/*
+==============================================
+RADIO BUTTON  -- E N D E
+==============================================
+*/
+
+/*
+==============================================
+IMG Markierungen
+==============================================
+*/
+
+
+.cont {
+	margin:0;
+	padding:0;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.cont .ImgMarker {
+	position: absolute;
+}
+.cont .ImgTT {
+	position: absolute;
+}
+
+
+
+.ImgMarker {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+	background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+	background-color:#d0451b;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+	border-radius:50px;
+	border:2px solid #ffdbd4;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	padding:0px 5px;
+	text-decoration:none;
+}
+.ImgMarker:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+	background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+	background-color:#bc3315;
+}
+
+
+.tooltiptext{
+	max-width: 300px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	border: 3px solid white;
+	padding: 5px 5px;
+	z-index: 9999;
+}
+
+/*
+==============================================
+IMG Markierungen -- ENDE
+==============================================
+*/

@@ -1,0 +1,1 @@
+{"result":{"text":"x im Quadrat geteilt durch 4 umgekehrter Schrägstrich c d o t Leerzeichen 5"},"status":"ok"}

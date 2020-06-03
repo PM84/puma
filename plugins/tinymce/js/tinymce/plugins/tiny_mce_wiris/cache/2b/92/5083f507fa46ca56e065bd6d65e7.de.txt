@@ -1,0 +1,1 @@
+{"result":{"text":"x im Quadrat geteilt durch 4 mal 5"},"status":"ok"}

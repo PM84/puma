@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Interferenz von Licht am Doppelspalt</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 740px; height: 440px; }
+div#canvas { width: 440px; height: 440px; }
+div#panel { left: 440px; width: 300px; height: 440px; }
+input[type="text"] { left: 150px; width: 80px; }
+input[type="range"] { left: 10px; width: 280px; }
+input[type="radio"] { left: 10px; }
+select {left: 150px; width: 140px; }
+.pos1 { left: 10px; }
+.pos2 { left: 150px; }
+.pos3 { left: 255px;}
+</style>
+<script src="doubleslit.js"></script>
+<script src="doubleslit_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Interferenz von Licht am Doppelspalt">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Optik, Wellenoptik, Interferenz, Doppelspalt">
+</head>
+
+<body>
+
+<!--<h1>Interferenz von Licht am Doppelspalt</h1>
+
+<p><em class="Begriff">Interferenz</em>versuche geh&ouml;ren zu den Experimenten, bei denen die <em class="Begriff">Wellennatur des Lichts</em> 
+klar zu Tage tritt. Besonders einfach wird die Durchf&uuml;hrung eines solchen Versuchs durch Einsatz eines Lasers, da dieser koh&auml;rentes, 
+monochromatisches Licht liefert. Dies bedeutet, dass die Wellenz&uuml;ge des Lichts zusammenh&auml;ngend sind und eine genau definierte 
+Wellenl&auml;nge besitzen.</p>
+
+<p>In dem hier simulierten Experiment trifft ein Laserstrahl auf einen <em class="Begriff">Doppelspalt</em>, also zwei nahe beieinander liegende 
+Spalte von vernachl&auml;ssigbarer Breite. Wenn der Spaltabstand nicht wesentlich gr&ouml;&szlig;er ist als die Wellenl&auml;nge, so sind auf 
+dem Beobachtungsschirm deutliche Abweichungen vom geradlinigen Lichtstrahlenverlauf zu erkennen.</p>
+
+<p>&Uuml;ber die Eingabefelder und Schieberegler der Schaltfl&auml;che lassen sich &#8211; in gewissen Grenzen &#8211; die Wellenl&auml;nge, der 
+Spaltabstand und der Winkel gegen&uuml;ber der Geradeaus-Richtung variieren. Die App gibt an, f&uuml;r welche Winkel Maxima oder Minima 
+auftreten. Des Weiteren ist es m&ouml;glich, f&uuml;r den eingestellten Winkel (entsprechend den Pfeilen auf dem Beobachtungsschirm) die 
+relative Intensit&auml;t des Lichts (zwischen 0 und 1) abzulesen. Der untere Teil der Schaltfl&auml;che enth&auml;lt zwei Optionsfelder 
+&quot;Interferenzmuster&quot; und &quot;Intensit&auml;tsverteilung&quot;. Hat man &quot;Interferenzmuster&quot; gew&auml;hlt, so sieht man 
+links unten ein Abbild des Beobachtungsschirms zusammen mit einer Winkelskala. Im anderen Fall zeigt ein Diagramm, wie die Lichtintensit&auml;t 
+vom Winkel abh&auml;ngt.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=440 height=440>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><span class="pos1" id="ip1a"></span><input type="text" id="ip1b"><span class="pos3" id="ip1c"></span></div>
+    <div style="top: 50px;"><input type="range" min=0 max=40 id="sl1"></div>
+    <div style="top: 90px;"><span class="pos1" id="ip2a"></span><input type="text" id="ip2b"><span class="pos3" id="ip2c"></span></div>
+    <div style="top: 120px;"><input type="range" min=0 max=45 id="sl2"></div>
+    <div style="top: 160px;"><span class="pos1" id="ip3a"></span><input type="text" id="ip3b"><span class="pos3" id="ip3c"></span></div>
+    <div style="top: 190px;"><input type="range" min=0 max=90 id="sl3"></div>
+    <div style="top: 230px;"><span class="pos1" id="ch1a"></span><select id="ch1b"></select></div>
+    <div style="top: 270px;"><span class="pos1" id="ch2a"></span><select id="ch2b"></select></div>
+    <div style="top: 310px;"><span class="pos1" id="op1a"></span><span class="pos2" id="op1b"></span></div>
+    <div style="top: 340px;"><input type="radio" id="rb1" name="bg" value=""><label for="rb1" id="lb1"></label></div>
+    <div style="top: 370px;"><input type="radio" id="rb2" name="bg" value=""><label for="rb2" id="lb2"></label></div>
+    <div style="top: 410px;"><span class="pos1" id="author"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<div class="Satz" style="width: 600px; margin-top: 20px;">
+<strong>Bedingung f&uuml;r ein Maximum:</strong>
+<div><span class="Formel" style="width: 150px; display: block; margin: 15px auto 15px auto;">d sin &alpha; &nbsp;=&nbsp; k &lambda;</span></div>
+<p class="Formel" style="margin-top: 20px;">
+d ... Abstand der beiden Spalte<br>
+&alpha; ... Winkel gegen&uuml;ber der Geradeaus-Richtung<br>
+k ... Ordnung des Maximums (0, 1, 2, ...)<br>
+&lambda; ... Wellenl&auml;nge
+</p>
+</div>
+
+<div class="Satz" style="width: 600px; margin-top: 20px;">
+<strong>Bedingung f&uuml;r ein Minimum:</strong>
+<div><span class="Formel" style="width: 200px; display: block; margin: 15px auto 15px auto;">d sin &alpha; &nbsp;=&nbsp; 
+(k &minus; &frac12;) &lambda;</span></div>
+<p class="Formel" style="margin-top: 20px;">
+d ... Abstand der beiden Spalte<br>
+&alpha; ... Winkel gegen&uuml;ber der Geradeaus-Richtung<br>
+k ... Ordnung des Minimums (1, 2, 3, ...)<br>
+&lambda; ... Wellenl&auml;nge
+</p>
+</div>
+
+<script>endPage("doubleslit",7,10,2003,28,11,2015);</script>
+//-->
+</body>
+</html>

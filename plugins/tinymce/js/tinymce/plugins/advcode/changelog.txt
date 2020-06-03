@@ -1,0 +1,2 @@
+Version 1.0.2 (2016-10-25)
+  [FEATURE] Added version detection logic that check if this plugin is used with a compatible tinymce version. #TINY-639

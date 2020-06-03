@@ -1,0 +1,1 @@
+{"result":{"text":"3 geteilt durch 4 Quadratwurzel aus x im Quadrat Wurzelende"},"status":"ok"}

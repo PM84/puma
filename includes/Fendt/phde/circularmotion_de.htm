@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Kreisbewegung mit konstanter Winkelgeschwindigkeit</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../ph/page2.css">
+<style type="text/css">
+div#total { width: 840px; height: 440px; }
+div#canvas { width: 580px; height: 440px; }
+div#panel { left: 580px; width: 260px; height: 440px; } 
+.pos1 { left: 10px; }
+.pos3 { left: 220px; }
+input[type="text"] { left: 100px; width: 100px; }
+button { width: 240px; }
+</style>
+<script src="circularmotion.js"></script>
+<script src="circularmotion_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Kreisbewegung mit konstanter Winkelgeschwindigkeit">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Kreisbewegung, Winkelgeschwindigkeit, Zentripetalbeschleunigung, Zentripetalkraft">
+</head>
+
+<body>
+
+<!--<h1>Kreisbewegung mit konstanter Winkelgeschwindigkeit</h1>
+
+<p><em class="Begriff">Kreisbewegungen</em> spielen in Natur und Technik eine wichtige Rolle. So bewegen sich etwa die Planeten 
+(n&auml;herungsweise) auf Kreisbahnen um die Sonne. Entsprechendes gilt f&uuml;r die Rotation des Ankers in einem Elektromotor oder f&uuml;r 
+die Drehung der Kurbelwelle in einem Ottomotor.</p>
+
+<p>Diese HTML5-App zeigt eine solche Kreisbewegung und stellt jeweils in einem Diagramm dar, wie sich dabei die Position, die 
+Geschwindigkeit, die Beschleunigung oder die auf den K&ouml;rper wirkende Kraft zeitlich &auml;ndert. Der Schaltknopf &quot;Zur&uuml;ck&quot; 
+erm&ouml;glicht die Einstellung von Radius, Umlaufdauer und Masse in den zugeh&ouml;rigen Eingabefeldern. Nach Bet&auml;tigung des Start-Knopfs 
+beginnt die Simulation; durch erneute Mausklicks auf denselben Button l&auml;sst sich die Bewegung stoppen und wieder in Gang setzen. W&auml;hlt 
+man die Option &quot;Zeitlupe&quot;, so erfolgt die Bewegung 10-mal so langsam. In den Optionsfeldern rechts unten wird festgelegt, welche 
+Gr&ouml;&szlig;e betrachtet werden soll.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=580 height=440>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 60px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 110px;"><input type="checkbox" id="cbSlow" name="cbSlow" value=""><label for="cbSlow" id="lbSlow"></label></div>
+    <div style="top: 150px;"><span class="pos1" id="ipRa"></span><input type="text" id="ipRb"><span class="pos3" id="ipRc"></span></div>
+    <div style="top: 180px;"><span class="pos1" id="ipTa"></span><input type="text" id="ipTb"><span class="pos3" id="ipTc"></span></div>
+    <div style="top: 210px;"><span class="pos1" id="ipMa"></span><input type="text" id="ipMb"><span class="pos3" id="ipMc"></span></div>
+    <div style="top: 260px; color: #ff0000;"><input type="radio" id="rb1" name="bg" value=""><label for="rb1" id="lb1"></label></div>
+    <div style="top: 290px; color: #ff00ff;"><input type="radio" id="rb2" name="bg" value=""><label for="rb2" id="lb2"></label></div>
+    <div style="top: 320px; color: #0000ff;"><input type="radio" id="rb3" name="bg" value=""><label for="rb3" id="lb3"></label></div>
+    <div style="top: 350px; color: #006000;"><input type="radio" id="rb4" name="bg" value=""><label for="rb4" id="lb4"></label></div>
+    <div style="top: 400px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 420px;"><span class="pos1" id="translator"></span></div>
+  </div>
+</div>
+
+<!--<p>Der <span style="color: #ff0000;">Radiusvektor</span> (<span style="color: #ff0000;">rot</span>) zeigt vom Mittelpunkt der Drehbewegung (vom 
+Ursprung des Koordinatensystems) zum K&ouml;rper. Der <span style="color: #800080;">Geschwindigkeitsvektor</span> 
+(<span style="color: #800080;">violett</span>) verl&auml;uft tangential zur Kreisbahn, also senkrecht zum Radiusvektor. Der 
+<span style="color: #0000ff;">Beschleunigungsvektor</span> (<span style="color: #0000ff;">blau</span>) ist &uuml;berraschenderweise nach innen, 
+also zum Mittelpunkt hin gerichtet. Beschleunigung bedeutet hier nicht etwa eine Erh&ouml;hung oder Erniedrigung des Geschwindigkeitsbetrags, 
+sondern eine Richtungs&auml;nderung. Entsprechendes gilt f&uuml;r die <span style="color: #008000;">Kraft</span> 
+(<span style="color: #008000;">gr&uuml;n</span>), die auf den K&ouml;rper einwirkt. Die Fachbegriffe 
+<span style="color: #0000ff;">Zentripetalbeschleunigung</span> und <span style="color: #008000;">Zentripetalkraft</span> dr&uuml;cken aus, dass 
+diese Vektoren zum Mittelpunkt der Kreisbewegung gerichtet sind.</p>
+
+<p>Die Formeln zu dieser App finden sich im <a href="circularmotion_math_de.htm">mathematischen Anhang</a>.</p>
+
+<script type="text/javascript">endPage("circularmotion",25,3,2007,21,11,2014);</script>
+//-->
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"result":{"text":"4 geteilt durch 5 multipliziert mit x im Quadrat"},"status":"ok"}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Gleichstrom-Elektromotor</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+table.DFR { border: 1px solid black; width: 400px; display: block; margin: 0px auto; margin-bottom: 20px; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; }
+div#total { width: 700px; height: 400px; }
+div#canvas { width: 500px; height: 400px; }
+div#panel { left: 500px; width: 200px; height: 400px; } 
+.pos1 { left: 10px; }
+button { width: 180px; }
+input[type="range"] { width: 180px; }
+</style>
+<script src="electricmotor.js"></script>
+<script src="electricmotor_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Gleichstrom-Elektromotor">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Elektrizit&auml;tslehre, Elektrodynamik, Elektromotor, Lorentzkraft">
+</head>
+
+<body>
+
+<!--<h1>Gleichstrom-Elektromotor</h1>
+
+<p>Diese HTML5-App zeigt einen <em class="Begriff">Gleichstrom-Elektromotor</em>, der aus Gr&uuml;nden der &Uuml;bersichtlichkeit auf die 
+wesentlichsten Teile reduziert ist. Anstelle eines Ankers mit vielen Windungen und Eisenkern dreht sich hier nur eine einzige rechtwinklige 
+Leiterschleife, und die Achse wurde weggelassen.</p>
+
+<p>Die roten Pfeile kennzeichnen die technische (konventionelle) Stromrichtung (also vom Pluspol zum Minuspol). Die magnetischen Feldlinien 
+(vom rot gezeichneten Nordpol des Hufeisenmagneten zum gr&uuml;n dargestellten S&uuml;dpol) sind an der blauen Farbe zu erkennen. Die schwarzen 
+Pfeile stehen f&uuml;r die Lorentzkraft, die im Magnetfeld auf einen stromdurchflossenen Leiter ausge&uuml;bt wird.</p>
+
+<p>Die erw&auml;hnte Lorentzkraft steht senkrecht zur Stromrichtung und zu den magnetischen Feldlinien. Dabei ergibt sich die Orientierung 
+aus der bekannten Drei-Finger-Regel (f&uuml;r die rechte Hand!):</p>
+
+<table class="DFR">
+<tr>
+<td style="color: #ff0000; width: 150px; padding: 5px;">Daumen:</td>
+<td style="color: #ff0000; padding: 5px;">Technische Stromrichtung</td>
+</tr><tr>
+<td style="color: #0000ff; padding: 5px;">Zeigefinger:</td>
+<td style="color: #0000ff; padding: 5px;">Magnetfeld</td>
+</tr><tr>
+<td style="color: #000000; padding: 5px;">Mittelfinger:</td>
+<td style="color: #000000; padding: 5px;">Lorentzkraft</td>
+</tr>
+</table>
+//-->
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=500 height=400>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 10px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 50px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 90px;"><button id="bu3" style="background-color: #ff6060;"></button></div>
+    <div style="top: 140px;"><input type="range" id="sl" min=0 max=20 step=1 value=10></div>
+    <div style="top: 170px;"><span id="lb" class="pos1"></span></div>
+    <div style="top: 200px;"><input type="checkbox" id="cb1" name="cb1" value=""><label for="cb1" id="lb1" style="color: #ff0000;"></label></div>
+    <div style="top: 240px;"><input type="checkbox" id="cb2" name="cb2" value=""><label for="cb2" id="lb2" style="color: #0000ff;"></label></div>
+    <div style="top: 280px;"><input type="checkbox" id="cb3" name="cb3" value=""><label for="cb3" id="lb3" style="color: #000000;"></label></div>
+    <div style="top: 360px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 380px;"><span class="pos1" id="translator"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script type="text/javascript">endPage("electricmotor",29,11,1997,29,9,2014);</script>//-->
+
+</body>
+</html>

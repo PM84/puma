@@ -1,0 +1,85 @@
+body{
+	background-color:#A9F5A9;
+}
+
+.canvas{
+	background-color:#A9F5A9;
+
+}
+
+.navbar.navbar-default.navbar-fixed-top{
+	/* background-color:green; */
+}
+
+/*
+==============================================
+IMG Markierungen
+==============================================
+*/
+
+
+/* 	.cont {
+		margin:0;
+		padding:0;
+		background: green;
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	.cont .ImgMarker {
+		position: absolute;
+	}
+
+
+
+	.ImgMarker {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+		background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+		background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+		background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+		background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+		background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+		background-color:#d0451b;
+		-moz-border-radius:42px;
+		-webkit-border-radius:42px;
+		border-radius:42px;
+		border:2px solid #ffdbd4;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Arial;
+		font-size:14px;
+		padding:0px 5px;
+		text-decoration:none;
+	}
+	.ImgMarker:hover {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+		background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+		background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+		background:-o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+		background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+		background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+		background-color:#bc3315;
+	} */
+
+	.TxtInput:last-child{
+		margin-bottom: 30px;
+	}
+
+	.ImgBs p:first-child{
+		margin-top: 15px;
+	}
+	.ImgBs p:not(:first-child){
+		border-top:solid lightgray 1px;
+		margin-top: 15px;
+		margin-bottom:0;
+		padding-top: 10px;
+	}/*
+==============================================
+IMG Markierungen - ENDE
+==============================================
+*/
+
+

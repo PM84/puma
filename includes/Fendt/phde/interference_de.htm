@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Interferenz zweier Kreis- oder Kugelwellen</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 600px; height: 360px; }
+div#canvas { width: 400px; height: 360px; }
+div#panel { left: 400px; width: 200px; height: 360px; } 
+.pos1 { left: 10px;}
+.pos3 { left: 170px;}
+input[type="text"] { left: 90px; width: 60px; }
+button { width: 180px; }
+</style>
+<script src="interference.js"></script>
+<script src="interference_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Interferenz zweier Kreis- oder Kugelwellen">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Wellen, Interferenz">
+</head>
+
+<body>
+
+<!--<h1>Interferenz zweier Kreis- oder Kugelwellen</h1>
+
+<p>Diese HTML5-App zeigt die <em class="Begriff">Interferenz</em> zweier <em class="Begriff">Kreis- oder Kugelwellen</em> 
+<span class="nobr">(z. B.</span> von Wasserwellen in einer Wellenwanne oder von Schallwellen). Die Wellen gehen von zwei gleichphasig 
+schwingenden Wellenzentren aus. F&uuml;r die &Uuml;berlagerung der Wellen gilt der Grundsatz, dass sich die Elongationen addieren, und zwar 
+unter Ber&uuml;cksichtigung des Vorzeichens.</p>
+
+<p>Folgende zwei Extremf&auml;lle treten auf:</p>
+
+<p>An Punkten, f&uuml;r die der <em class="Begriff">Gangunterschied &Delta;s</em> der beiden Wellen (also die Differenz der Entfernungen von den 
+beiden Wellenzentren) ein ganzzahliges Vielfaches der <em class="Begriff">Wellenl&auml;nge &lambda;</em> ist, kommen die Wellen gleichphasig an: 
+Wellenberge (schwarze Kreise) und Wellent&auml;ler (graue Kreise) treffen also jeweils gleichzeitig ein, sodass es zu 
+<em class="Begriff">konstruktiver Interferenz</em> (zu maximaler Amplitude) kommt. Punkte mit dieser Eigenschaft liegen auf den rot 
+gekennzeichneten Kurven bzw. Fl&auml;chen.</p>
+
+<p>Umgekehrt sind die Verh&auml;ltnisse an Punkten, f&uuml;r die der Gangunterschied &Delta;s ein halbzahliges Vielfaches der Wellenl&auml;nge 
+&lambda; ist: An solchen Punkten, die auf den blau gezeichneten Kurven bzw. Fl&auml;chen liegen, kommt ein Wellenberg der einen Welle stets 
+gleichzeitig mit einem Wellental der anderen Welle an, sodass sich die Wellen abschw&auml;chen (<em class="Begriff">destruktive Interferenz</em>, 
+minimale Amplitude).</p>
+
+<p>Der Schaltknopf &quot;Pause&nbsp;/&nbsp;Weiter&quot; erm&ouml;glicht es, die Simulation zu unterbrechen und wieder zu starten. 
+W&auml;hlt man die Option &quot;Zeitlupe&quot;, so l&auml;uft die Animation f&uuml;nfmal so langsam. In den beiden Eingabefeldern kann 
+man die Entfernung der beiden Wellenzentren und die Wellenl&auml;nge ver&auml;ndern (&quot;Enter&quot;-Taste nicht vergessen!). Am unteren Rand 
+wird f&uuml;r den violett markierten Punkt der Gangunterschied &Delta;s der beiden Wellen (siehe oben) angegeben. Dieser Punkt l&auml;sst sich 
+durch Ziehen mit der Maus verschieben.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=400 height=360>HTML5-Canvas nicht unterst&uuml;tzt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><button id="bu" style="background-color: #ffff00;"></button></div>
+    <div style="top: 70px;"><input type="checkbox" id="cbSlow" name="cbSlow" value=""><label for="cbSlow" id="lbSlow"></label></div>
+    <div style="top: 120px;"><span class="pos1" id="ipDa"></span></div>
+    <div style="top: 155px;"><span class="pos1" id="ipDb"></span><input type="text" id="ipDc"><span class="pos3" id="ipDd"></span></div>
+    <div style="top: 200px;"><span class="pos1" id="ipWa"></span><input type="text" id="ipWb"><span class="pos3" id="ipWc"></span></div>
+    <div style="top: 320px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 340px;"><span class="pos1" id="translator"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div> 
+</div>
+
+<!--<script type="text/javascript">endPage("interference",22,5,1999,28,12,2014);</script>
+//-->
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Zerfallsgesetz</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 620px; height: 400px; }
+div#canvas { width: 410px; height: 400px; }
+div#panel { left: 410px; width: 210px; height: 400px; } 
+.pos1 { left: 10px; }
+button { width: 190px; }
+</style>
+<script src="lawdecay.js"></script>
+<script src="lawdecay_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Zerfallsgesetz">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Kernphysik, Radioaktivit&auml;t, Zerfall, Zerfallsgesetz">
+</head>
+
+<body>
+
+<!--<h1>Das Zerfallsgesetz</h1>
+
+<p>Beim <em class="Begriff">Zerfallsgesetz</em> geht es darum, wie sich die Zahl der noch unzerfallenen Atomkerne einer 
+<em class="Begriff">radioaktiven Substanz</em> im Laufe der Zeit verringert. Die roten Kreise dieser Simulation symbolisieren 
+<span class="nobr">1000 Atomkerne</span> eines radioaktiven Stoffes, dessen <span class="nobr">Halbwertszeit (T)</span> 
+<span class="nobr">20 Sekunden</span> betr&auml;gt. Das Diagramm im unteren Teil stellt graphisch dar, wie hoch der Prozentsatz der 
+unzerfallenen Kerne <span class="nobr">(N/N<sub>0</sub>)</span> zu einem gegebenen Zeitpunkt t nach dem Zerfallsgesetz sein m&uuml;sste.</p>
+
+<p style="margin: 30px; text-align: center;"><span class="Formel">N &nbsp; = &nbsp; N<sub>0</sub> &middot; 2<sup>&minus;t/T</sup></span></p>
+
+<p class="Formel">
+N .... Zahl der unzerfallenen Atomkerne<br>
+N<sub>0</sub> ... Zahl der am Anfang vorhandenen Atomkerne<br>
+t .... Zeit<br>
+T .... Halbwertszeit
+</p>
+
+<p>Sobald die App mit dem gelben Schaltknopf gestartet wird, beginnen die Atomkerne zu &quot;zerfallen&quot; (Farbwechsel von rot zu 
+schwarz). Mit dem gleichen Button kann man die Simulation unterbrechen und wieder fortsetzen. In diesem Fall wird ein blauer Punkt 
+f&uuml;r die aktuelle Zeit und den Prozentsatz der unzerfallenen Kerne in das Diagramm eingetragen. Man beachte, dass diese Punkte oft nicht 
+genau auf der Kurve liegen, die nach einem Klick auf &quot;Diagramm&quot; sichtbar wird und die der Vorhersage des Zerfallsgesetzes entspricht. 
+Mit dem Schaltknopf &quot;Zur&uuml;ck&quot; l&auml;sst sich die Anfangssituation wiederherstellen.</p>
+
+<p>F&uuml;r einen einzelnen Atomkern kann man angeben, mit welcher Wahrscheinlichkeit er innerhalb eines gegebenen Zeitraumes 
+&quot;&uuml;berlebt&quot;: W&auml;hrend einer <span class="nobr">Halbwertszeit (T)</span> betr&auml;gt diese Wahrscheinlichkeit
+<span class="nobr">50 %.</span> In einem doppelt so langen Zeitraum <span class="nobr">(2 T)</span> &uuml;berlebt der Kern nur noch mit 
+<span class="nobr">25 %</span> Wahrscheinlichkeit (H&auml;lfte von <span class="nobr">50 %),</span> in einem Zeitintervall von drei 
+Halbwertszeiten <span class="nobr">(3 T)</span> nur noch mit <span class="nobr">12,5 %</span> (H&auml;lfte von 
+<span class="nobr">25 %)</span> usw.<br>
+Was man dagegen nicht vorhersagen kann, ist der Zeitpunkt, zu dem ein bestimmter Atomkern zerf&auml;llt. Auch wenn beispielsweise die 
+Wahrscheinlichkeit f&uuml;r einen Zerfall in der n&auml;chsten Sekunde <span class="nobr">99 %</span> betr&auml;gt, ist es dennoch 
+m&ouml;glich, wenn auch &auml;u&szlig;erst unwahrscheinlich, dass der Kern erst nach Millionen von Jahren zerf&auml;llt.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=410 height=400>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 40px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 100px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 160px;"><button id="bu3" style="background-color: #ffffff;"></button></div>
+    <div style="top: 340px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 360px;"><span class="pos1" id="translator"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script type="text/javascript">endPage("lawdecay",16,7,1998,23,12,2014);</script>//-->
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Doppler-Effekt</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 700px; height: 400px; }
+div#canvas { width: 450px; height: 400px; }
+div#panel { left: 450px; width: 250px; height: 400px; } 
+.pos1 { left: 10px; }
+button { left: 10px; width: 230px; }
+textarea { left: 10px; width: 220px; height: 90px; } 
+</style>
+<script src="dopplereffect.js"></script>
+<script src="dopplereffect_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Doppler-Effekt">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Wellenlehre, Welle, Doppler">
+</head>
+
+<body>
+
+<!--<h1>Ein Beispiel zum Doppler-Effekt</h1>
+
+<p>Ein Notarztwagen f&auml;hrt mit eingeschaltetem Martinshorn an einer Person vorbei, die an der Stra&szlig;e steht. Solange das Fahrzeug 
+n&auml;herkommt, nimmt die Person einen h&ouml;heren Ton wahr (entsprechend einer h&ouml;heren Frequenz); sp&auml;ter, wenn sich das Fahrzeug 
+wieder entfernt, h&ouml;rt sie einen niedrigeren Ton (niedrigere Frequenz).</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=450 height=400>HTML5-Canvas nicht unterst&uuml;tzt!</canvas></div>
+  <div id="panel">
+    <div style="top: 30px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 80px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 150px;"><textarea id="ta" cols=30 rows=10 class="pos1"></textarea></div>
+    <div style="top: 350px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 370px;"><span class="pos1" id="translator"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<p>Bemerkung:
+In einer Hinsicht ist diese App ausgesprochen unrealistisch:
+Damit der Doppler-Effekt deutlich zu erkennen ist, wurde eine extrem hohe Fahrzeuggeschwindigkeit (<span class="nobr">60 %</span> der 
+Schallgeschwindigkeit) vorausgesetzt.</p>
+
+<script type="text/javascript">endPage("dopplereffect",25,2,1998,21,3,2015);</script>
+//-->
+</body>
+</html>

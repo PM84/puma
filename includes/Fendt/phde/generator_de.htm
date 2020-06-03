@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Generator</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 840px; height: 400px; }
+div#canvas { width: 600px; height: 400px; }
+div#panel { left: 600px; width: 240px; height: 400px; } 
+.pos1 { left: 10px; }
+button { width: 220px; }
+input[type="range"] { width: 220px; }
+</style>
+<script src="generator.js"></script>
+<script src="generator_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Generator">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Elektrizit&auml;tslehre, Elektrodynamik, Generator, Induktion">
+</head>
+
+<body>
+
+<!--<h1>Generator</h1>
+
+<p>Diese HTML5-App simuliert einen <em class="Begriff">Generator</em>, der aus Gr&uuml;nden der &Uuml;bersichtlichkeit auf die wesentlichsten 
+Teile reduziert ist. Anstelle eines Ankers mit vielen Windungen und Eisenkern dreht sich hier nur eine einzige rechtwinklige Leiterschleife, 
+und die Achse wurde weggelassen.</p>
+
+<p>Die Radiobuttons oben rechts erlauben die Wahl zwischen Wechselstromgenerator (ohne Kommutator) und Gleichstromgenerator (mit Kommutator). 
+Mit dem darunterliegenden Schaltknopf l&auml;sst sich die Drehrichtung umkehren. Ein Schieberegler erm&ouml;glicht das Einstellen der 
+Drehgeschwindigkeit. Mit dem Schaltknopf &quot;Pause&nbsp;/&nbsp;Weiter&quot; kann man die Simulation anhalten und wieder starten. Ein Stopp 
+bedeutet jedoch <em>nicht</em> ein wirkliches Anhalten; in diesem Falle w&uuml;rde n&auml;mlich die induzierte Spannung auf Null absinken.</p>
+
+<p>Zwei schwarze Pfeile kennzeichnen die momentane Bewegungsrichtung. Die magnetischen Feldlinien (vom rot gezeichneten Nordpol des 
+Hufeisenmagneten zum gr&uuml;n dargestellten S&uuml;dpol) sind an der blauen Farbe zu erkennen. An den roten Pfeilen kann man die Richtung 
+des induzierten Stromes (technische oder konventionelle Stromrichtung) ablesen.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=600 height=400>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><input type="radio" id="rb1a" name="bg" value=""><label for="rb1" id="rb1b"></label></div>
+    <div style="top: 50px;"><input type="radio" id="rb2a" name="bg" value=""><label for="rb2" id="rb2b"></label></div>
+    <div style="top: 90px;"><button id="bu1" style="background-color: #ff6060;"></button></div>
+    <div style="top: 140px;"><input type="range" id="sl" min=0 max=20 step=1 value=10></div>
+    <div style="top: 170px;"><span id="op" class="pos1"></span></div>
+    <div style="top: 200px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 250px;"><input type="checkbox" id="cb1a" name="cb1a" value=""><label for="cb1a" id="cb1b" style="color: #000000;"></label></div>
+    <div style="top: 280px;"><input type="checkbox" id="cb2a" name="cb2a" value=""><label for="cb2a" id="cb2b" style="color: #0000ff;"></label></div>
+    <div style="top: 310px;"><input type="checkbox" id="cb3a" name="cb3a" value=""><label for="cb3a" id="cb3b" style="color: #ff0000;"></label></div>
+    <div style="top: 360px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 380px;"><span class="pos1" id="translator"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script type="text/javascript">endPage("generator",8,5,1998,22,12,2015);</script>
+
+<p>Herzlichen Dank an Herrn <a href="http://www.jgiesen.de/">J&uuml;rgen Giesen</a>, der mit seinen Vorschl&auml;gen zum Entstehen dieser 
+Simulation beigetragen hat, und an Herrn Teun Koops f&uuml;r seinen Verbesserungsvorschlag!</p>//-->
+
+</body>
+</html>

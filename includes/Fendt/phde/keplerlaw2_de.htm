@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Zweites Keplersches Gesetz</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 740px; height: 440px; }
+div#canvas { width: 440px; height: 440px; }
+div#panel { left: 440px; width: 300px; height: 440px; } 
+.pos1 { left: 10px; }
+.pos2 { left: 170px; }
+.pos3 { left: 250px; }
+select { width: 280px; height: 22px;}
+button { width: 280px; }
+input[type="text"] { left: 170px; width: 60px; }
+input[type="range"] { left: 120px; width: 160px; }
+</style>
+<script src="keplerlaw2.js"></script>
+<script src="keplerlaw2_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Zweites Keplersches Gesetz">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Planeten, Kepler, Keplersche Gesetze, Gravitation">
+</head>
+
+<body>
+
+<!--<h1>Zweites Keplersches Gesetz</h1>
+
+<p>An welchem Punkt seiner Ellipsenbahn befindet sich ein Planet zu einem gegebenen Zeitpunkt? Auch zu dieser Frage fand 
+<em class="Begriff">Johannes Kepler</em> im Jahre 1609 eine einfache Gesetzm&auml;&szlig;igkeit:</p>
+
+<div class="Satz" style="width: 600px; margin-top: 20px;">
+<b>Zweites Keplersches Gesetz der ungest&ouml;rten Planetenbewegung:</b><br>&nbsp;<br>
+Die Verbindungslinie Sonne - Planet &uuml;berstreicht in gleichen Zeiten gleiche Fl&auml;chen.
+</div>
+
+<p>Die folgende Computersimulation soll dieses Gesetz demonstrieren. Rechts oben auf der Schaltfl&auml;che befindet sich eine Liste, 
+aus der man einen der acht Planeten, den Zwergplaneten Pluto oder auch den Halleyschen Kometen ausw&auml;hlen kann. 
+Alternativ dazu ist es m&ouml;glich, durch Eingabe der gro&szlig;en Halbachse und der numerischen Exzentrizit&auml;t die Bahn eines erfundenen 
+Himmelsk&ouml;rpers vorzugeben (&quot;Enter&quot;-Taste nicht vergessen!). Die Simulation der Planetenbewegung kann auf Wunsch unterbrochen 
+oder verlangsamt werden (Schaltknopf &quot;Pause&nbsp;/&nbsp;Weiter&quot; bzw. Einstellung &quot;Zeitlupe&quot;). 
+Wenn die Option &quot;Sektoren&quot; gew&auml;hlt wurde, zeigt die App zwei fl&auml;chengleiche Sektoren und zwei Uhren, an denen man 
+die Zeit f&uuml;r das Durchlaufen dieser Sektoren (ausgedr&uuml;ckt durch die Umlaufzeit T) ablesen kann. 
+Die Sektoren lassen sich mit einem Schieberegler vergr&ouml;&szlig;ern oder verkleinern oder mit gedr&uuml;ckter Maustaste verschieben. 
+Auf Wunsch wird der Geschwindigkeitsvektor des Planeten oder Kometen eingezeichnet. 
+Das Programm liefert Angaben zur Entfernung des Himmelsk&ouml;rpers von der Sonne (in Astronomischen Einheiten; 
+<span class="nobr">1 AE = 1,49597870 &middot; 10<sup>11</sup> m)</span> und zur Geschwindigkeit <span class="nobr">(in km/s).</span></p>
+//-->
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=440 height=440>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><select id="ch"></select></div>
+    <div style="top: 60px;"><span class="pos1" id="ip1a"></span><input type="text" id="ip1b"><span class="pos3" id="ip1c"></span></div>
+    <div style="top: 90px;"><span class="pos1" id="ip2a"></span><input type="text" id="ip2b"></div>
+    <div style="top: 120px;"><button id="bu" style="background-color: #ffff00;"></button></div>
+    <div style="top: 160px;"><input id="cbSlow" type="checkbox" name="cbSlow" value=""><label id="lbSlow" for="cbSlow"></label></div>
+    <div style="top: 190px;"><span class="pos1" id="op1a"></span></div>
+    <div style="top: 210px;"><span class="pos1" id="op1b"></span><span class="pos2" id="op1c"></span><span class="pos3" id="op1d"></span></div>     
+    <div style="top: 240px;"><span class="pos1" id="lb"></span></div> 
+    <div style="top: 265px;"><span class="pos1" id="op2a"></span><span class="pos2" id="op2b"></span><span class="pos3" id="op2c"></span></div>
+    <div style="top: 290px;"><span class="pos1" id="op3a"></span><span class="pos2" id="op3b"></span><span class="pos3" id="op3c"></span></div> 
+    <div style="top: 315px;"><span class="pos1" id="op4a"></span><span class="pos2" id="op4b"></span><span class="pos3" id="op4c"></span></div> 
+    <div style="top: 355px;"><input type="checkbox" id="cb1a" name="cb1" value=""><label for="cb1" id="cb1b"></label>
+      <input type="range" id="sl" min=1 max=20 step=1 value=4></div>
+    <div style="top: 380px;"><input type="checkbox" id="cb2a" name="cb3" value=""><label for="cb2" id="cb2b"></label></div>
+    <div style="top: 410px;"><span class="pos1" id="author"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script>endPage("keplerlaw2",4,4,2000,10,2,2016);</script>
+//-->
+</body>
+</html>

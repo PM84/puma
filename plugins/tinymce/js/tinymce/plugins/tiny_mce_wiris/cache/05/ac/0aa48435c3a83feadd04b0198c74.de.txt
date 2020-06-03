@@ -1,0 +1,1 @@
+{"result":{"text":"T h e Leerzeichen h i s t o r y Leerzeichen o f Leerzeichen $ $ umgekehrter Schrägstrich s q r t linke klammer 2 rechte klammer $ $."},"status":"ok"}

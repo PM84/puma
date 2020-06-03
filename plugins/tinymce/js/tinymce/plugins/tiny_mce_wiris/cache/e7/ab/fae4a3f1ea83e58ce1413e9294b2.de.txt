@@ -1,0 +1,1 @@
+{"result":{"text":"x im Quadrat plus x dividiert durch 3"},"status":"ok"}

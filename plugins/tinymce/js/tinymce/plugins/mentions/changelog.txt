@@ -1,0 +1,4 @@
+Version 1.0.3 (2016-12-13)
+  [BUG] Fixed incorrect positioning for menus when document had scroll and inline editor was used. #TINY-825
+Version 1.0.2 (2016-10-25)
+  [FEATURE] Added version detection logic that check if mentions is used with a compatible tinymce version. #TINY-639

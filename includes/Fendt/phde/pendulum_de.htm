@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Fadenpendel</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 820px; height: 420px; }
+div#canvas { width: 560px; height: 420px; }
+div#panel { left: 560px; width: 260px; height: 420px; } 
+button { left: 10px; width: 240px; }
+input[type="text"] { left: 130px; width: 80px; }
+.pos1 { left: 10px; }
+.pos3 { left: 225px; }
+</style>
+<script src="pendulum.js"></script>
+<script src="pendulum_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Fadenpendel">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Schwingung, Fadenpendel">
+</head>
+
+<body>
+
+<!--<h1>Fadenpendel</h1>
+
+<p>Diese HTML5-App soll demonstrieren, wie sich bei der Schwingung eines <em class="Begriff">Fadenpendels</em> Elongation, Geschwindigkeit, 
+Beschleunigung, Kraft und Energie zeitlich &auml;ndern.</p>
+
+<p>Der Schaltknopf &quot;Zur&uuml;ck&quot; bringt den Pendelk&ouml;rper in die Ausgangsposition. Mit dem anderen Schaltknopf kann man die 
+Simulation starten, unterbrechen und wieder fortsetzen. W&auml;hlt man die Option &quot;Zeitlupe&quot;, so erfolgt die Bewegung verlangsamt, 
+und zwar um den Faktor&nbsp;10. Die Pendell&auml;nge, die Fallbeschleunigung, die Masse des Pendelk&ouml;rpers und die Amplitude der Schwingung 
+(Auslenkungswinkel in Grad) lassen sich mithilfe der Eingabefelder in gewissen Grenzen variieren. Durch einen Mausklick auf einen der f&uuml;nf 
+Radiobuttons legt man fest, welche der oben genannten Gr&ouml;&szlig;en betrachtet werden soll.</p>
+
+<p>Bemerkung: Die Reibung wird vernachl&auml;ssigt, ebenso die Abh&auml;ngigkeit der Schwingungsdauer von der Amplitude.</p>
+//-->
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=540 height=420>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 10px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 50px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 95px;"><input type="checkbox" id="cbSlow" name="cbSlow" value=""><label for="cbSlow" id="lbSlow"></label></div>
+    <div style="top: 130px;"><span class="pos1" id="ipLa"></span><input type="text" id="ipLb"><span class="pos3" id="ipLc"></span></div>
+    <div style="top: 160px;"><span class="pos1" id="ipGa"></span><input type="text" id="ipGb"><span class="pos3" id="ipGc"></span></div>
+    <div style="top: 190px;"><span class="pos1" id="ipMa"></span><input type="text" id="ipMb"><span class="pos3" id="ipMc"></span></div>
+    <div style="top: 220px;"><span class="pos1" id="ipAa"></span><input type="text" id="ipAb"><span class="pos3" id="ipAc"></span></div>
+    <div style="top: 250px;"><input type="radio" id="rbY" name="bg" value=""><label id="lbY" for="rbY" style="color: #ff0000;"></label></div>
+    <div style="top: 275px;"><input type="radio" id="rbV" name="bg" value=""><label id="lbV" for="rbV" style="color: #ff00ff;"></label></div>
+    <div style="top: 300px;"><input type="radio" id="rbA" name="bg" value=""><label id="lbA" for="rbA" style="color: #0000ff;"></label></div>
+    <div style="top: 325px;"><input type="radio" id="rbF" name="bg" value=""><label id="lbF" for="rbF" style="color: #008020;"></label></div>
+    <div style="top: 350px;"><input type="radio" id="rbE" name="bg" value=""><label id="lbE" for="rbE" style="color: #000000;"></label></div>
+    <div style="top: 390px;"><span class="pos1" id="author"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script>endPage("pendulum",21,5,1998,20,9,2014);</script>
+
+<p>Herzlichen Dank an Herrn Marc Burgess f&uuml;r seine wertvollen Hinweise!</p>//-->
+
+</body>
+</html>

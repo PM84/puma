@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Schwebungen</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 680px; height: 400px; }
+div#canvas { width: 480px; height: 400px; }
+div#panel { left: 480px; width: 200px; height: 400px; } 
+button { width: 180px; }
+input[type="text"] { left: 80px; width: 60px; }
+.pos1 { left: 10px; }
+.pos3 { left: 160px; }
+</style>
+<script src="beats.js"></script>
+<script src="beats_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Schwebungen">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Wellen, Wellenlehre, Schwebung">
+</head>
+
+<body>
+
+<!--<h1>Schwebungen</h1>
+
+<p>Senden zwei Schallquellen (zum Beispiel zwei Stimmgabeln) Schallwellen mit <em class="Begriff">beinahe &uuml;bereinstimmender Frequenz</em> 
+aus, so nimmt man keine getrennten T&ouml;ne wahr, sondern einen einzigen Ton, dessen Lautst&auml;rke regelm&auml;&szlig;ig kleiner und 
+gr&ouml;&szlig;er wird. Diese Erscheinung wird als <em class="Begriff">Schwebung</em> bezeichnet und kann durch die &Uuml;berlagerung der beiden 
+Wellen erkl&auml;rt werden.</p>
+
+<p>Die beiden oberen Diagramme dieser App zeigen f&uuml;r zwei Einzelwellen gleicher Amplitude jeweils die Elongation (y<sub>1</sub> 
+beziehungsweise y<sub>2</sub>) als Funktion der <span class="nobr">Zeit t.</span> Die <span class="nobr">Elongation y</span> der Gesamtwelle 
+zu einem bestimmten Zeitpunkt ergibt sich durch Addition der einzelnen Elongationen 
+<span class="nobr">(y = y<sub>1</sub> + y<sub>2</sub>).</span> Aus dem unteren Diagramm kann man entnehmen, wie diese 
+<span class="nobr">Elongation y</span> von der <span class="nobr">Zeit t</span> abh&auml;ngt. Die beobachtete Ver&auml;nderung der 
+Lautst&auml;rke ist als periodische Ver&auml;nderung der Amplitude zu erkennen.</p>
+
+<p>Der Schaltknopf &quot;Zur&uuml;ck&quot; stellt den Anfangszustand her. Mit dem anderen Schaltknopf kann man die Simulation starten, 
+unterbrechen und wieder fortsetzen. W&auml;hlt man die Option &quot;Zeitlupe&quot;, so erfolgt die Bewegung verlangsamt, und zwar um den 
+Faktor&nbsp;10. Die Frequenzen der beiden Einzelwellen lassen sich zwischen <span class="nobr">100 Hz</span> und 
+<span class="nobr">1000 Hz</span> variieren (Enter-Taste nicht vergessen!).</p>
+//-->
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=480 height=400>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 20px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 70px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 120px;"><input type="checkbox" id="cbSlow" name="cbSlow" value=""><label for="cbSlow" id="lbSlow"></label></div>
+    <div style="top: 170px;"><span class="pos1" id="lb1"></span></div>
+    <div style="top: 220px;"><span class="pos1" id="ip1a"></span><input type="text" id="ip1b"><span class="pos3" id="ip1c"></span></div>
+    <div style="top: 270px;"><span class="pos1" id="ip2a"></span><input type="text" id="ip2b"><span class="pos3" id="ip2c"></span></div>
+    <div style="top: 350px;"><span class="pos1" id="author"></span></div>
+    <div style="top: 370px;"><span class="pos1" id="translator"></span></div>
+				<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script type="text/javascript">endPage("beats",21,10,2001,6,1,2016);</script>//-->
+
+</body>
+</html>

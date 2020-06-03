@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+	<head>
+		<title>Bewegung mit konstanter Beschleunigung</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+		<style type="text/css">
+			div#total { width: 780px; height: 400px; }
+			div#canvas { width: 540px; height: 400px; }
+			div#panel { left: 540px; width: 240px; height: 400px; } 
+			button { width: 220px; }
+			input[type="text"] { left: 10px; width: 150px; }
+			.pos1 { left: 10px; }
+			.pos3 { left: 180px; }
+		</style>
+		<script src="acceleration.js"></script>
+		<script src="acceleration_de.js"></script>
+		<script src="page_de.js"></script>
+		<meta name="description" content="HTML5-App: Bewegung mit konstanter Beschleunigung">
+		<meta name="author" content="Walter Fendt">
+		<meta name="keywords" content="App, Physik, Mechanik, Kinematik, Beschleunigung">
+	</head>
+
+	<body>
+		<!--
+<h1>Bewegung mit konstanter Beschleunigung</h1>
+
+<p>Diese HTML5-App zeigt ein Auto, das sich mit <em class="Begriff">konstanter Beschleunigung</em> bewegt. Die gr&uuml;ne Schaltfl&auml;che 
+enth&auml;lt Eingabefelder zur Festlegung von <em class="Begriff">Anfangsposition</em>, <em class="Begriff">Anfangsgeschwindigkeit</em> und 
+<em class="Begriff">Beschleunigung</em> (&quot;Enter&quot;-Taste nicht vergessen!). Die Schaltkn&ouml;pfe rechts oben dienen dazu, das Auto in 
+den Anfangszustand zu bringen bzw. die Simulation zu starten oder zu unterbrechen. W&auml;hlt man die Option &quot;Zeitlupe&quot;, so l&auml;uft 
+die Simulation zehnmal so langsam. Rechts unten l&auml;sst sich einstellen, ob der Geschwindigkeitsvektor oder der Beschleunigungsvektor 
+dargestellt werden soll.</p>
+
+<p>Drei Digitaluhren zeigen die Zeit an, die seit dem Start vergangen ist. Sobald das Auto mit der vorderen Sto&szlig;stange die gr&uuml;ne bzw. 
+rote Lichtschranke erreicht hat, stoppt die entsprechende Uhr. Beide Lichtschranken lassen sich mit gedr&uuml;ckter Maustaste verschieben.</p>
+
+<p>Drei <em class="Begriff">Diagramme</em> stellen die Bewegung des Fahrzeugs grafisch dar:</p>
+<ul>
+<li><em class="Begriff">Position x</em> als Funktion der <em class="Begriff">Zeit t</em></li>
+<li><em class="Begriff">Geschwindigkeit v</em> als Funktion der <em class="Begriff">Zeit t</em></li>
+<li><em class="Begriff">Beschleunigung a</em> als Funktion der <em class="Begriff">Zeit t</em></li>
+</ul>//-->
+
+		<div id="total">
+			<div id="canvas"><canvas id="cv" width=540 height=400>HTML5-Canvas nicht unterstützt!</canvas></div>
+			<div id="panel">
+				<div style="top: 10px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+				<div style="top: 50px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+				<div style="top: 95px;"><input id="cbSlow" type="checkbox" name="cbSlow" value=""><label id="lbSlow" for="cbSlow"></label></div>
+				<div style="top: 130px;"><span class="pos1" id="ipX0a"></span></div>
+				<div style="top: 150px;"><input type="text" id="ipX0b"><span class="pos3" id="ipX0c"></span></div>
+				<div style="top: 180px;"><span class="pos1" id="ipV0a"></span></div>
+				<div style="top: 200px;"><input type="text" id="ipV0b"><span class="pos3" id="ipV0c"></span></div>
+				<div style="top: 230px;"><span class="pos1" id="ipAa"></span></div>
+				<div style="top: 250px;"><input type="text" id="ipAb"><span class="pos3" id="ipAc"></span></div>
+				<div style="top: 290px;"><input type="radio" id="rbV" name="bg" value=""><label for="rbV" id="lbV"></label></div>
+				<div style="top: 320px;"><input type="radio" id="rbA" name="bg" value=""><label for="rbA" id="lbA"></label></div>
+				<div style="top: 360px;"><span class="pos1" id="author"></span></div>
+				<div style="top: 380px;"><span class="pos1" id="translator"></span></div>
+				<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+			</div>
+		</div>
+
+		<!--<p>Die Formeln zu dieser App finden sich im <a href="acceleration_math_de.htm">mathematischen Anhang</a>.</p>//-->
+
+		<!--<script type="text/javascript">endPage("acceleration",2,11,2000,7,10,2014);</script>//-->
+
+	</body>
+</html>

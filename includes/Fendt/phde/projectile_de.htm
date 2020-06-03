@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+<title>Schiefer Wurf</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ph/page2.css" type="text/css">
+<style type="text/css">
+div#total { width: 720px; height: 420px; }
+div#canvas { width: 440px; height: 420px; }
+div#panel { left: 440px; width: 280px; height: 420px; } 
+.pos1 { left: 10px; }
+.pos3 { left: 240px; }
+input[type="text"] { left: 160px; width: 60px; }
+button { width: 260px; }
+</style>
+<script src="projectile.js"></script>
+<script src="projectile_de.js"></script>
+<script src="page_de.js"></script>
+<meta name="description" content="HTML5-App: Schiefer Wurf">
+<meta name="author" content="Walter Fendt">
+<meta name="keywords" content="App, Physik, Mechanik, Wurf, Wurfbewegung">
+</head>
+
+<body>
+
+<!--<h1>Schiefer Wurf</h1>
+
+<p>Mit dieser HTML5-App l&auml;sst sich ein <em class="Begriff">schiefer, waagrechter oder senkrechter Wurf</em> simulieren.</p>
+
+<p>Der Schaltknopf &quot;Zur&uuml;ck&quot; bringt den Ball in die Ausgangsposition. Mit dem anderen Button kann man die Simulation starten, 
+unterbrechen und wieder fortsetzen. W&auml;hlt man die Option &quot;Zeitlupe&quot;, so erfolgt die Bewegung verlangsamt, und zwar um den 
+Faktor&nbsp;10. 
+Mit Hilfe der Eingabefelder lassen sich Ausgangsh&ouml;he, Anfangsgeschwindigkeit, Neigungswinkel, Masse und Fallbeschleunigung in gewissen 
+Grenzen variieren. Im unteren Teil der Schaltfl&auml;che kann man eine von f&uuml;nf Gr&ouml;&szlig;en ausw&auml;hlen, um n&auml;here Angaben 
+dar&uuml;ber zu erhalten.</p>
+
+<p>Der Einfluss des Luftwiderstands wird vernachl&auml;ssigt.</p>//-->
+
+<div id="total">
+  <div id="canvas"><canvas id="cv" width=440 height=420>HTML5-Canvas nicht unterstützt!</canvas></div>
+  <div id="panel">
+    <div style="top: 10px;"><button id="bu1" style="background-color: #00ffff;"></button></div>
+    <div style="top: 50px;"><button id="bu2" style="background-color: #ffff00;"></button></div>
+    <div style="top: 95px;"><input type="checkbox" id="cbSlow" name="cbSlow" value=""><label for="cbSlow" id="lbSlow"></label></div>
+    <div style="top: 125px;"><span class="pos1" id="ipHa"></span><input type="text" id="ipHb"><span class="pos3" id="ipHc"></span></div>
+    <div style="top: 155px;"><span class="pos1" id="ipVa"></span><input type="text" id="ipVb"><span class="pos3" id="ipVc"></span></div>
+    <div style="top: 185px;"><span class="pos1" id="ipWa"></span><input type="text" id="ipWb"><span class="pos3" id="ipWc"></span></div>
+    <div style="top: 215px;"><span class="pos1" id="ipMa"></span><input type="text" id="ipMb"><span class="pos3" id="ipMc"></span></div>
+    <div style="top: 245px;"><span class="pos1" id="ipGa"></span><input type="text" id="ipGb"><span class="pos3" id="ipGc"></span></div>
+    <div style="top: 270px; color: #ff0000;"><input type="radio" id="rbY" name="bg" value=""><label for="rbY" id="lbY"></label></div>
+    <div style="top: 295px; color: #ff00ff;"><input type="radio" id="rbV" name="bg" value=""><label for="rbV" id="lbV"></label></div>
+    <div style="top: 320px; color: #0000ff;"><input type="radio" id="rbA" name="bg" value=""><label for="rbA" id="lbA"></label></div>
+    <div style="top: 345px; color: #008020;"><input type="radio" id="rbF" name="bg" value=""><label for="rbF" id="lbF"></label></div>
+    <div style="top: 370px; color: #000000;"><input type="radio" id="rbE" name="bg" value=""><label for="rbE" id="lbE"></label></div>
+    <div style="top: 400px;"><span class="pos1" id="author"></span></div>
+<div style="bottom: 15px;" class="cls_license_container"><div class="cls_license" id="license">Mit freundlicher Genehmigung von Walter Fendt</div></div>
+	</div>
+</div>
+
+<!--<script type="text/javascript">endPage("projectile",13,9,2000,27,12,2014);</script>//-->
+
+</body>
+</html>
