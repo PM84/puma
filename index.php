@@ -1,12 +1,19 @@
 <?php
+if(!is_file ("config.php")){
+	header("LOCATION: install/index.php");
+}
 session_start();
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/module/user/checkToken.php");
+include("config.php");
+echo $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR'];
+echo "<br>" . $_SERVER['DOCUMENT_ROOT'];
+echo "<br>" . $_SESSION['DOCUMENT_ROOT_DIR'];
+
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/user/checkToken.php");
 // unset($_SESSION['t']);
 $ausserhalbKurs=1;
 $error=0;
@@ -86,9 +93,9 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 	}
 
 	if(isset($ersteFolie['fID']) && $ersteFolie['fID']>0 && $error==0){
-		$firstFolie="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$ersteFolie['fID'];
+		$firstFolie=$_SESSION['DOCUMENT_ROOT_DIR'] . "/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$ersteFolie['fID'];
 		// 		echo $firstFolie;
-		echo "<script>window.location = '$firstFolie';</script>";  //Fehler bei der Abfrage aufgetreten
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."$firstFolie';</script>";  //Fehler bei der Abfrage aufgetreten
 	}else{
 		$error=404;
 	}
@@ -106,10 +113,10 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 
@@ -133,12 +140,12 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 							}
 						}
 						echo $Hinweis;
-						include($_SERVER['DOCUMENT_ROOT']."/module/user/TokenForm.php");
+						include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/user/TokenForm.php");
 					}else{
 					?>
 					<p class="lead">Ihr Zugriffstoken ist:</p>
 					<div class='alert alert-success' style='text-align:center;'><p class="lead "><?php echo $_SESSION['t']; ?></p></div>
-					<a class='btn btn-danger' style="width:100%;" href='/module/user/CancelToken.php'>Abmelden</a>
+					<a class='btn btn-danger' style="width:100%;" href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/CancelToken.php'>Abmelden</a>
 					<hr>
 
 					<p class="lead">Meine Aufgaben:</p>
@@ -182,6 +189,6 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 			<a style="" href="impressum.php">Impressum</a>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>
