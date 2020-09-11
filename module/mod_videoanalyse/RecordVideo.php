@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=3;
 // ========================
 // ========================
@@ -10,16 +10,16 @@ $ausserhalbKurs=3;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videoanalyse";
 $modID=getModIDFromTitel($modTitel);
@@ -171,9 +171,9 @@ if(isset($_SESSION['va']['fID']) && $_SESSION['va']['fID']>0){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 
 		<script>
 
@@ -255,14 +255,14 @@ if(isset($_SESSION['va']['fID']) && $_SESSION['va']['fID']>0){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="">
 			<div class="row">
 				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12" style="padding: 0 10 0 10">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
-						<div class="col-md-1"><a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Videoanalyse - Video aufzeichnen</p></div>
 						<div class="col-md-1"><form id="newRecord" action method="post"><input type="hidden" name="action" value="newRecord"></form>
 						</div>
@@ -379,8 +379,8 @@ if(isset($_SESSION['va']['fID']) && $_SESSION['va']['fID']>0){
 									<form action method="post"  class="form-inline">
 										<div class="form-group mb-12">
 
-											<a style="height:34px;" class="btn btn-primary" href="/media/video/<?php echo $Video['fileName']; ?>" download target="_blank"><i class="glyphicon glyphicon-download-alt"></i></a>
-											<a style="height:34px;" class="btn btn-default" href="/media/video/<?php echo $Video['fileName']; ?>" target="_blank"><i class="glyphicon glyphicon-play"></i></a>
+											<a style="height:34px;" class="btn btn-primary" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/video/<?php echo $Video['fileName']; ?>" download target="_blank"><i class="glyphicon glyphicon-download-alt"></i></a>
+											<a style="height:34px;" class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/video/<?php echo $Video['fileName']; ?>" target="_blank"><i class="glyphicon glyphicon-play"></i></a>
 											<input type="hidden" name="action" value="SelectVideo">
 											<input type="hidden" value="<?php echo $Video['fileName']; ?>" name="videoID">
 											<?php if($Video['abgegeben']==0){ ?>

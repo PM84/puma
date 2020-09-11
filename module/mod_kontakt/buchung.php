@@ -1,10 +1,10 @@
 <?php 
 session_start();
 $_SESSION['TerminID']=intval($_POST['TerminID']);
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/schule.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_kontakt/fkt_buchung.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/schule.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_kontakt/fkt_buchung.php");
 
 
 $TerminInfo=getTermin_by_TerminID($_SESSION['TerminID']);
@@ -147,18 +147,18 @@ if(isset($_POST['BuchungsID'])){
 	}
 	emailSenden($imap_user_name,array("peter.mayer@fit4exam.de"),$subject_dozent, $message_dozent);
 	unset($_POST);
-	header("LOCATION: /module/mod_kontakt/kontakt.php");
+	header("LOCATION:  " . $_SESSION['DOCUMENT_ROOT_DIR']."module/mod_kontakt/kontakt.php");
 }
 
 ?>
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container">
 			<form class="form-horizontal" method="POST" action="">
 				<input type="hidden" name="BuchungsID" value="<?php if(isset($_SESSION['BuchungsID'])){echo $_SESSION['BuchungsID'];}else{echo 0;} ?>">

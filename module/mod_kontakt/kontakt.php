@@ -1,6 +1,6 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include($_SERVER['DOCUMENT_ROOT']."/module/mod_kontakt/fkt_buchung.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_kontakt/fkt_buchung.php");
 
 
 
@@ -9,11 +9,11 @@ include($_SERVER['DOCUMENT_ROOT']."/module/mod_kontakt/fkt_buchung.php");
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container">
 			<div class="row" style='margin:30 0;'>
 				<div class="col-md-1"></div>
@@ -29,7 +29,7 @@ include($_SERVER['DOCUMENT_ROOT']."/module/mod_kontakt/fkt_buchung.php");
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
 					<h4>Demo - PUMA@LMU</h4>
-					<a href="/module/mod_kontakt/create_new_demo_account.php" class="btn btn-primary">zur Demo wechseln</a>
+					<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_kontakt/create_new_demo_account.php" class="btn btn-primary">zur Demo wechseln</a>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
@@ -44,7 +44,7 @@ include($_SERVER['DOCUMENT_ROOT']."/module/mod_kontakt/fkt_buchung.php");
 					<h3>PUMA@LMU ist für Sie und Ihre Kollegen dauerhaft <span style="color:#137f14; font-weight:bold;">kostenlos</span>!</h3>
 					<p>Ferner loggen wir keinerlei Nutzer- oder Nutzungsdaten.<br>Wenn wir etwas über die Verwendung von PUMA@LMU erfahren möchten würden wir Sie direkt fragen.</p>
 					<h3>Informations Blatt zu PUMA@LMU</h3>
-					<a class="btn btn-success" href="/vorlagen/Handout_PUMA@LMU.pdf" target="_blank"><span class="glyphicon glyphicon-download-alt" style="margin-right:10px;"></span>Download</a>
+					<a class="btn btn-success" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/vorlagen/Handout_PUMA@LMU.pdf" target="_blank"><span class="glyphicon glyphicon-download-alt" style="margin-right:10px;"></span>Download</a>
 
 				</div>
 				<div class="col-md-1"></div>
@@ -170,5 +170,3 @@ function Wochentag($dayofWeek){
 	}
 	return $retval;
 }
-
-

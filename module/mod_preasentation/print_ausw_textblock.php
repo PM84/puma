@@ -20,8 +20,8 @@ if(isset($_GET['b'])){
 	}
 }
 
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 
 $abRows=getAbgabeInfos($_SESSION['fID']);
 $ab_iLauf=0;

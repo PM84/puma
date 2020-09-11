@@ -1,18 +1,18 @@
 <?php 
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/schule.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_klassenbesuch/fkt_buchung.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/schule.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_klassenbesuch/fkt_buchung.php");
 
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
 		<div class="navmenu navmenu-default navmenu-fixed-left">
 			<div style='width:100%; display:block;text-align:center;'>
-				<img src="/images/PumaLMU_LS_Logo.png" alt="" height="50">
+				<img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/PumaLMU_LS_Logo.png" alt="" height="50">
 			</div>
 			<ul class="nav navmenu-nav"  style='margin-top:10px;'></ul>
 			<ul class="nav navmenu-nav"></ul>
@@ -28,7 +28,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_klassenbesuch/fkt_buchung.ph
 			<div class="navbar navbar-default navbar-fixed-top" style="width:100%">
 				<div class='row'>
 					<div class="col-sm-6" style="height: 55px;text-align:left;">
-						<span style="font-size: 24px; font-family: inherit; text-align:left;"><img src="/images/LMU_Logo.png" style="margin:10px;"><span style="margin-top:10px;">Klassenbesuche</span></span>
+						<span style="font-size: 24px; font-family: inherit; text-align:left;"><img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/LMU_Logo.png" style="margin:10px;"><span style="margin-top:10px;">Klassenbesuche</span></span>
 					</div><div class="col-sm-6" style="text-align:center;">
 					</div>
 
@@ -40,7 +40,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_klassenbesuch/fkt_buchung.ph
 				<?php 
 				if(!isset($_SESSION['uID'])){
 					$stayOnSite=1; 
-					include($_SERVER['DOCUMENT_ROOT']."/module/user/LoginForm.php");
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/user/LoginForm.php");
 				}else{
 					$TerminListe=getTerminListe();
 					foreach($TerminListe as $Termin){

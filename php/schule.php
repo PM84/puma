@@ -1,7 +1,7 @@
 <?php
 
 function getSchulInfo_by_SchulNr($SchulNr){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM schule_daten WHERE SchulNr=$SchulNr";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -9,7 +9,7 @@ function getSchulInfo_by_SchulNr($SchulNr){
 }
 
 function getSchulen_Liste(){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM schule_daten";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$retArr=array();

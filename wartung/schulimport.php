@@ -1,6 +1,6 @@
 <?php
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
 
 $csv = array();
 
@@ -22,8 +22,8 @@ if($_FILES['csv']['error'] == 0){
 
 // echo htmlspecialchars ("﻿SchulNr",ENT_COMPAT,'ISO-8859-1', true);
 function WriteDataToDB($valueArray){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
 	$values=array();
 	foreach($valueArray as $key => $value ){
 		if($key=="﻿SchulNr"){$key="sNr";}

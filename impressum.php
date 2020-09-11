@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 
-include_once($_SERVER['DOCUMENT_ROOT']."/php/agb.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/agb.php");
 
 $actAGB=load_actual_AGB();
 $_SESSION['agbID']=$actAGB['agbID'];
@@ -12,7 +12,7 @@ $_SESSION['agbID']=$actAGB['agbID'];
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 		<script>
 			(function(document, history, location) {
 				var HISTORY_SUPPORT = !!(history && history.pushState);
@@ -96,13 +96,13 @@ $_SESSION['agbID']=$actAGB['agbID'];
 		</script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
-					<p><a href="/index.php">zurück</a></p>
+					<p><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php">zurück</a></p>
 					<h3>Technische Umsetzung</h3>
 					<p>StR Peter Mayer</p>
 					<p>Theresienstraße 37 (Raum A014)</p>

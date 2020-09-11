@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/php/abstimmung.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/php/abstimmung.php");
 $Abst_name="abstOption";
 $jsonStimmen=html_entity_decode (get_abstimmung_OptArray($_SESSION['fID'],$Abst_name,$bID,$Block), ENT_QUOTES , "UTF-8");
 // $jsonStimmen=json_decode($jsonStimmen);
@@ -17,11 +17,11 @@ $aktNbr=count(json_decode($jsonStimmen));
 
 <div>
 	<p class="lead">Antworten der Schüler
-		<a class="btn btn-default" href="/module/mod_bausteine/print_abstimmung_ausw.php?b=<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
-		<a class="btn btn-default" href="/module/mod_bausteine/print_abstimmung_ausw.php?b=<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>
+		<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_bausteine/print_abstimmung_ausw.php?b="<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
+		<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_bausteine/print_abstimmung_ausw.php?b="<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>
 	</p>
 	<?php
-	include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/print_abstimmung_ausw.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/print_abstimmung_ausw.php");
 	?>
 </div>
 

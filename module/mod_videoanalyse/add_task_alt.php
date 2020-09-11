@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=3;
 // ========================
 // ========================
@@ -10,15 +10,15 @@ $ausserhalbKurs=3;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videoanalyse";
 $modID=getModIDFromTitel($modTitel);
@@ -29,7 +29,7 @@ $CopyToKursAllow=1;
 // ========================
 if(isset($_POST['kID'])){
 	$_SESSION['kID']=intval($_POST['kID']);
-	echo "<script>window.location = '/module/mod_videoanalyse/RecordVideo.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videoanalyse/RecordVideo.php';</script>";
 }
 
 // ========================
@@ -48,7 +48,7 @@ if(isset($_POST['fileID'])){
 // ========================
 if(isset($_POST['kID'])){
 	$_SESSION['kID']=intval($_POST['kID']);
-	echo "<script>window.location = '/module/mod_videoanalyse/add_feedback.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videoanalyse/add_feedback.php';</script>";
 }
 
 // ========================
@@ -181,7 +181,7 @@ if(isset($_POST['beschreibung'])){
 	$redirectStatus=add_folie($parameter,$modID,$viewTyp,$fID,$redirect,1,0,$CopyToKursID);
 
 	if($redirectStatus==1){
-		// 		echo "<script>window.location = '/module/mod_videovertonung/add_korrektur.php';</script>";
+		// 		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_korrektur.php';</script>";
 	}else{
 		unset($_SESSION['vID']);
 		unset($_SESSION['eig_vID']);
@@ -192,9 +192,9 @@ if(isset($_POST['beschreibung'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector: 'textarea',
@@ -262,14 +262,14 @@ if(isset($_POST['beschreibung'])){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="margin-bottom:150px;">
 			<div class="row">
 				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
-						<div class="col-md-1"><a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Videoanalyse hinzufügen</p></div>
 						<div class="col-md-1"></div>
 					</div>
@@ -290,7 +290,7 @@ if(isset($_POST['beschreibung'])){
 									</div>
 								</a>
 							</div>
-							<?php include_once($_SERVER['DOCUMENT_ROOT']."/includes/fileExplorer.php"); ?>
+							<?php include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/fileExplorer.php"); ?>
 						</div>
 						<?php
 						foreach($themen as $thema){
@@ -404,7 +404,7 @@ if(isset($_POST['beschreibung'])){
 
 
 						<p class="lead" style='margin-top:25px'>Anzeige</p>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 
 						<!--						<div class="checkbox">
 <label>
@@ -471,6 +471,6 @@ if(isset($_SESSION['edit_fID'])){
 				<!--<div class="col-md-1"></div>//-->
 			</div>
 		</div>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

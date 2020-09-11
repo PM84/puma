@@ -20,10 +20,10 @@ if(isset($_GET['b'])){
 	}
 }
 
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/bausteine.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/bausteine.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 
 $FolieInfos=getFolieInfo($_SESSION['fID']);
 $parameter=json_decode($FolieInfos['parameter'],true);

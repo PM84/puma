@@ -3,8 +3,8 @@
 function sentMail($MessageArray){
 //  	echo "Pos1: ";
 // 	var_dump($MessageArray);
-	require_once ($_SERVER['DOCUMENT_ROOT'].'/includes/PHPMailer/PHPMailerAutoload.php');
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	require_once ($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR'].'/includes/PHPMailer/PHPMailerAutoload.php');
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 	$mail = new PHPMailer();
 	$mail->IsSendmail();
@@ -74,7 +74,7 @@ function sentMail($MessageArray){
 function email_versenden($from,$to_arr,$subject,$message,$toCC_arr=array()){
 	// $to_arr=array("email1","email2","email3");
 
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/mail.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/mail.php");
 	$MessageArray['from']['EmailFrom']=$from;
 	// 	$MessageArray['from']=array("FromEmail"=> $from);
 	$MessageArray['to']['EmailTo']= $to_arr; // $to_arr=array("ex1@test.de", "ex2@test.de")

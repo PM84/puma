@@ -1,8 +1,8 @@
 <?php
 session_start();
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
 
 if(isset($_GET['kTok'])){
 	$kursToken=mysqli_real_escape_string ($verbindung, htmlentities ($_GET['kTok'], ENT_QUOTES , "UTF-8"));
@@ -40,11 +40,11 @@ if(isset($_GET['kTok'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3"></div>
@@ -56,9 +56,9 @@ if(isset($_GET['kTok'])){
 						Bitte notieren Sie sich den Zugriffscode um auch später auf den Kurs zugreifen zu können.
 					</p>
 					<p>
-						Besuchen Sie <a href="/index.php" target="_blank"><strong>www.physik-workshop.de</strong></a> und geben dort den Zugriffscode ein oder
+						Besuchen Sie <a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php" target="_blank"><strong>www.physik-workshop.de</strong></a> und geben dort den Zugriffscode ein oder
 					</p>
-					<a href="/index.php?t=<?php echo $token; ?>" class="btn btn-primary" target="_blank">
+					<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php?t="<?php echo $token; ?>" class="btn btn-primary" target="_blank">
 						klicken um zum Kurs zu wechseln
 					</a>
 
@@ -82,11 +82,11 @@ if($noKurs==1){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3"></div>

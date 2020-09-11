@@ -25,7 +25,7 @@ if(isset($_POST['fkt'])){
 }
 
 function changeAktivStatus($fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID=$_SESSION['k'];
 	$query="UPDATE ablauf_master SET aktiv=IF(aktiv=0,1,0), OrderID=999999999 WHERE kursID='$kursID' AND fID='$fID'";
 	// 	echo $query;
@@ -34,13 +34,13 @@ function changeAktivStatus($fID){
 }
 
 function insertFolieToMaster($fID,$kursID,$defaultParameter){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="INSERT INTO ablauf_master (kursID,fID,parameter) VALUES ('$kursID','$fID','$defaultParameter') ON DUPLICATE KEY UPDATE parameter='$defaultParameter'";
 	mysqli_query($verbindung,$query);
 }
 
 function save_einstellungen($parameterArr){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$fID=$_SESSION['fID_praes'];
 	$kursID=$_SESSION['k'];
 	$parameter=json_encode($parameterArr);
@@ -49,7 +49,7 @@ function save_einstellungen($parameterArr){
 }
 
 function load_einstellungen($fID,$kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM ablauf_master WHERE kursID='$kursID' AND fID='$fID'";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -57,7 +57,7 @@ function load_einstellungen($fID,$kursID){
 }
 
 function InsertOrderSetting($fID,$kursID,$OrderID,$defaultParameter='{"show_beginn":1,"show_aktiv":1,"show_freigabe":0,"show_nach_bearb":1,"show_auto":0}',$aktiv=1){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 // 	$defaultParameter='{"show_beginn":1,"show_aktiv":1,"show_freigabe":0,"show_nach_bearb":1,"show_auto":0}';
 	$query="INSERT INTO ablauf_master (fID,KursID,OrderID,parameter,aktiv) VALUES($fID,$kursID,$OrderID,'$defaultParameter','$aktiv') ON DUPLICATE KEY UPDATE OrderID=$OrderID, aktiv=$aktiv";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -65,7 +65,7 @@ function InsertOrderSetting($fID,$kursID,$OrderID,$defaultParameter='{"show_begi
 
 
 function getMaxOrderID($kursID,$aktiv=0){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	switch($aktiv){
 		case 1:
 			$query="SELECT * FROM ablauf_master WHERE kursID='$kursID' and aktiv=1 ORDER BY OrderID DESC LIMIT 1";
@@ -81,7 +81,7 @@ function getMaxOrderID($kursID,$aktiv=0){
 }
 
 function getOrderID($fID,$kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM ablauf_master WHERE kursID='$kursID' AND fID='$fID'";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -90,7 +90,7 @@ function getOrderID($fID,$kursID){
 
 
 function getPraesentationsSettingsListe($kursID){
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$FolienListe=getFolienListeInfos_ORDER($kursID);
 	$tempArr=array();
 	foreach($FolienListe as $folie){
@@ -106,7 +106,7 @@ function getPraesentationsSettingsListe($kursID){
 // var_dump(GetAblaufArrFiltered(GetAblaufArr(111)));
 
 function GetAblaufArr($kursID){
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$FolienListe=getFolienListeInfos_ORDER($kursID);
 	// 	var_dump($FolienListe);
 	$tempArr=array();
@@ -244,7 +244,7 @@ function remove_fIDs_not_shown($FilteredArr){
 	return $tempArr;
 }
 function GetAblaufArr_CheckForAbgabe($AblaufArr){
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
 	$retArr=array();
 	foreach($AblaufArr as $folie){
 		$fID=$folie['fID'];
@@ -348,7 +348,7 @@ function get_next_fID_Arr($kursID,$fID){
 
 
 function getLehrerSync($kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM ablauf_sync WHERE kursID='$kursID'";
 	$ergebnis=mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -356,7 +356,7 @@ function getLehrerSync($kursID){
 }
 
 function SetLehrerSync($kursID,$fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 
 	$query="INSERT INTO ablauf_sync (kursID,fID,aktiv) VALUES ('$kursID','$fID',1) ON DUPLICATE KEY UPDATE fID='$fID', aktiv=IF( fID='$fID' AND aktiv = 1, 0 , IF( fID='$fID' AND aktiv = 0, 1 , IF(fID!='$fID',1,1)))";
@@ -365,29 +365,29 @@ function SetLehrerSync($kursID,$fID){
 }
 
 function SeiteAktualisieren($kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-	include($_SERVER['DOCUMENT_ROOT']."/php/module.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
 	$row=getLehrerSync($kursID);
 	if($row['aktiv']==1){
 		$FolieInfo=getFolieInfo($row['fID']);
 		$parameterFolie=json_decode($FolieInfo['parameter']);
 		$modID=$FolieInfo['modID'];
 		$modInfo=getModulInfos($modID);
-		$href="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$row['fID'];
+		$href= $_SESSION['DOCUMENT_ROOT_DIR'].$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$row['fID'];
 
 		// 	header("LOCATION: $href");
-		return "<script>window.location = '$href';</script>";
+		return "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."$href';</script>";
 	}
 }
 
 function SetFreigabeStatus($kursID,$fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="UPDATE ablauf_master SET freigabeStatus=IF(freigabeStatus = 1, 0, 1) WHERE kursID=$kursID AND fID=$fID";
 	mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));
 }
 
 function CheckFreigabeStatus($kursID,$fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM ablauf_master WHERE freigabeStatus=1 AND kursID=$kursID AND fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));
 	if(mysqli_num_rows($ergebnis)==1){return true;}else{return false;}

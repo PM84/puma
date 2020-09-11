@@ -14,7 +14,7 @@ if(isset($_POST['fkt'])){
 
 function get_abstimmung_OptArray($fID,$abst_name,$bID,$Block){
 	$abst_name=$abst_name."_".$Block;
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM abgabe WHERE fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$Stimmen=array();
@@ -79,7 +79,7 @@ function convertToGoogleAPI_json_Data($Stimmen,$bID=0,$Block){
 }
 
 function get_abstimmung_options($bID,$Block){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM bausteine WHERE bID=$bID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);

@@ -2,7 +2,7 @@
 
 
 function getFrageInfo($FrageID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen WHERE FrageID=$FrageID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -10,7 +10,7 @@ function getFrageInfo($FrageID){
 }
 
 function getFragenByUser($uID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$fragenArray=array();
 	$query="SELECT * FROM fragen WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -22,7 +22,7 @@ function getFragenByUser($uID){
 }
 
 function InsertFrage($uID,$SkalaTyp,$PostJson){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="INSERT INTO fragen (uID,parameter,SkalaTyp) VALUES ('$uID','$PostJson',$SkalaTyp)";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	return mysqli_insert_id($verbindung);
@@ -31,7 +31,7 @@ function InsertFrage($uID,$SkalaTyp,$PostJson){
 
 
 function UpdateFrage($uID,$SkalaTyp,$FrageID,$PostJson){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="UPDATE fragen SET SkalaTyp='$SkalaTyp' ,parameter= '$PostJson' WHERE FrageID='$FrageID'";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	unset($_SESSION['FrageID']);
@@ -39,14 +39,14 @@ function UpdateFrage($uID,$SkalaTyp,$FrageID,$PostJson){
 
 
 function UpdateFrageGruppe($FGroupID,$PostJson){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="UPDATE fragen_groups SET parameter= '$PostJson' WHERE FGroupID='$FGroupID'";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 
 }
 
 function InsertFrageGruppe($uID,$PostJson){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="INSERT INTO fragen_groups (uID,parameter) VALUES ('$uID','$PostJson')";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 
@@ -54,7 +54,7 @@ function InsertFrageGruppe($uID,$PostJson){
 
 
 function Get_Fragen_Gruppen($uID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$groupArray=array();
 	$query="SELECT * FROM fragen_groups WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -66,7 +66,7 @@ function Get_Fragen_Gruppen($uID){
 }
 
 function InsertGroupMatches($GroupArr=array(),$FrageID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 	$query="DELETE FROM fragen_groups_fragen_match WHERE FrageID=$FrageID";
 	mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -82,7 +82,7 @@ function InsertGroupMatches($GroupArr=array(),$FrageID){
 }
 
 function getGroupInfo($FGroupID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen_groups WHERE FGroupID=$FGroupID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -90,7 +90,7 @@ function getGroupInfo($FGroupID){
 }
 
 function getFrageGroupsByFrageID($FrageID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen_groups_fragen_match WHERE FrageID=$FrageID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$groupArray=array();
@@ -101,7 +101,7 @@ function getFrageGroupsByFrageID($FrageID){
 }
 
 function del_ALLE_Fragen_in_Fragegruppen($fGroup){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="DELETE tabFragen FROM fragen tabFragen JOIN fragen_groups_fragen_match tabGroups ON tabFragen.FrageID=tabGroups.FrageID WHERE tabGroups.FGroupID=$fGroup AND tabFragen.uID='$uID'";
 	// 	$query;
@@ -109,7 +109,7 @@ function del_ALLE_Fragen_in_Fragegruppen($fGroup){
 }
 
 function getFragenByGroups($FGroupID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen_groups_fragen_match WHERE FGroupID=$FGroupID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$FrageArray=array();
@@ -121,8 +121,8 @@ function getFragenByGroups($FGroupID){
 
 
 function import_txt_frageListe($csvFile,$del_Fragen_in_Fragegruppen){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
 	if(($handle = fopen($csvFile, 'r')) !== FALSE) {
 		// necessary if a large csv file
 		set_time_limit(0);

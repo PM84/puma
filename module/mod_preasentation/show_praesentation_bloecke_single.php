@@ -17,7 +17,7 @@ if(isset($_SESSION['Baustein_'.$Block])){
 
 </style>
 <script>
-	var MarkImg_Json_<?php echo $Block; ?>=<?php echo json_encode($AufgabeInfo["ImgMark_$Block"]); ?>;
+	var MarkImg_Json_<?php echo $Block; ?>="<?php echo json_encode($AufgabeInfo["ImgMark_$Block"]); ?>;
 	var DivInhaltBlock = document.getElementById("inhalt_<?php echo $Block;?>");
 	var images = DivInhaltBlock.getElementsByTagName('img');
 
@@ -134,11 +134,11 @@ if(isset($_SESSION['Baustein_'.$Block])){
 	?>
 	<div class=''>
 		<p class="lead">Abgaben aller Schüler:
-			<a class="btn btn-default" href="/module/mod_preasentation/print_ausw_textblock.php?b=<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
-			<a class="btn btn-default" href="/module/mod_preasentation/print_ausw_textblock.php?b=<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>		
+			<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/print_ausw_textblock.php?b="<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
+			<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/print_ausw_textblock.php?b="<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>		
 		</p>
 		<?php 
-					include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/print_ausw_textblock.php");
+					include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/print_ausw_textblock.php");
 		?>
 	</div>
 	<?php 
@@ -163,7 +163,7 @@ if(isset($_SESSION['Baustein_'.$Block])){
 	?>
 	<div class=''>
 		<?php 
-					include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/show_baustein.php");?>
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/show_baustein.php");?>
 	</div>
 	<?php
 					break;
@@ -171,13 +171,13 @@ if(isset($_SESSION['Baustein_'.$Block])){
 					// 			}else{ ?>
 	<div class='textarea_div_abgegeben'>
 		<?php 
-					include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/show_baustein_loe.php");
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/show_baustein_loe.php");
 		?>
 	</div>
 	<?php
 					break;
 				case 2:
-					include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/show_baustein_ausw.php");
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/show_baustein_ausw.php");
 					break;
 					// 			}
 			}
@@ -195,7 +195,7 @@ if(isset($_SESSION['Baustein_'.$Block])){
 			$bID=$_SESSION['bID_'.$Block];
 	?>
 	<div class=''>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/show_baustein.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/show_baustein.php");?>
 	</div>
 </div>
 <?php

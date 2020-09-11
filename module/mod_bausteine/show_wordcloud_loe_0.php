@@ -1,15 +1,15 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/php/wordcloud.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/php/wordcloud.php");
 $WC_name="WordCloud_".$Block;
 $jsonWort=html_entity_decode (get_WC_WortArray($_SESSION['fID'],$WC_name), ENT_QUOTES , "UTF-8");
 
 
 ?>
 
-<script src="/plugins/d3Cloud/d3.v3.min.js"></script>
-<script src="/plugins/d3Cloud/d3.layout.cloud.js"></script>
-<script src="/plugins/d3Cloud/removeStopWords.js"></script>
-<script src="/plugins/d3Cloud/underscore-min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.v3.min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.layout.cloud.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/removeStopWords.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/underscore-min.js"></script>
 <div id="word_cloud"></div>
 
 <script>
@@ -20,7 +20,7 @@ $jsonWort=html_entity_decode (get_WC_WortArray($_SESSION['fID'],$WC_name), ENT_Q
 	//Remove Stopwords by GeekLad http://geeklad.com
 
 
-	var words=<?php echo $jsonWort;?>
+	var words="<?php echo $jsonWort;?>
 
 	// First, remove the stopwords from the text
 	var cleanwords = [];

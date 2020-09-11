@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 // var_dump($_SESSION);
 $ausserhalbKurs=1;
 // ========================
@@ -11,17 +11,17 @@ $ausserhalbKurs=1;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 // Teilnehmerliste laden:
 // $TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['kursID']);
@@ -96,7 +96,7 @@ $token=$_SESSION['t_own'];
 	mysqli_query($verbindung,$query);
 // var_dump($_POST);
 	if($_POST['saveBtn']==1){
-		echo "<script>window.location = '/module/mod_videovertonung/show_abgabe_uebersicht.php';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/show_abgabe_uebersicht.php';</script>";
 	}
 
 }
@@ -131,8 +131,8 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php //include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php //include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 		<script src="AudioRecorder/MediaStreamRecorder.js"></script>
 		<script src="AudioRecorder/gumadapter.js"></script>
 		<script>	
@@ -153,7 +153,7 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div id="container" class="container" style="margin-bottom:150px;">
 			<div class="row">
@@ -161,7 +161,7 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-1">
-							<a href='/module/mod_videovertonung/show_abgabe_uebersicht.php' class='btn btn-success'>zurück</a>
+							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_abgabe_uebersicht.php' class='btn btn-success'>zurück</a>
 						</div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Abgegebene Vertonung von: <b><?php echo $AbgabeInfo['name'].", ".$AbgabeInfo['vname']; ?></b>
 							<br>zum Thema: <b><?php echo $FolieParameter['titel']; ?></b> </p>
@@ -180,13 +180,13 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 					<video poster="" id="video" class="video" preload="none" width="100%" data-setup="{}" muted style='background-color:gray;'>
 						<source src="<?php echo $link_src; ?>" type='video/mp4'>
 					</video>
-					<audio id="audio" controls="" src="/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
+					<audio id="audio" controls="" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
 					<br><br>
 					<?php
 					?>
 					<div class="row" style="padding:0; padding-bottom:5px; padding-top:5px;">
 						<div class="col-md-9" style="text-align:center;">
-							<audio id="audio" controls="" src="/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
+							<audio id="audio" controls="" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
 							<button type="button" class="glyphicon glyphicon-step-backward btn btn-default" onclick="StepBackwardAll('audio')"></button>
 							<button type="button" class="glyphicon glyphicon-stop btn btn-default" onclick="StopAll('audio')"></button>
 							<button type="button" class="glyphicon glyphicon-pause btn btn-default" onclick="PauseAll('audio')"></button>

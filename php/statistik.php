@@ -1,8 +1,8 @@
 <?php
 // if (session_status() == PHP_SESSION_NONE) {
 session_start();
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
 
 // }
 switch($_POST['PostFktn']){
@@ -145,8 +145,8 @@ function get_Statistik_konfidentschart($zu_abID,$Bew_fID){
 
 function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 	// es muss ein mysqli ergebnis eingefügt werden, vgl. SELECT * FROM abgabe WHERE zu_abID=$zu_abID
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 	// echo "Test";
 	$Dozent_FragenWerteArr=array();
 	$dozentArr=getDozent_tnInfos(1);
@@ -157,7 +157,7 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 	}
 	// 	var_dump($dozentArr);
 	// echo $fID;
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 		echo "===>$zu_abID<===";
 	if($fID>0){
 		$query="SELECT * FROM abgabe WHERE fID=$fID";
@@ -235,8 +235,8 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 
 function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	// es muss ein mysqli ergebnis eingefügt werden, vgl. SELECT * FROM abgabe WHERE zu_abID=$zu_abID
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 	// echo "Test";
 	$Dozent_FragenWerteArr=array();
 	$dozentArr=getDozent_tnInfos(1);
@@ -247,7 +247,7 @@ function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	}
 	// 	var_dump($dozentArr);
 
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 		echo "===>$zu_abID<===";
 	if($zu_abID>0){
 		$query="SELECT * FROM abgabe WHERE zu_abID=$zu_abID AND fID=$Bew_fID";

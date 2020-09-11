@@ -1,15 +1,15 @@
 <?php
 
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay_token.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/simulationen.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay_token.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/simulationen.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 // $_SESSION['fID']=intval($_GET['f']);
 $token=$_SESSION['t'];
 $abgabeErforderlich=0; // Definition der Variable auf Standardwert 0 -> kein "Ich bin fertig" Button wird angezeigt, falls er nicht von der Folieneinstellung geforfert wird.
@@ -82,9 +82,9 @@ if($_SESSION['fID']>0){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -100,11 +100,11 @@ if($_SESSION['fID']>0){
 		<script type="text/javascript"
 				src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
 		</script>
-		<!--		<script type="text/javascript" src="/plugins/mathjax/MathJax.js"></script>
+		<!--		<script type="text/javascript" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/mathjax/MathJax.js"></script>
 //-->
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<?php 
 		// 		var_dump(FolienAnzeige_Menu($_SESSION['kursID'],$_SESSION['t']));
 		?>
@@ -114,8 +114,8 @@ if($_SESSION['fID']>0){
 				<div class="col-md-10">
 
 					<?php 
-						include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/praesentationseinstellungen.php");
-						include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/show_praesentation_bloecke.php");
+						include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/praesentationseinstellungen.php");
+						include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/show_praesentation_bloecke.php");
 						$maxOrderID=getMaxOrderID($_SESSION['kursID'],1);
 						$aktOrderID=getOrderID($_SESSION['fID'],$_SESSION['kursID']);
 						?>
@@ -123,7 +123,7 @@ if($_SESSION['fID']>0){
 // 					}else{
 					?>
 					<?php 
-// 						include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/show_praesentation_bloecke.php");
+// 						include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/show_praesentation_bloecke.php");
 					?>
 <!--					<span  style='margin-top: 50px;' class="btn btn-success btn-lg btn-block" >Bereits abgegeben</span>//-->
 					<?php 
@@ -137,6 +137,6 @@ if($_SESSION['fID']>0){
 		</div>
 
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

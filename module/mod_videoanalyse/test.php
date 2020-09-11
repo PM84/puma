@@ -17,14 +17,14 @@ if(isset($_POST['fileID'])){
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Krajee JQuery Plugins - &copy; Kartik</title>
-		<link href="/plugins/fileUpload/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="/plugins/fileUpload/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="/plugins/fileUpload/js/plugins/sortable.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/fileinput.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/locales/fr.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/locales/es.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/themes/explorer/theme.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/plugins/sortable.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/fileinput.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/locales/fr.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/locales/es.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/themes/explorer/theme.js" type="text/javascript"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -153,7 +153,7 @@ if(isset($_POST['fileID'])){
 				$fileCount=count($fileList);
 				foreach($fileList as $file){
 				?>
-				"/module/mod_videoanalyse/uploads/<?php echo $uID."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>
+				"<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/uploads/<?php echo $uID."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>
 
 				<?php
 					$iLauf++;
@@ -166,7 +166,7 @@ if(isset($_POST['fileID'])){
 				$fileCount=count($fileList);
 				foreach($fileList as $file){
 				?>
-				{type: "video", size: <?php echo $file['size'] ?>, filetype: "video/mp4", caption: "<?php echo setInsertButton($file['id']);?><b><?php echo $file['titel'];?></b><?php echo $file['dateiname']; ?>", url: "/module/mod_videoanalyse/uploads/<?php echo $uID; ?>", key: <?php echo $iLauf; ?>}<?php if($iLauf<$fileCount){echo ",";} ?>
+				{type: "video", size: <?php echo $file['size'] ?>, filetype: "video/mp4", caption: "<?php echo setInsertButton($file['id']);?><b><?php echo $file['titel'];?></b><?php echo $file['dateiname']; ?>", url: "<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/uploads/<?php echo $uID; ?>", key: <?php echo $iLauf; ?>}<?php if($iLauf<$fileCount){echo ",";} ?>
 
 				<?php
 					$iLauf++;
@@ -217,7 +217,7 @@ if(isset($_POST['fileID'])){
 					$fileCount=count($fileList);
 					foreach($fileList as $file){
 					?>
-					"/module/mod_videoanalyse/uploads/<?php echo $uID."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>
+					"<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/uploads/<?php echo $uID."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>
 
 					<?php
 						$iLauf++;
@@ -232,7 +232,7 @@ if(isset($_POST['fileID'])){
 					$fileCount=count($fileList);
 					foreach($fileList as $file){
 					?>
-					{type: "video", size: <?php echo $file['size'] ?>, filetype: "video/mp4", caption: "<b><?php echo $file['titel'];?></b><br><?php echo $file['dateiname']; ?>", url: "/module/mod_videoanalyse/uploads/<?php echo $uID; ?>", key: <?php echo $iLauf; ?>}<?php if($iLauf<$fileCount){echo ",";} ?>
+					{type: "video", size: <?php echo $file['size'] ?>, filetype: "video/mp4", caption: "<b><?php echo $file['titel'];?></b><br><?php echo $file['dateiname']; ?>", url: "<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/uploads/<?php echo $uID; ?>", key: <?php echo $iLauf; ?>}<?php if($iLauf<$fileCount){echo ",";} ?>
 
 					<?php
 						$iLauf++;
@@ -261,7 +261,7 @@ if(isset($_POST['fileID'])){
 echo setInsertButton(10);
 
 function getFileList(){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from va_video WHERE uID=1";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$FileList=array();

@@ -1,9 +1,9 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
 if(!isset($abgabeErforderlich)){$abgabeErforderlich=0;}
 if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 
-	include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/praesentationseinstellungen.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/praesentationseinstellungen.php");
 	// var_dump($FolienListe_Praes);
 
 	$zurueck_btn_aktiv=1;
@@ -18,7 +18,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 				$parameterFolie=json_decode($FolieInfo['parameter']);
 				$modID=$FolieInfo['modID'];
 				$modInfo=getModulInfos($modID);
-				$zurueck_href="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$next_fID_Arr['previous'];
+				$zurueck_href=$_SESSION['DOCUMENT_ROOT_DIR']."/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$next_fID_Arr['previous'];
 				$zurueck_btn_class="btn-warning";
 				$zurueck_btn_aktiv=1;
 			}else{
@@ -60,9 +60,8 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 			$parameterFolie=json_decode($FolieInfo['parameter']);
 			$modID=$FolieInfo['modID'];
 			$modInfo=getModulInfos($modID);
-			$weiter_href="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$next_fID;
+			$weiter_href=$_SESSION['DOCUMENT_ROOT_DIR']."/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$next_fID;
 			$weiter_btn_class="btn-success";
-			// 			$weiter_href="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$next_fID_Arr['next'];
 			$weiter_btn_aktiv=1;
 		}else{
 			$weiter_href="";
@@ -84,7 +83,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 		}
 	}
 	if(isset($redirect_next_folie) && $redirect_next_folie==1){
-		echo "<script>window.location = '$weiter_href';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."$weiter_href';</script>";
 
 	}
 
@@ -92,14 +91,14 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 
 <script>
 	function SetSyncStatus(){
-		$.post("/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "SetLehrerSync", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $_SESSION['fID']; ?> })
+		$.post("<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "SetLehrerSync", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $_SESSION['fID']; ?> })
 			.done(function(data){
 			console.log(data);
 		});
 	}
 
 	function SetFreigabeStatus(){
-		$.post("/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "SetFreigabeStatus", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $_SESSION['fID']; ?> })
+		$.post("<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "SetFreigabeStatus", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $_SESSION['fID']; ?> })
 			.done(function(data){
 			console.log(data);
 		});
@@ -175,7 +174,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 	<script>
 
 		window.setInterval(function(){
-			$.post("/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "CheckFreigabeStatus", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $next_fID_Arr['wait_for_fID']; ?> })
+			$.post("<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/praesentationseinstellungen.php", { fkt: "CheckFreigabeStatus", kursID: <?php echo $_SESSION['kursID']; ?>, fID: <?php echo $next_fID_Arr['wait_for_fID']; ?> })
 				.done(function(data){
 				console.log(data);
 				if(data==1){
@@ -192,7 +191,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 			$syncRow=getLehrerSync($_SESSION['kursID']);
 	?>
 	<button style="float:right;" type="button" class="navbar-toggle glyphicon glyphicon-cog"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-	<a style="float:right;" class="navbar-toggle" style="color:black;" href="/module/mod_preasentation/add_task.php?f=<?php echo $_SESSION['fID']; ?>" target="blank"><span class="glyphicon glyphicon-pencil"></span></a>
+	<a style="float:right;" class="navbar-toggle" style="color:black;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/add_task.php?f="<?php echo $_SESSION['fID']; ?>" target="blank"><span class="glyphicon glyphicon-pencil"></span></a>
 	<ul class="dropdown-menu" style="left:auto; right:20px; padding:15px;">
 		<li>
 			<div class="checkbox">
@@ -230,9 +229,9 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 		<li>
 			<div class="checkbox">
 				<?php $FolieInfo=getFolieInfo($next_fID_Arr['aktuell']);  if($FolieInfo['modID']==1){ $_SESSION['last_shown_page']=$_SERVER["REQUEST_URI"]; ?>
-				<a class="btn btn-default" href="/module/mod_videovertonung/show_abgabe_uebersicht.php">Auswertung der Videovertonungen</a>
+				<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_abgabe_uebersicht.php">Auswertung der Videovertonungen</a>
 				<?php }else{ ?>
-				<a class="btn btn-default" href="/module/mod_preasentation/show_auswertung.php">Auswertung dieser Folie zeigen</a>
+				<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/show_auswertung.php">Auswertung dieser Folie zeigen</a>
 				<?php } ?>
 			</div>
 		</li>

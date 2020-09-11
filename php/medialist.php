@@ -2,7 +2,7 @@
 session_start();
 $uID=$_SESSION['uID'];
 // $uID=1;
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $query="SELECT * FROM media WHERE uID=$uID and (dateiname LIKE '%png%' or dateiname LIKE '%jpg%' or dateiname LIKE '%gif%' )";
 $ergebnis=mysqli_query($verbindung,$query);
 while($row=mysqli_fetch_assoc($ergebnis)){
@@ -10,7 +10,7 @@ while($row=mysqli_fetch_assoc($ergebnis)){
 }
 
 ?>
-<script src="/js/jquery311.min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jquery311.min.js"></script>
 
 <script type="text/javascript" language="javascript">
 	$(document).on("click","div.PUMAMediaLIst",function(){

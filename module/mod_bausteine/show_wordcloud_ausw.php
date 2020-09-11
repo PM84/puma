@@ -1,33 +1,33 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/php/wordcloud.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/php/wordcloud.php");
 $WC_name="WordCloud_".$Block;
 $jsonWort=html_entity_decode (get_WC_WortArray($_SESSION['fID'],$WC_name), ENT_QUOTES , "UTF-8");
 $aktNbr=count(json_decode($jsonWort));
 
 ?>
 
-<!--<script src="/plugins/d3Cloud/d3.v3.min.js"></script>
-<script src="/plugins/d3Cloud/d3.layout.cloud.js"></script>
-<script src="/plugins/d3Cloud/removeStopWords.js"></script>
-<script src="/plugins/d3Cloud/underscore-min.js"></script>
+<!--<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.v3.min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.layout.cloud.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/removeStopWords.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/underscore-min.js"></script>
 //-->
 <p class="lead">Die am häufigsten genannten Begriffe:</p>
 <div style='width:100%;' id="word_cloud_<?php echo $Block; ?>"></div>
 
 <div>
 	<p class="lead">Antworten der Schüler
-		<a class="btn btn-default" href="/module/mod_bausteine/print_wordcloud_ausw.php?b=<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
-		<a class="btn btn-default" href="/module/mod_bausteine/print_wordcloud_ausw.php?b=<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>
+		<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_bausteine/print_wordcloud_ausw.php?b="<?php echo $Block; ?>" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> alle</span></a>
+		<a class="btn btn-default" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_bausteine/print_wordcloud_ausw.php?b="<?php echo $Block; ?>&s=1" target="_blank" style="margin-left:10px;"><span class="glyphicon glyphicon-print"> einzeln</span></a>
 	</p>
 	<?php
-	include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/print_wordcloud_ausw.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/print_wordcloud_ausw.php");
 	?>
 </div>
 
 <script>
 
 	window.setInterval(function(){
-		$.post("/module/mod_bausteine/php/wordcloud.php", {
+		$.post("<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_bausteine/php/wordcloud.php", {
 			fkt: "get_numberOfWords", fID:<?php echo $_SESSION['fID']; ?>, aktNbr:<?php echo $aktNbr; ?>,BlockName:'<?php echo $WC_name; ?>' })
 			.done(function(data)
 				  {
@@ -59,7 +59,7 @@ $aktNbr=count(json_decode($jsonWort));
 		var maxRange=95;
 	}
 
-	var list=<?php echo $jsonWort; ?>;
+	var list="<?php echo $jsonWort; ?>;
 
 	var wordSize=12;
 	var layout;

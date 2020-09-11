@@ -8,8 +8,8 @@
 // var_dump($bsInfo);
 
 ?>
-<script src="/js/jqueryUI/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="/js/jqueryUI/jquery-ui.css">
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.css">
 
 <div style="overflow:hidden">
 
@@ -35,12 +35,12 @@
 					// 					var_dump($bsInfo['CombinedOptions']);
 					// 					for ( $iLauf=0; $iLauf<count($bsInfo['antwortOption']); $iLauf++ ){ 
 					foreach($bsInfo['CombinedOptions'] as $StatementID=>$StatementTXT){
-						include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_order_statements_options.php");
+						include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_order_statements_options.php");
 						// 					if($iLauf<count($bsInfo['antwortOption'])-1){echo "<hr>";}
 					}
 				}else{
 					$StatementID=1;
-					include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_order_statements_options.php");
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_order_statements_options.php");
 				}
 				?>
 			</div>

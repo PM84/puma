@@ -6,20 +6,20 @@
 // ========================
 
 
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=1;
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $SessionInfos=Get_SessionInfos($_SESSION['s']);
 $uID=$SessionInfos['uID'];
@@ -81,10 +81,10 @@ if(isset($_POST['beschreibung'])){
 	$parameter=json_encode($taskArr);
 	$redirectStatus=add_folie($parameter,$modID,$viewTyp,$kID,$redirect,$aTyp,$zu_fID,0);
 	if($redirectStatus==1){
-		echo "<script>window.location = '/module/mod_videovertonung/add_feedback.php';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_feedback.php';</script>";
 	}else{
 		unset($_SESSION['kID']);
-		echo "<script>window.location = '/module/mod_videovertonung/add_task.php';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_task.php';</script>";
 	}
 }
 
@@ -92,11 +92,11 @@ if(isset($_POST['beschreibung'])){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="margin-bottom:150px;">
 
@@ -104,7 +104,7 @@ if(isset($_POST['beschreibung'])){
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
-						<div class="col-md-1"><a href='/module/mod_videovertonung/add_task.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/add_task.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Feedback zur Videovertonung hinzufügen</p></div>
 						<div class="col-md-1"></div>
 					</div>
@@ -130,7 +130,7 @@ if(isset($_POST['beschreibung'])){
 							<textarea class="form-control" id="beschreibung" name='beschreibung' rows="3"><?php if(isset($AufgabeInfo->beschreibung)){echo html_entity_decode ($AufgabeInfo->beschreibung, ENT_QUOTES , "UTF-8");} ?></textarea>
 						</div>
 						<p class="lead" style='margin-top:25px'>Anzeige</p>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 
 						<input type="submit" class="btn btn-primary" style='' value="<?php if(isset($_SESSION['kID'])){echo "Aufgabe updaten";}else{echo "Aufgabe eintragen";}  ?>">
 					</form>
@@ -140,6 +140,6 @@ if(isset($_POST['beschreibung'])){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

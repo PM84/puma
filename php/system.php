@@ -65,7 +65,8 @@ function check_if_url_exists($url){
 }
 
 function get_siteInfo($info){
-	$infoFile=$_SERVER['DOCUMENT_ROOT']."/info.txt";
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+	$infoFile=$_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/info.txt";
 	$indexContet=file_get_contents_utf8($infoFile);
 	$siteInfo=json_decode($indexContet,true);
 	return $siteInfo[$info];
@@ -73,7 +74,7 @@ function get_siteInfo($info){
 
 
 function get_col_titel_from_first_row($firstRowArr){
-		include($_SERVER['DOCUMENT_ROOT']."/config.php");
+		include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$notwendige_zellen=array("SkalaTyp"=>0,"FrageTXT"=>0,"FrageTipp"=>0,"FrageLabMax"=>0,"FrageMax"=>0,"FrageLabMin"=>0,"FrageMin"=>0,"FrageGruppe"=>0,"initVal"=>0,"initToolTip"=>0,"noAnswer"=>0);
 
 	foreach($firstRowArr as $key => $cellTitel){

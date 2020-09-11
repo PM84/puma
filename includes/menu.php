@@ -1,12 +1,12 @@
 <?php
 $bewArr=array();
 $FBArr=array();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/user_login.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/user_login.php");
 
 if(isset($_SESSION['uID'])){
 	$UserListe=GetUserList();
@@ -24,28 +24,28 @@ if(isset($_SESSION['t'])){
 
 <div class="navmenu navmenu-default navmenu-fixed-left">
 	<div style='width:100%; display:block;text-align:center;'>
-		<a href="/index.php" style='color: black;'><img src="/images/PumaLMU_LS_Logo.png" alt="" height="50"></a>
+		<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php" style='color: black;'><img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/PumaLMU_LS_Logo.png" alt="" height="50"></a>
 	</div>
 	<ul class="nav navmenu-nav"  style='margin-top:10px;'>
 		<?php
 		if(isset($_SESSION['uID'])){
 		?>
-		<li><a href="/module/user/logout.php" class='btn btn-danger btn-margin-menu'>Logout</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/logout.php" class='btn btn-danger btn-margin-menu'>Logout</a></li>
 		<?php
 		}else{
 		?>
-		<li class="visible-xs visible-sm"><a href="/module/user/login.php" class='btn btn-default btn-margin-menu'>Login</a></li>
+		<li class="visible-xs visible-sm"><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/login.php" class='btn btn-default btn-margin-menu'>Login</a></li>
 		<?php } ?>
 	</ul>
 	<ul class="nav navmenu-nav"  style='margin-top:10px;'>
 		<?php
 		if(isset($_SESSION['uID']) && in_array(2,$userGroups)){
 		?>
-		<li><a href="/module/user/user_admin.php" class='btn btn-warning btn-margin-menu'>Lehrer verwalten</a></li>
-		<li><a href="/module/admin/kurs_shared.php" class='btn btn-warning btn-margin-menu'>Freigegebene Kurse</a></li>
-		<li><a href="/module/admin/hilfe.php" class='btn btn-warning btn-margin-menu'>Hilfe & Support</a></li>
-		<li><a href="/module/admin/neuerungen.php" class='btn btn-warning btn-margin-menu'>Neuerungen</a></li>
-		<li><a href="/module/mod_klassenbesuch/admin.php" class='btn btn-warning btn-margin-menu'>Klassbenbesuche Termine</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/user_admin.php" class='btn btn-warning btn-margin-menu'>Lehrer verwalten</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/kurs_shared.php" class='btn btn-warning btn-margin-menu'>Freigegebene Kurse</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/hilfe.php" class='btn btn-warning btn-margin-menu'>Hilfe & Support</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/neuerungen.php" class='btn btn-warning btn-margin-menu'>Neuerungen</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_klassenbesuch/admin.php" class='btn btn-warning btn-margin-menu'>Klassbenbesuche Termine</a></li>
 		<?php
 		}
 		if(isset($_SESSION['s'])){
@@ -55,9 +55,9 @@ if(isset($_SESSION['t'])){
 				if(isset($_SESSION['uID']) && in_array ( 1 ,$GroupArray )){
 					// Admin Menü
 		?>
-		<li><a href="/update/index.php" class='btn btn-warning btn-margin-menu'>Update installieren</a></li>
-		<li><a href="/module/admin/agb.php" class='btn btn-warning btn-margin-menu'>AGB verwalten</a></li>
-		<li><a href="/module/user/user_registration.php" class='btn btn-warning btn-margin-menu'>Registrierung</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/update/index.php" class='btn btn-warning btn-margin-menu'>Update installieren</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/agb.php" class='btn btn-warning btn-margin-menu'>AGB verwalten</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/user_registration.php" class='btn btn-warning btn-margin-menu'>Registrierung</a></li>
 		<li><a href="#" class='btn btn-warning btn-margin-menu'>Inhalte verwalten / moderieren</a></li>
 		<li><a href="#" class='btn btn-warning btn-margin-menu'>Einstellungen</a></li>
 		<?php
@@ -69,19 +69,19 @@ if(isset($_SESSION['t'])){
 
 				if(isset($_SESSION['uID']) && in_array ( 2 ,$GroupArray )){
 		?>
-		<li><a href="/module/admin/kurs_erstellen.php" class='btn btn-info btn-margin-menu'>Kurs erstellen</a></li>
-		<li><a href="/module/admin/teilnehmer_eintragen.php" class='btn btn-info btn-margin-menu'>Teilnehmer eintragen & editieren</a></li>
-		<li><a href="/module/admin/fragen_erstellen.php" class='btn btn-info btn-margin-menu'>Evaluationsfragen erstellen & editieren</a></li>
-		<li><a href="/module/admin/baustein_erstellen.php" class='btn btn-info btn-margin-menu'>Bausteine erstellen & editieren</a></li>
-		<li><a href="/module/admin/folie_erstellen.php" class='btn btn-info btn-margin-menu'>Folie erstellen & editieren</a></li>
-		<li><a href="/module/admin/praesentation.php" class='btn btn-info btn-margin-menu'>Reihenfolge</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/kurs_erstellen.php" class='btn btn-info btn-margin-menu'>Kurs erstellen</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/teilnehmer_eintragen.php" class='btn btn-info btn-margin-menu'>Teilnehmer eintragen & editieren</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/fragen_erstellen.php" class='btn btn-info btn-margin-menu'>Evaluationsfragen erstellen & editieren</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/baustein_erstellen.php" class='btn btn-info btn-margin-menu'>Bausteine erstellen & editieren</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php" class='btn btn-info btn-margin-menu'>Folie erstellen & editieren</a></li>
+		<li><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/praesentation.php" class='btn btn-info btn-margin-menu'>Reihenfolge</a></li>
 	</ul>
 	<ul class="nav navmenu-nav">
 		<?php
 
 				}
 			}else{
-				// 				echo "<script>window.location = '/module/user/logout.php';</script>";  
+				// 				echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/logout.php';</script>";  
 			}
 		}
 		if(isset($_SESSION['t']) && isset($_SESSION['kursID']) && isset($_SESSION['kTyp'])){
@@ -113,13 +113,13 @@ if(isset($_SESSION['t'])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/index.php" style='color: black;'><button type="button" class="navbar-toggle glyphicon glyphicon-tag hidden-xs" ></button></a>
+				<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php" style='color: black;'><button type="button" class="navbar-toggle glyphicon glyphicon-tag hidden-xs" ></button></a>
 			</div>
 			<div class="col-xs-10 col-sm-9" style="text-align:center;">
 
 				<?php
-				$uri=reconstruct_url($_SERVER[REQUEST_URI]);
-				if("$uri"=="/module/mod_preasentation/add_task.php" || "$uri"=="/module/mod_videovertonung/add_task.php" || "$uri"=="/module/mod_videovertonung/add_task_stapel.php"){
+				$uri=reconstruct_url($_SERVER['REQUEST_URI']);
+				if("$uri"==$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_task.php" || "$uri"==$_SESSION['DOCUMENT_ROOT_DIR'] . "/module/mod_videovertonung/add_task.php" || "$uri"==$_SESSION['DOCUMENT_ROOT_DIR'] . "/module/mod_videovertonung/add_task_stapel.php"){
 				?>
 				<button type=submit  class='btn btn-danger jsIESupport' name="btn_back" value=1 form="backForm"><span class="glyphicon glyphicon-remove" style="color: white; font-size: 16px;"></span><span class="hidden-xs" style="margin:0 10px;">Abbrechen</span></button>
 
@@ -135,15 +135,15 @@ if(isset($_SESSION['t'])){
 
 				if(!isset($_SESSION['s'])){
 				?>
-				<button type="button" class="navbar-toggle glyphicon glyphicon-log-in cls_login hidden-xs hidden-sm" style="float:right" onclick="location.href='/module/user/login.php'"></button>
+				<button type="button" class="navbar-toggle glyphicon glyphicon-log-in cls_login hidden-xs hidden-sm" style="float:right" onclick="location.href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/login.php'"></button>
 				<?php 
 				}
 				if(isset($_SESSION['s'])){
 				?>
-				<button type="button" class="navbar-toggle glyphicon glyphicon-log-out cls_login hidden-xs hidden-sm" style="float:right" onclick="location.href='/module/user/logout.php'"></button>
-				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="/module/mod_videoanalyse/RecordVideo.php"><i class="glyphicon glyphicon-record" style="color:red;"></i></a>
-				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="/module/mod_videovertonung/show_abgabe_uebersicht.php"><i class="glyphicon glyphicon-volume-up" style="color:black;"></i></a>
-				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="/module/mod_videoanalyse/show_abgabe_uebersicht.php"><i class="glyphicon glyphicon-facetime-video" style="color:black;"></i></a>
+				<button type="button" class="navbar-toggle glyphicon glyphicon-log-out cls_login hidden-xs hidden-sm" style="float:right" onclick="location.href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/logout.php'"></button>
+				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/RecordVideo.php"><i class="glyphicon glyphicon-record" style="color:red;"></i></a>
+				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_abgabe_uebersicht.php"><i class="glyphicon glyphicon-volume-up" style="color:black;"></i></a>
+				<a class="btn btn-default cls_login navbar-toggle" style="float:right;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videoanalyse/show_abgabe_uebersicht.php"><i class="glyphicon glyphicon-facetime-video" style="color:black;"></i></a>
 				<div id="menuTopRight"></div>
 				<?php
 				}

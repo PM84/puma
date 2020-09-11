@@ -25,11 +25,11 @@
 		<div id="KoFraDiv">
 			<?php 
 			if(isset($bsInfo['antwortOption'])){for ( $iLauf=0; $iLauf<count($bsInfo['antwortOption']); $iLauf++ ){ 
-				include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_kontrollfragen_options.php");
+				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_kontrollfragen_options.php");
 				if($iLauf<count($bsInfo['antwortOption'])-1){echo "<hr>";}
 			}}else{
 				$iLauf=0;
-				include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_kontrollfragen_options.php");
+				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_kontrollfragen_options.php");
 			}
 			?>
 		</div>
@@ -57,7 +57,7 @@
 
 		tinymce.init({
 			selector: '.EditorField',
-			<?php include($_SERVER['DOCUMENT_ROOT']."/plugins/tinymce/include/init_pfreferences_lehrer.php"); ?> 
+			<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/plugins/tinymce/include/init_pfreferences_lehrer.php"); ?> 
 		});
 
 		counterText++;

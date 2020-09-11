@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 // var_dump($_SESSION);
 $ausserhalbKurs=1;
 // ========================
@@ -11,16 +11,16 @@ $ausserhalbKurs=1;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
 
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videovertonung";
 $modID=getModIDFromTitel($modTitel);
@@ -38,7 +38,7 @@ if(isset($_GET['f'])){
 	$ftoken=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_GET['ft']), ENT_QUOTES , "UTF-8"));
 	if(strlen($_GET['ft'])==0){
 		$ftoken=uniqid();
-		echo "<script>window.location = '?ft=$ftoken';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."?ft=$ftoken';</script>";
 	}
 }
 
@@ -107,7 +107,7 @@ if(isset($_POST['beschreibung'])){
 	// 	                add_folie($parameter,$modID,$viewTyp,$_SESSION[$ftoken]['edit_fID'],$redirect,1,0,$CopyToKursID,$bsArr)
 
 	if($redirectStatus==1){
-		// 		echo "<script>window.location = '/module/mod_videovertonung/add_korrektur.php';</script>";
+		// 		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_korrektur.php';</script>";
 	}else{
 		unset($_SESSION['vID']);
 	}
@@ -118,7 +118,7 @@ if(isset($_POST['beschreibung'])){
 // ========================
 if(isset($_POST['kID'])){
 	$_SESSION['kID']=intval($_POST['kID']);
-	echo "<script>window.location = '/module/mod_videovertonung/add_korrektur.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_korrektur.php';</script>";
 }
 
 // ========================
@@ -127,7 +127,7 @@ if(isset($_POST['kID'])){
 
 if(isset($_POST['FBID'])){
 	$_SESSION['kID']=intval($_POST['FBID']);
-	echo "<script>window.location = '/module/mod_videovertonung/add_feedback.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_feedback.php';</script>";
 } 
 
 
@@ -161,9 +161,9 @@ if(isset($_POST['tem_vID'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector: 'textarea',
@@ -232,7 +232,7 @@ if(isset($_POST['tem_vID'])){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="margin-bottom:150px;">
 			<div class="row">
@@ -240,8 +240,8 @@ if(isset($_POST['tem_vID'])){
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-3">
-							<a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>
-							<a href='/module/mod_videovertonung/add_task_stapel.php?ft=<?php echo $ftoken; ?>' class='btn btn-info'>zur Stapelverarbeitung</a>
+							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>
+							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/add_task_stapel.php?ft="<?php echo $ftoken; ?>' class='btn btn-info'>zur Stapelverarbeitung</a>
 						</div>
 						<div class="col-md-7"><p class="lead" style='margin:0'>Aufgabe zur Videovertonung hinzufügen</p></div>
 						<div class="col-md-1"></div>
@@ -340,8 +340,8 @@ if(isset($_POST['tem_vID'])){
 							<textarea class="form-control" id="hinweis" name='hinweis'><?php if(isset($AufgabeInfo->hinweis)){echo $AufgabeInfo->hinweis;} ?></textarea>
 						</div>
 						<p class="lead" style='margin-top:25px'>Anzeige</p>
-						<?php //include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen_singleTN.php") ?>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php //include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen_singleTN.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 
 						<!--						<div class="checkbox">
 <label>
@@ -410,6 +410,6 @@ if(isset($_SESSION['edit_fID'])){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

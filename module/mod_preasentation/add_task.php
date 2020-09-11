@@ -10,27 +10,27 @@
 // ====== PRÄSENTATION
 // ========================
 // ========================
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 
 
 
 $ausserhalbKurs=1;
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
 
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/simulationen.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/bausteine.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/simulationen.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/bausteine.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 
 
@@ -72,7 +72,7 @@ if(!isset($_SESSION[$ftoken]['edit_fID'])){
 // ========================
 if(isset($_POST['btn_back']) && intval($_POST['btn_back'])==1){
 	unset($_SESSION[$ftoken]);
-	echo "<script>window.location = '/module/admin/folie_erstellen.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/admin/folie_erstellen.php';</script>";
 	exit;
 }
 // ========================
@@ -149,7 +149,7 @@ if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 	// echo $redirectStatus;
 	if($redirectStatus==2){
 		unset($_SESSION[$ftoken]);
-		echo "<script>window.location = '/module/admin/folie_erstellen.php';</script>";
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/admin/folie_erstellen.php';</script>";
 	}elseif($redirectStatus==3){
 		$preview_tnInfo=get_preview_teilnehmer($_SESSION['uID']);
 		$_SESSION['t']=$preview_tnInfo['token'];
@@ -160,7 +160,7 @@ if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 		$modID=$FolieInfo['modID'];
 		$modInfo=getModulInfos($modID);
 		$_SESSION['kursID']=$_SESSION['k'];
-		$FoliePath="/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$_SESSION[$ftoken]['edit_fID'];
+		$FoliePath=$_SESSION['DOCUMENT_ROOT_DIR']."/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$_SESSION[$ftoken]['edit_fID'];
 
 ?>
 <?php
@@ -266,12 +266,12 @@ if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POS
 			}
 		</script>
 		<?php } ?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 
-		<!--	<script src="/plugins/ckeditor/ckeditor.js"></script>//-->
+		<!--	<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/ckeditor/ckeditor.js"></script>//-->
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/plugins/tinymce/include/init_pfreferences_min.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/plugins/tinymce/include/init_pfreferences_min.php");?>
 
 		<style>
 
@@ -295,7 +295,7 @@ if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POS
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="">
 
@@ -307,7 +307,7 @@ if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POS
 							<form id="backForm" action="" method="POST" style="margin:0;">
 								<button type=submit  class='btn btn-success hidden-xs hidden-sm' name="btn_back" value=1>zurück</button>
 							</form>
-							<!--							<a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
+							<!--							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
 						</div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Präsentationsfolie hinzufügen</p></div>
 						<div class="col-md-1"></div>
@@ -371,11 +371,11 @@ if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POS
 			// ab hier Rohdesign anzeige:
 			if(isset($_SESSION[$ftoken]['edit_DesignTyp'])){
 				$AnzCol=$_SESSION[$ftoken]['edit_DesignTyp'];
-				include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_task_multi_col.php");
+				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_task_multi_col.php");
 			}
 			?>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

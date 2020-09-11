@@ -1,7 +1,7 @@
 ﻿
 
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 
 if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 	// 	var_dump($AufgabeInfo);
@@ -51,7 +51,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 		return output;
 	}
 
-	var MarkImg_Json_<?php echo $Block;?>=<?php echo html_entity_decode (json_encode($AufgabeInfo['ImgMark_'.$Block]), ENT_QUOTES , "UTF-8");?>;
+	var MarkImg_Json_<?php echo $Block;?>="<?php echo html_entity_decode (json_encode($AufgabeInfo['ImgMark_'.$Block]), ENT_QUOTES , "UTF-8");?>;
 	var ImgSrc=getSrc(document.getElementById("inhalt_<?php echo $Block;?>"));
 	var outerDiv=document.getElementById("imgDiv_<?php echo $Block;?>")
 	$( document ).ready(function() {
@@ -207,7 +207,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 						$parameter=json_decode($bsRow['parameter'],true);
 						if(array_key_exists('ytID', $parameter)){
 ?>
-<iframe id="ytplayer" type="text/html" width="100%" height=<?php echo 1/(16/9)*100 ?>% src="https://www.youtube.com/embed/<?php echo $parameter['ytID'] ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
+<iframe id="ytplayer" type="text/html" width="100%" height="<?php echo 1/(16/9)*100 ?>% src="https://www.youtube.com/embed/<?php echo $parameter['ytID'] ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
 		frameborder="0" allowfullscreen>
 </iframe> 
 <?php
@@ -287,7 +287,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 				ticks_snap_bounds: 0
 			});
 
-			if($( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val()==<?php echo intval($FrageInfo->FrageMin)-1; ?>){
+			if($( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val()=="<?php echo intval($FrageInfo->FrageMin)-1; ?>){
 			   console.log("init Value" + " => "+ $( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val() + " // min: "+ <?php echo intval($FrageInfo->FrageMin)-1; ?>);
 			$( "div[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).addClass( 'slider_noAnswer' );
 			$( "div[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).addClass( 'slider_noAnswer_firstTick' );
@@ -312,7 +312,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 						if(array_key_exists('webUrl', $parameter))
 						{
 ?>
-<embed  width="100%" height=<?php echo 1/(16/9)*100 ?>% src="<?php echo $parameter['webUrl'] ?>">
+<embed  width="100%" height="<?php echo 1/(16/9)*100 ?>% src="<?php echo $parameter['webUrl'] ?>">
 
 <?php
 						}

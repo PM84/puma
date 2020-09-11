@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=3;
 // ========================
 // ========================
@@ -10,15 +10,15 @@ $ausserhalbKurs=3;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videoanalyse";
 $modID=getModIDFromTitel($modTitel);
@@ -28,7 +28,7 @@ $CopyToKursAllow=1;
 // ====== Weiterleiten wenn ftoken nicht gesetzt
 // ========================
 if(!isset($_GET['ft'])){
-	echo "<script>window.location = '/module/mod_videoanalyse/RecordVideo.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videoanalyse/RecordVideo.php';</script>";
 }else{
 	$ftoken=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_GET['ft']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
 	$FolieArr=getFolieInfo_bytoken($ftoken);
@@ -44,7 +44,7 @@ if(!isset($_GET['ft'])){
 
 			if($videoTMP->abgegeben==1){
 				$abgabeStatus=1;
-				$video_src="/media/video/".$videoTMP->fileName;
+				$video_src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/video/".$videoTMP->fileName;
 			}
 		}
 	}
@@ -109,7 +109,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 	unset($_SESSION['vae']);
 
 	if($redirectStatus==1){
-		// 		echo "<script>window.location = '/module/mod_videovertonung/add_korrektur.php';</script>";
+		// 		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/add_korrektur.php';</script>";
 	}
 }
 
@@ -117,9 +117,9 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector: 'textarea',
@@ -187,14 +187,14 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="margin-bottom:150px;">
 			<div class="row">
 				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
-						<div class="col-md-1"><a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Videoanalyse - Aufgabe bearbeiten</p></div>
 						<div class="col-md-1"></div>
 					</div>
@@ -223,7 +223,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 
 
 						<p class="lead" style='margin-top:25px'>Anzeige</p>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 
 						<!--						<div class="checkbox">
 <label>
@@ -240,6 +240,6 @@ Soll eine (weitere) Korrekturaufgabe zu dieser Aufgabe erstellt werden?
 				<!--<div class="col-md-1"></div>//-->
 			</div>
 		</div>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

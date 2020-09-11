@@ -16,7 +16,7 @@ if(isset($_POST['fkt'])){
 }
 
 function DeleteTermin($TerminID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="DELETE FROM z_klassenbesuche_termine WHERE TerminID=$TerminID";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$query="DELETE FROM z_klassenbesuch_buchung WHERE TerminID=$TerminID";
@@ -24,7 +24,7 @@ function DeleteTermin($TerminID){
 }
 
 function SetTerminStatus($TerminID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="UPDATE z_klassenbesuche_termine SET aktiv=IF(aktiv = 0 , 1, 0) WHERE TerminID=$TerminID";
 	// 	echo $query;
 	$ergebnis=mysqli_query($verbindung,$query);
@@ -33,7 +33,7 @@ function SetTerminStatus($TerminID){
 }
 
 function getTerminListe($all=0){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	switch($all){
 		case 1:
 			$query="SELECT * FROM z_klassenbesuche_termine";
@@ -53,7 +53,7 @@ function getTerminListe($all=0){
 
 
 function getBuchungen_by_TerminID($TerminID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM z_klassenbesuch_buchung WHERE TerminID=$TerminID ORDER BY BuchungsID ASC";
 	// 	 	echo $query;
 	$ergebnis=mysqli_query($verbindung,$query);
@@ -65,7 +65,7 @@ function getBuchungen_by_TerminID($TerminID){
 }
 
 function getTermin_by_TerminID($TerminID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM z_klassenbesuche_termine WHERE TerminID=$TerminID";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -74,7 +74,7 @@ function getTermin_by_TerminID($TerminID){
 }
 
 function emailSenden($from,$to_arr,$subject,$message){
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/mail.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/mail.php");
 	$MessageArray['from']['EmailFrom']=$from;
 	$MessageArray['to']=array("EmailTo" => $to_arr,"EmailToBCC" => $from); // $to_arr=array("ex1@test.de", "ex2@test.de")
 	$MessageArray['betreff']=$subject;

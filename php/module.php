@@ -2,7 +2,7 @@
 
 
 function getModulListeInfos($kTyp=0){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 	$kursTNArr=getTnByKurs($kursID);
 	$modArray=array();
 	switch($kTyp){
@@ -24,7 +24,7 @@ function getModulListeInfos($kTyp=0){
 }
 
 function getModulInfos($modID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM module WHERE modID='$modID' and aktiv=1";
 	$ergebnis=mysqli_query($verbindung,$query)or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -32,7 +32,7 @@ function getModulInfos($modID){
 }
 
 function getModIDFromTitel($titel){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM module WHERE mod_titel='$titel'";
 	$ergebnis=mysqli_query($verbindung,$query)or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);

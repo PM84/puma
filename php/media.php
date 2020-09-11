@@ -15,7 +15,7 @@ if(isset($_POST['PostFktn'])){
 function getFileList(){
 	$uID=$_SESSION['uID'];
 	// 	$uID=1;
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from media WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$FileList=array();
@@ -28,7 +28,7 @@ function getFileList(){
 function get_mediaIDs_by_kursID($kursID){
 	$uID=$_SESSION['uID'];
 	// 	$uID=1;
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from media_kurs_match WHERE kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query);
 	$mediaIDs=array();
@@ -44,7 +44,7 @@ function setInsertButton($fileID){
 
 
 function add_file_to_db($dateiname,$size,$titel,$uID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 	$uID=$_SESSION['uID'];
 	// 	$uID=1;
 	$deleteDate=date("Y-m-d H:i:s");
@@ -55,7 +55,7 @@ function add_file_to_db($dateiname,$size,$titel,$uID){
 }
 
 function add_file_to_kurs($mediaID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID=$_SESSION['k'];
 	$uID=$_SESSION['uID'];
 	$fID=$_SESSION[$ftoken]['fID'];
@@ -64,7 +64,7 @@ function add_file_to_kurs($mediaID){
 }
 
 function Update_fID_file_match($fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID=$_SESSION['k'];
 	$uID=$_SESSION['uID'];
 	$query="UPDATE media_kurs_match SET fID='$fID' WHERE  uID='$uID' AND fID=0 AND kursID='$kursID'";
@@ -72,14 +72,14 @@ function Update_fID_file_match($fID){
 }
 
 function Insert_fID_file_match_single($mediaID,$fID,$kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="INSERT IGNORE INTO media_kurs_match SET fID='$fID', mediaID='$mediaID', uID='$uID', kursID='$kursID'";
 	mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));;
 }
 
 function remove_file_from_match_table($mediaID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID=$_SESSION['k'];
 	$uID=$_SESSION['uID'];
 	$fID=$_SESSION[$ftoken]['fID'];
@@ -88,7 +88,7 @@ function remove_file_from_match_table($mediaID){
 }
 
 function get_mediaInfo($mediaID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM media WHERE mediaID='$mediaID'";
 	$ergebnis=mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));;
 	return mysqli_fetch_assoc ( $ergebnis );
@@ -96,7 +96,7 @@ function get_mediaInfo($mediaID){
 }
 
 function loop_match_table($str){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID=$_SESSION['k'];
 	$uID=$_SESSION['uID'];
 	$fID=$_SESSION[$ftoken]['edit_fID'];
@@ -115,7 +115,7 @@ function loop_match_table($str){
 }
 
 function searchMedia($filename){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	// 	$uID=1;
 	$query="SELECT * FROM folien WHERE uID=$uID AND parameter LIKE '%$filename%'";
@@ -130,7 +130,7 @@ function searchMedia($filename){
 }
 
 function check_used_media(){
-	include($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$mediaList=getFileList();
 	foreach($mediaList as $media){
 		$corr_fIDs=searchMedia($media['dateiname']);
@@ -144,7 +144,7 @@ function check_used_media(){
 }
 
 function get_mediaList_by_matchingKurs($KursID,$fID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM media_kurs_match WHERE kursID=$KursID and fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$mediaIDs=array();
@@ -157,7 +157,7 @@ function get_mediaList_by_matchingKurs($KursID,$fID){
 }
 
 function update_media($mediaID_alt,$mediaID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="UPDATE media_kurs_match SET mediaID=$mediaID_neu WHERE mediaID=$mediaID_alt";
 // 	echo $query."<br>";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query." => ".mysqli_error($verbindung));

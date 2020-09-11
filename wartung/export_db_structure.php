@@ -5,7 +5,7 @@ backup_tables();
 /* backup the db OR just a table */
 function backup_tables($tables = '*')
 {
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $return="";
 
 	//get all of the tables

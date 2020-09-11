@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 //ENTER THE RELEVANT INFO BELOW
 $mysqlUserName      = $dbname;
@@ -15,7 +15,7 @@ Export_Database($mysqlHostName,$mysqlUserName,$mysqlPassword,$DbName,  $tables=f
 
 function Export_Database($host,$user,$pass,$name,  $tables=false, $backup_name=false )
 {
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	/* 	$mysqli = new mysqli($host,$user,$pass,$name); 
 	$mysqli->select_db($name); 
 	$mysqli->query("SET NAMES 'utf8'");
@@ -96,7 +96,7 @@ function Export_Database($host,$user,$pass,$name,  $tables=false, $backup_name=f
 
 
 
-if(is_file($_SERVER['DOCUMENT_ROOT']."/update/sql/update.sql")){
-	$query=file_get_contents($_SERVER['DOCUMENT_ROOT']."/update/sql/update.sql");
+if(is_file($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/update/sql/update.sql")){
+	$query=file_get_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/update/sql/update.sql");
 	mysqli_multi_query ( $verbindung , $query );
 }
