@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/php/abstimmung.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/php/abstimmung.php");
 $Abst_name="abstOption";
 $jsonStimmen=html_entity_decode (get_abstimmung_OptArray($_SESSION['fID'],$Abst_name,$bID,$Block), ENT_QUOTES , "UTF-8");
 // $jsonStimmen=json_decode($jsonStimmen);

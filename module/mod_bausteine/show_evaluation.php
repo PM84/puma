@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 // var_dump($bInfo);
 // $parameter=json_decode($bInfo['parameter'],true);
 $fArr=array();
@@ -83,7 +83,7 @@ foreach($fArr as $FrageID){
 				// 				ticks_labels: ['<?php echo html_entity_decode ($FrageInfo->FrageLabMin, ENT_QUOTES , "UTF-8"); ?>', '<?php echo html_entity_decode ($FrageInfo->FrageLabMax, ENT_QUOTES , "UTF-8");  ?>'],
 				ticks_snap_bounds: 0
 			});
-			if($( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val()==<?php echo intval($FrageInfo->FrageMin)-1; ?>){
+			if($( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val()=="<?php echo intval($FrageInfo->FrageMin)-1; ?>){
 // 	 			console.log("init Value" + " => "+ $( "input[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).val() + " // min: "+ <?php echo intval($FrageInfo->FrageMin)-1; ?>);
 				$( "div[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).addClass( 'slider_noAnswer' );
 				$( "div[id='f_<?php echo $Block; ?>_<?php echo $FrageID; ?>']" ).addClass( 'slider_noAnswer_firstTick' );

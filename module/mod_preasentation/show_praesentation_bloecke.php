@@ -10,10 +10,10 @@ $videos=Get_Videos_Liste();
 $Sims=Get_Sim_Liste();
 
 ?>
-<script src="/plugins/d3Cloud/d3.v3.min.js"></script>
-<script src="/plugins/d3Cloud/d3.layout.cloud.js"></script>
-<script src="/plugins/d3Cloud/removeStopWords.js"></script>
-<script src="/plugins/d3Cloud/underscore-min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.v3.min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/d3.layout.cloud.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/removeStopWords.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/d3Cloud/underscore-min.js"></script>
 
 <div class="row">
 	<!--<div class="col-md-1"></div>//-->
@@ -23,7 +23,7 @@ $Sims=Get_Sim_Liste();
 
 			<?php
 			$Block="top";
-			include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
 
 			?>
 		</div>
@@ -38,7 +38,7 @@ $Sims=Get_Sim_Liste();
 
 			<?php
 			$Block=$jLauf;
-			include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
 			?>
 		</div>
 		<?php
@@ -50,7 +50,7 @@ $Sims=Get_Sim_Liste();
 		<div class="col-md-12">
 			<?php
 			$Block="bottom";
-			include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/show_praesentation_bloecke_single.php");
 			?>
 		</div>
 	</div>

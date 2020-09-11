@@ -22,7 +22,7 @@
 //        to both width and height
 //
 // example code:
-//	<script type="text/javascript" src="/path/to/squeezeFrame.js"></script>
+//	<script type="text/javascript" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/path/to/squeezeFrame.js"></script>
 //	<script type="text/javascript">
 // 		myContainer="http://url.to/container-page/";
 //	 	myMax=0.25;

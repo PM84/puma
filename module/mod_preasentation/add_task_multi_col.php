@@ -37,7 +37,7 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 		<h5>TOP</h5>
 			<div class="col-md-12" style='background-color: lightgray; border: 1px gray solid;'>
 				<?php $Block='top'; ?>
-				<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_bausteine_form.php"); ?>
+				<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_bausteine_form.php"); ?>
 			</div>
 		</div>
 		<div class="row" style="margin-bottom:4px;">
@@ -48,7 +48,7 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 
 			?>
 			<div class="col-md-<?php echo 12/$_SESSION[$ftoken]['edit_DesignTyp']; ?>" style='background-color: lightgray; border: 1px gray solid;'>
-				<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_bausteine_form.php"); ?>
+				<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_bausteine_form.php"); ?>
 			</div>
 			<?php
 			}
@@ -58,7 +58,7 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 		<h5>BOTTOM</h5>
 			<div class="col-md-12" style='background-color: lightgray; border: 1px gray solid;'>
 				<?php $Block='bottom'; ?>
-				<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_bausteine_form.php"); ?>
+				<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_bausteine_form.php"); ?>
 			</div>
 		</div>
 
@@ -78,7 +78,7 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 				<div class="col-md-12" style=''>
 
 					<?php $Block="top"; ?>
-					<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
+					<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
 
 				</div>
 			</div>
@@ -91,7 +91,7 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 
 				?>
 				<div class="col-md-<?php echo 12/$_SESSION[$ftoken]['edit_DesignTyp']; ?>" style=''>
-					<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
+					<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
 				</div>
 				<?php
 				}				
@@ -101,12 +101,12 @@ for($iLauf=1;$iLauf<=$_SESSION[$ftoken]['edit_DesignTyp'];$iLauf++){
 			<div class="row">
 				<div class="col-md-12" style=''>
 					<?php $Block="bottom";?>
-					<?php include($_SERVER['DOCUMENT_ROOT']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
+					<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/add_task_preview_setting.php"); ?>
 
 				</div>
 			</div>
 			<div>
-				<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+				<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 			</div>
 
 			<!--<input class="btn btn-primary btn-lg btn-block" value='Speichern' type="submit">//-->

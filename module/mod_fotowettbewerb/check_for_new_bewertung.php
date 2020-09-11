@@ -1,8 +1,8 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
 
 $fID=intval($_POST['fID']);
 $istAnzahl=intval($_POST['istAnzahl']);
@@ -29,4 +29,3 @@ foreach($zuFolienArr as $folieRow){
 }else{
 	echo 0;
 }
-

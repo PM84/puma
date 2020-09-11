@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_fotowettbewerb/fw.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_fotowettbewerb/fw.php");
 
 $zuFolienArr=Get_zugeordnete_Folien_join_master($fID,2);
 $Punkte=array();
@@ -100,7 +100,7 @@ switch(isset($_GET['s']) && $_GET['s']){
 	?>
 	<tr>
 		<td><?php echo $iLauf; ?>.</td>
-		<td><img src="/media/uploads/fotowettbewerb/<?php echo $abParameter['bild']; ?>" style="width:200px;"></td>
+		<td><img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/uploads/fotowettbewerb/<?php echo $abParameter['bild']; ?>" style="width:200px;"></td>
 		<td><?php echo $abParameter['name']." ($key)"."<br>".$abParameter['email']."<br>".$abInfo['token']; ?></td>
 		<td><?php echo $abParameter['schule']; ?></td>
 		<td><?php echo $abParameter['jgst']; ?></td>

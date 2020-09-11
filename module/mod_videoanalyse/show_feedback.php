@@ -1,13 +1,13 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay_token.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay_token.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 
 // echo "Hallo0=";
 $videos=Get_Videos_Liste();
@@ -69,7 +69,7 @@ $abArrKor= getAbgabeInfos($Bew_fID);
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 
 		<script>	
 			Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
@@ -81,7 +81,7 @@ $abArrKor= getAbgabeInfos($Bew_fID);
 
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" style='margin-top:0px;'>
@@ -181,7 +181,7 @@ $abArrKor= getAbgabeInfos($Bew_fID);
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 
 		<script>
 			function VideoPlayFromPos(vPosTime){

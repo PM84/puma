@@ -1,4 +1,4 @@
-<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 
 <script>
 

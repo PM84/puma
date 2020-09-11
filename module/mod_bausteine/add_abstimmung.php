@@ -48,11 +48,11 @@
 			<?php 
 			// 			var_dump($bsInfo);
 			if(isset($bsInfo['abstOption'])){for ( $iLauf=0; $iLauf<count($bsInfo['abstOption']); $iLauf++ ){ 
-				include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_abstimmung_options.php");
+				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_abstimmung_options.php");
 				if($iLauf<count($bsInfo['abstOption'])-1){echo "<hr>";}
 			}}else{
 				$iLauf=0;
-				include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/add_abstimmung_options.php");
+				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_abstimmung_options.php");
 			}
 			?>
 		</div>

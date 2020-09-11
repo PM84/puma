@@ -1,7 +1,7 @@
 <?php
 // session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
 $abRow=getAbgabeInfo($_SESSION['fID'],$_SESSION['t']);
 $abInfo=json_decode($abRow['parameter'],true);
 
@@ -22,7 +22,7 @@ switch($abgegeben){
 <div id="fragenBox"><?php //echo $Block."<=="; ?>
 	<div class="row">
 		<div class="col-sm-5"></div>
-		<div class="col-sm-7"><a href="/module/mod_preasentation/export_evaluation.php?Block=<?php echo $Block; ?>" target="_blank"><button class="btn btn-primary btn-block">Daten dieses Blocks als CSV exportieren</button></a></div>
+		<div class="col-sm-7"><a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/export_evaluation.php?Block="<?php echo $Block; ?>" target="_blank"><button class="btn btn-primary btn-block">Daten dieses Blocks als CSV exportieren</button></a></div>
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-md-8"></div>

@@ -1,12 +1,12 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay_token.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay_token.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $_SESSION['fID']=intval($_GET['f']);
 $folieInfo=getFolieInfo(intval($_GET['f']));
 $parameter=json_decode($folieInfo['parameter']);
@@ -60,10 +60,10 @@ if(count($AbgabeInfoRow)>0){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<?php 
 // 		var_dump(FolienAnzeige_Menu($_SESSION['kursID'],$_SESSION['t']));
 		?>
@@ -94,6 +94,6 @@ if(count($AbgabeInfoRow)>0){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

@@ -1,5 +1,5 @@
 <div style="page-break-after: auto; margin-bottom:50px;">
-	<img src="/images/PumaLMU_LS_Logo_lang.png" width=100%>
+	<img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/PumaLMU_LS_Logo_lang.png" width=100%>
 	<h2>Hallo {name} </h2>
 	<p>
 		mit nachfolgendem Link gelangen Sie zu PUMA@LMU:

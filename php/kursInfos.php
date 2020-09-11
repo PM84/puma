@@ -14,7 +14,7 @@ if(isset($_POST['PostFktn'])){
 
 
 function GetKursInfos($kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM kurs WHERE kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -22,7 +22,7 @@ function GetKursInfos($kursID){
 }
 
 function getKursInfos_by_kursToken($kursToken){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM kurs kursTab INNER JOIN  kurs_uID_match matchTab  ON (kursTab.kursID = matchTab.kursID) WHERE kursToken='$kursToken'";
 	// 	echo $query;
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -31,8 +31,8 @@ function getKursInfos_by_kursToken($kursToken){
 }
 
 function create_Embed_Link($kursToken){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
-	return $WorkshopUrl."/module/admin/kurs_auto_tn.php?kTok=$kursToken";
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+	return $WorkshopUrl. $_SESSION['DOCUMENT_ROOT_DIR'] ."/module/admin/kurs_auto_tn.php?kTok=$kursToken";
 }
 
 function get_Embed_Link($kursID){
@@ -41,7 +41,7 @@ function get_Embed_Link($kursID){
 }
 
 function GetKursListeInfos($uID,$KursTyp=1,$all=0){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 	$query="SELECT * FROM kurs_uID_match WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query." => ".mysqli_error($verbindung));
@@ -70,14 +70,14 @@ function GetKursListeInfos($uID,$KursTyp=1,$all=0){
 }
 
 function Check_if_kurs_edit_allowed($kursID,$uID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM kurs_uID_match WHERE uID=$uID AND kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	return mysqli_num_rows($ergebnis);
 }
 
 function check_share_kurs($kursID=0){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="SELECT * FROM kurs_share where kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -89,7 +89,7 @@ function check_share_kurs($kursID=0){
 }
 
 function unshare_kurs($kursID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="DELETE FROM kurs_share where kursID=$kursID AND uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -97,7 +97,7 @@ function unshare_kurs($kursID){
 
 
 function share_kurs($kursID,$share_group,$share_to_mail){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$SchulNr=$_SESSION['SchulNr'];
 	$query="INSERT INTO kurs_share (kursID,share_group,uID,share_to_mail, SchulNr) VALUES ('$kursID','$share_group','$uID','$share_to_mail','$SchulNr') on duplicate key update share_group='$share_group', share_to_mail='$share_to_mail'";
@@ -105,7 +105,7 @@ function share_kurs($kursID,$share_group,$share_to_mail){
 }
 
 function shared_Kurse_Liste_Infos(){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 	$query="SELECT * FROM kurs_share WHERE share_group=2";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -140,7 +140,7 @@ function get_kursIDs_from_Kurse_Liste_Infos($Kurse_Liste_Infos){
 }
 
 function shared_Kurse_Liste_Infos_filtered($search_arr){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$SharedKurseInfos=shared_Kurse_Liste_Infos();
 	$KursIDs=get_kursIDs_from_Kurse_Liste_Infos($SharedKurseInfos);
 
@@ -169,12 +169,12 @@ function shared_Kurse_Liste_Infos_filtered($search_arr){
 
 
 function copy_Kurs($kursID_alt){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursID_neu=cp_kursListe($kursID_alt);
 	// 	echo $kursID_neu;
 	cp_folien($kursID_alt,$kursID_neu);
 	// 	cp_Ablauf_gesamt($kursID_alt,$kursID_neu);
-	include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$folienListe_neu=getFolienByKurs($kursID_neu);
 	foreach($folienListe_neu as $folie){
 		$fID_alt=$folie['cp_fID'];
@@ -192,7 +192,7 @@ function copy_Kurs($kursID_alt){
 }
 
 function cp_kursListe($kursID_alt){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from kurs WHERE kursID=$kursID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$query="ALTER TABLE tmp drop kursID";
@@ -210,7 +210,7 @@ function cp_kursListe($kursID_alt){
 }
 
 function cp_folien($kursID_alt,$kursID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 	$query="DROP TEMPORARY TABLE tmp;";
 	// 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from folien WHERE kursID=$kursID_alt";
@@ -231,11 +231,11 @@ function cp_folien($kursID_alt,$kursID_neu){
 }
 
 /* function cp_Ablauf_gesamt($kursID_alt,$kursID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 }
  */
 function cp_bausteine_match($fID_alt,$fID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from baustein_folie_position_match WHERE fID=$fID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	// 	$query="ALTER TABLE tmp drop id";
@@ -251,7 +251,7 @@ function cp_bausteine_match($fID_alt,$fID_neu){
 
 
 function cp_Ablauf_single($fID_alt,$fID_neu,$kursID_alt,$kursID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from ablauf_master WHERE kursID=$kursID_alt AND fID=$fID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$query="ALTER TABLE tmp drop id";
@@ -266,7 +266,7 @@ function cp_Ablauf_single($fID_alt,$fID_neu,$kursID_alt,$kursID_neu){
 
 
 function cp_media_match_single($fID_alt,$fID_neu,$kursID_alt,$kursID_neu,$mediaID_alt,$mediaID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from media_kurs_match WHERE kursID=$kursID_alt AND fID=$fID_alt AND mediaID=$mediaID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
@@ -281,7 +281,7 @@ function cp_media_match_single($fID_alt,$fID_neu,$kursID_alt,$kursID_neu,$mediaI
 }
 
 function cp_media_verlinkung_single($mediaID_alt){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from media WHERE mediaID=$mediaID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query." => ".mysqli_error($verbindung));
@@ -302,7 +302,7 @@ function cp_media_verlinkung_single($mediaID_alt){
 
 
 /* function cp_media($fID_alt,$fID_neu,$kursID_alt,$kursID_neu){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$uID=$_SESSION['uID'];
 	$query="CREATE TEMPORARY TABLE tmp SELECT * from media WHERE mediaID=$mediaID_alt";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query." => ".mysqli_error($verbindung));

@@ -1,11 +1,11 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
 // var_dump($SharedKurseInfos);
 check_used_media();;
 if(isset($_POST['search_input'])){
@@ -28,11 +28,11 @@ if($_POST['action']=="cpKurs"){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" >

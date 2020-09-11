@@ -1,18 +1,18 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 
 $ausserhalbKurs=1;
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/bausteine.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/bausteine.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $SessionInfos=Get_SessionInfos($_SESSION['s']);
 $uID=$SessionInfos['uID'];
 $_SESSION['uID']=$uID;
@@ -41,7 +41,7 @@ if(isset($_POST['ziel_bTypID'])){
 	unset($_SESSION['edit_bID']);
 	$_SESSION['edit_bTypID']=intval($_POST['ziel_bTypID']);
 	if(isset($_POST['bID'])){$_SESSION['edit_bID']=$_POST['bID'];}
-	echo "<script>window.location = '/".$bsmodInfo['mod_dir']."/add_task.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/".$bsmodInfo['mod_dir']."/add_task.php';</script>";
 }
 
 
@@ -54,11 +54,11 @@ if(isset($_POST['fID'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row">
@@ -84,12 +84,12 @@ if(isset($_POST['fID'])){
 				</div>
 				<div class="col-md-4">
 					<p class="lead">Ihre Bausteine</p>
-					<?php $Block=0; include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/baustein_auswahl_panel.php"); ?>
+					<?php $Block=0; include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/baustein_auswahl_panel.php"); ?>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

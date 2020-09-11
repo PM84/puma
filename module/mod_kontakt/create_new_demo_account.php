@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 
 $KursID=24;
 $uID=1;
@@ -29,11 +29,11 @@ echo "Ihr Zugangstoken lautet: $token";
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container">
 			<h2>
 			<?php echo "Ihr Zugangscode lautet: $token"; ?>
@@ -42,9 +42,9 @@ echo "Ihr Zugangstoken lautet: $token";
 Bitte notieren Sie sich den Zugriffscode um auch später auf den Demo-Kurs zugreifen zu können.
 			</p>
 			<p>
-				Besuchen Sie <a href="/index.php" target="_blank"><strong>www.physik-workshop.de</strong></a> und geben dort den Zugriffscode ein oder
+				Besuchen Sie <a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php" target="_blank"><strong>www.physik-workshop.de</strong></a> und geben dort den Zugriffscode ein oder
 			</p>
-			<a href="/index.php?t=<?php echo $token; ?>" class="btn btn-primary" target="_blank">
+			<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php?t="<?php echo $token; ?>" class="btn btn-primary" target="_blank">
 				klicken um zur Demo wechseln
 			</a>
 		</div>

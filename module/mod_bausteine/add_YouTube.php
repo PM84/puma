@@ -19,8 +19,8 @@
 		<input id='YTLink' type="text" class="form-control" name="ytlink" placeholder="YouTube Link / URL" required value='<?php if(isset($bsInfo['ytlink'])){echo $bsInfo['ytlink'];} ?>'>
 		<small id="YTLinkHelp" class="form-text text-muted">Kopieren Sie in das Textfeld die URL des jeweiligen YouTube-Videos.</small>
 	</div>
-	<script src="/js/timingfield.js"></script>
-	<link href="/css/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+	<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/timingfield.js"></script>
+	<link href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/css/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
 	<div style="margin-bottom:25px;">
 		<span style=" cursor:pointer; font-weight:bold;"  data-toggle="collapse" data-target="#advanced"> &rsaquo;&rsaquo; erweiterte Einstellungen</span>
 		<div class="panel panel-default collapse" id="advanced">

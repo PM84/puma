@@ -2,9 +2,9 @@
 session_start();
 
 $ausserhalbKurs=1;
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/agb.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/agb.php");
 
 if(isset($_POST['action']) && $_POST['action']=="saveAGB"){
 	$agb_txt=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['agb_txt']), ENT_QUOTES , "UTF-8"));
@@ -25,10 +25,10 @@ if(isset($_POST['action']) && $_POST['action']=="loadAGB"){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector : "textarea",
@@ -53,7 +53,7 @@ if(isset($_POST['action']) && $_POST['action']=="loadAGB"){
 
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row">

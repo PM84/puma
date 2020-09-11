@@ -1,10 +1,10 @@
 <?php 
 session_start();
 $_SESSION['TerminID']=intval($_POST['TerminID']);
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/schule.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_klassenbesuch/fkt_buchung.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/schule.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_klassenbesuch/fkt_buchung.php");
 
 
 $TerminInfo=getTermin_by_TerminID($_SESSION['TerminID']);
@@ -142,19 +142,19 @@ if(isset($_POST['BuchungsID'])){
 	}
 
 	unset($_POST);
-	header("LOCATION: /module/mod_klassenbesuch/index.php");
+	header("LOCATION:  " . $_SESSION['DOCUMENT_ROOT_DIR']."module/mod_klassenbesuch/index.php");
 }
 
 ?>
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
 		<div class="navmenu navmenu-default navmenu-fixed-left">
 			<div style='width:100%; display:block;text-align:center;'>
-				<img src="/images/PumaLMU_LS_Logo.png" alt="" height="50">
+				<img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/PumaLMU_LS_Logo.png" alt="" height="50">
 			</div>
 			<ul class="nav navmenu-nav"  style='margin-top:10px;'></ul>
 			<ul class="nav navmenu-nav"></ul>
@@ -170,7 +170,7 @@ if(isset($_POST['BuchungsID'])){
 			<div class="navbar navbar-default navbar-fixed-top" style="width:100%">
 				<div class='row'>
 					<div class="col-sm-6" style="height: 55px;">
-						<span style="font-size: 24px; font-family: inherit;"><img src="/images/LMU_Logo.png" style="margin:10px;"><span style="margin-top:10px;">Klassenbesuche</span></span>
+						<span style="font-size: 24px; font-family: inherit;"><img src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/images/LMU_Logo.png" style="margin:10px;"><span style="margin-top:10px;">Klassenbesuche</span></span>
 					</div><div class="col-sm-6" style="text-align:center;">
 					</div>
 

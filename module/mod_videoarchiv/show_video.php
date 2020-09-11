@@ -1,12 +1,12 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay_token.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay_token.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $_SESSION['fID']=intval($_GET['f']);
 $folieInfo=getFolieInfo(intval($_GET['f']));
@@ -20,10 +20,10 @@ $videos=Get_Videos_Liste();
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" style='margin-top:50px;'>
@@ -36,7 +36,7 @@ $videos=Get_Videos_Liste();
 					<?php
 					if(array_key_exists('ytID', $parameter)){
 					?>
-					<iframe id="ytplayer" type="text/html" width="100%" height=<?php echo 1/(16/9)*100 ?>% src="https://www.youtube.com/embed/<?php echo $parameter['ytID']; ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
+					<iframe id="ytplayer" type="text/html" width="100%" height="<?php echo 1/(16/9)*100 ?>% src="https://www.youtube.com/embed/<?php echo $parameter['ytID']; ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
 							frameborder="0" allowfullscreen>
 					</iframe> 
 					<?php
@@ -56,6 +56,6 @@ $videos=Get_Videos_Liste();
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

@@ -3,8 +3,8 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 
 $tmp_filename=$_FILES["file"]["tmp_name"];
 $ZielDateiname=$_POST["fileName"];
@@ -15,8 +15,8 @@ $ZielDateiname=$_SESSION['uID']."_".$fID."_".$uniqid."_".$token.".webm";
 // $ZielDateiname=$_SESSION['uID']."_".$fID."_".$uniqid."_".$token.".mp4";
 // $ZielDateiname=$_SESSION['uID']."_".$fID."_".$uniqid."_".$token.".m4v";
 // echo "===$ZielDateiname===";
-rename($tmp_filename,$_SERVER['DOCUMENT_ROOT']."/media/video/$ZielDateiname");
-chmod($_SERVER['DOCUMENT_ROOT']."/media/video/$ZielDateiname",0755);
+rename($tmp_filename,$_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/video/$ZielDateiname");
+chmod($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/video/$ZielDateiname",0755);
 
 $folieInfo=getFolieInfo($fID);
 $parameterTEMP=json_decode($folieInfo['parameter'],true);

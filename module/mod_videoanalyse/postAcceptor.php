@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 
 // $titel=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['titel']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
@@ -22,7 +22,7 @@ if(isset($_SESSION['uID'])){
 	$uID=1;
 }
 
-$imageFolder = $_SERVER['DOCUMENT_ROOT']."/media/uploads/";
+$imageFolder = $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/uploads/";
 // echo $imageFolder;
 if(!is_dir ( $imageFolder )){mkdir($imageFolder);}
 
@@ -80,7 +80,7 @@ if (is_uploaded_file($temp['tmp_name'])){
 }
 
 function add_file_to_db($dateiname,$size,$titel,$uID){
-	include($_SERVER['DOCUMENT_ROOT']."/config.php");
+	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 	$uID=$_SESSION['uID'];
 	// 	$uID=1;
 	$deleteDate=date("Y-m-d H:i:s");

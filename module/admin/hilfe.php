@@ -1,14 +1,14 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=1;
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/user_login.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/mail.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/user_login.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/mail.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 if(isset($_POST['action']) && $_POST['action']=="sendMessage"){
 	$userInfo=getUserInfos($_SESSION["uID"]);
@@ -18,12 +18,12 @@ if(isset($_POST['action']) && $_POST['action']=="sendMessage"){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/plugins/tinymce/include/init_preferences_mail.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/plugins/tinymce/include/init_preferences_mail.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" >
@@ -48,6 +48,6 @@ if(isset($_POST['action']) && $_POST['action']=="sendMessage"){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

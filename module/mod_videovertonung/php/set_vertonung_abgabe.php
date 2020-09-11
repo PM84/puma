@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $fID=intval($_POST['fID']);
 $token=htmlspecialchars($_POST['token'], ENT_QUOTES);
 $query="SELECT * FROM abgabe WHERE fID='$fID'";

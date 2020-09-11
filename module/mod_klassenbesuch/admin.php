@@ -4,22 +4,22 @@
 
 // ========================
 // ========================
-// ====== PRÄSENTATION
+// ====== KLASSENBESUCHE
 // ========================
 // ========================
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 
 $ausserhalbKurs=1;
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
 
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/module/mod_klassenbesuch/fkt_buchung.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_klassenbesuch/fkt_buchung.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 
 if(isset($_GET['tID'])){
@@ -74,7 +74,7 @@ if(isset($_POST['action'])&&$_POST['action']=="save"){
 	if(strlen($token)==0){$token=uniqid();}
 	$query="INSERT INTO z_klassenbesuche_termine (titel, betreuer, betreuer_mail, start, ende, parameter,termin_token) VALUES ('$titel','$betreuer','$betreuer_email','$start','$ende','$parameter','$token') ON DUPLICATE KEY UPDATE titel='$titel',betreuer='$betreuer', betreuer_mail='$betreuer_email', start='$start', ende='$ende', parameter='$parameter'";
 	mysqli_query($verbindung,$query);
-	echo "<script>window.location = 'admin.php';</script>";
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."admin.php';</script>";
 
 }
 
@@ -100,12 +100,12 @@ $Terminliste=getTerminListe(1);
 			}
 		</script>
 		<?php } ?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 
-		<!--	<script src="/plugins/ckeditor/ckeditor.js"></script>//-->
+		<!--	<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/ckeditor/ckeditor.js"></script>//-->
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/plugins/tinymce/include/init_pfreferences_min.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/plugins/tinymce/include/init_pfreferences_min.php");?>
 
 		<style>
 
@@ -129,7 +129,7 @@ $Terminliste=getTerminListe(1);
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");
 		// 		var_dump($Terminliste);
 
 		?>
@@ -141,8 +141,8 @@ $Terminliste=getTerminListe(1);
 				<div class="col-md-10">
 					<div class="row" style=' text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-1">
-							<a href="/kb" target="blank"  class='btn btn-primary'>Vorschau</a>
-							<!--							<a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
+							<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/kb" target="blank"  class='btn btn-primary'>Vorschau</a>
+							<!--							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
 						</div>
 						<div class="col-md-10">
 							<p class="lead" style='margin:0'>Klassenbesuch Termin hinzufügen</p>
@@ -245,7 +245,7 @@ $Terminliste=getTerminListe(1);
 								<td><?php echo $Termin['titel'] ?></td>
 								<td><?php echo date("d.m.Y H:i",strtotime($Termin['start'])); ?> Uhr</td>
 								<td><?php echo date("d.m.Y H:i",strtotime($Termin['ende'])); ?> Uhr</td>
-								<td><a href="?tID=<?php echo  $Termin['TerminID']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
+								<td><a href="?tID="<?php echo  $Termin['TerminID']; ?>"><span class="glyphicon glyphicon-pencil"></span></a>
 									<span id="TID_<?php echo $Termin['TerminID'] ?>" style="margin-left:10px;" class="showTermin glyphicon <?php if($Termin['aktiv']==1){echo "glyphicon-eye-open";}else{echo "glyphicon-eye-close";} ?>"></span>
 									<span id="del_TID_<?php echo $Termin['TerminID'] ?>" style="margin-left:10px;" class="deleteTermin glyphicon glyphicon-trash"></span>
 								</td>

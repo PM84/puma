@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include($_SERVER['DOCUMENT_ROOT']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
 
 
 // $titel=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['titel']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
@@ -23,7 +23,7 @@ if(isset($_SESSION['uID'])){
 	$uID=1;
 }
 
-$imageFolder = $_SERVER['DOCUMENT_ROOT']."/media/uploads/";
+$imageFolder = $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/uploads/";
 // echo $imageFolder;
 if(!is_dir ( $imageFolder )){mkdir($imageFolder);}
 

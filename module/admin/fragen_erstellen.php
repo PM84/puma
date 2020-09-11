@@ -1,15 +1,15 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 $SessionInfos=Get_SessionInfos($_SESSION['s']);
 $uID=$SessionInfos['uID'];
 
@@ -64,9 +64,9 @@ if(isset($_POST['action']) && $_POST['action']=="f_import"){
 
 
 				$storagename = $_SESSION['uID']."_f_import_".date("Y_m_d__H_i_s").".txt";
-				move_uploaded_file($_FILES["InputFile"]["tmp_name"], $_SERVER['DOCUMENT_ROOT']."/media/uploads_tmp/" . $storagename);
-				//             echo "Stored in: " . $_SERVER['DOCUMENT_ROOT']."/media/uploads_tmp/" . $_FILES["InputFile"]["name"] . "<br />";
-				import_txt_frageListe($_SERVER['DOCUMENT_ROOT']."/media/uploads_tmp/" . $storagename,$delFragen);
+				move_uploaded_file($_FILES["InputFile"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/uploads_tmp/" . $storagename);
+				//             echo "Stored in: " . $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/uploads_tmp/" . $_FILES["InputFile"]["name"] . "<br />";
+				import_txt_frageListe($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/uploads_tmp/" . $storagename,$delFragen);
 			}else{
 				echo "<b>Falscher Dateityp!</b> Es sind nur csv-Dateien erlaubt!";
 			}
@@ -134,8 +134,8 @@ if(isset($_SESSION['FrageID'])){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 		<style>
 
 			.clickable{
@@ -150,7 +150,7 @@ if(isset($_SESSION['FrageID'])){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" style='margin-top:15px;'>
@@ -491,6 +491,6 @@ if(isset($_SESSION['FrageID'])){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

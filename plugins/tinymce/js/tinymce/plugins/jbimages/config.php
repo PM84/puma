@@ -40,7 +40,7 @@ session_start();
 
 
 	$config['img_path'] = '/media/images/'.$_SESSION['uID']; // Relative to domain name
-	$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['img_path']; // Physical path. [Usually works fine like this]
+	$config['upload_path'] = $DOCUMENT_ROOT . $config['img_path']; // Physical path. [Usually works fine like this]
 
 echo $config['upload_path'];
 /*-------------------------------------------------------------------

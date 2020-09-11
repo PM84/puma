@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
 $abRow=getAbgabeInfo($_SESSION['fID'],$_SESSION['t']);
 $abInfo=json_decode($abRow['parameter'],true);
 ?>
@@ -51,4 +51,3 @@ if(isset($bInfo['antwortOption'])){
 	}
 }
 ?>
-

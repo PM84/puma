@@ -1,18 +1,18 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
 
 ?>
 
 <div id="collapse_upload" class="panel-collapse collapse">
 	<div class="panel-body">
-		<link href="/plugins/fileUpload/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-		<link href="/plugins/fileUpload/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="/plugins/fileUpload/js/plugins/sortable.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/fileinput.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/locales/fr.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/js/locales/es.js" type="text/javascript"></script>
-		<script src="/plugins/fileUpload/themes/explorer/theme.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/plugins/sortable.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/fileinput.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/locales/fr.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/js/locales/es.js" type="text/javascript"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/fileUpload/themes/explorer/theme.js" type="text/javascript"></script>
 
 		<div class="kv-main">
 			<form enctype="multipart/form-data" method="post"  action="postAcceptor.php">
@@ -47,7 +47,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
 				<div class="videoExplorerBox">
 					<div class="videoPrevBox">
 						<video width="190" height="100" controls preload="none">
-							<source src="/media/uploads/<?php echo $_SESSION['uID']."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>>
+							<source src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/uploads/<?php echo $_SESSION['uID']."/".$file['dateiname'];?>" <?php if($iLauf<$fileCount){echo ",";} ?>>
 						</video>
 					</div>
 					<div style="font-size:10px; text-align:center;">

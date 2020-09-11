@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 // var_dump($_SESSION);
 $ausserhalbKurs=1;
 // ========================
@@ -11,17 +11,17 @@ $ausserhalbKurs=1;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 // Teilnehmerliste laden:
 // $TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['kursID']);
@@ -45,11 +45,11 @@ if( (isset($_POST['action']) && $_POST['action']="SelKurs") ){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php //include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php //include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div id="container" class="container" style="margin-bottom:150px;">
 			<?php  if(!$Dozenten && !isset($SessionInfos['uID'])){ ?>
@@ -133,7 +133,7 @@ if( (isset($_POST['action']) && $_POST['action']="SelKurs") ){
 							<td class="hidden-xs"><?php echo $folieParameter['titel'] ?></td>
 							<td class="hidden-xs"><?php if($folie['abID']==null){echo "keine Abgabe";}else{echo date('d.m.Y H:i',strtotime ( $folie['datum']));} ?></td>
 							<td>
-								<?php if($folie['abID']==null){}else{?> <a href="/module/mod_videovertonung/show_bewertung_vertonung.php?abt=<?php echo $abToken; ?>&fID=<?php echo $fID; ?>" target="_blank"><span class="glyphicon glyphicon-pencil" style="display:inline-block; width:25px;"></span></a> <?php 
+								<?php if($folie['abID']==null){}else{?> <a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_bewertung_vertonung.php?abt="<?php echo $abToken; ?>&fID="<?php echo $fID; ?>" target="_blank"><span class="glyphicon glyphicon-pencil" style="display:inline-block; width:25px;"></span></a> <?php 
 																	 if($audioStatus==0){ 
 								?> 
 								<i class="glyphicon glyphicon-hourglass" style="color:red;display:inline-block; width:25px;" data-toggle="tooltip" title="Noch keine endgültige Abgabe!"> </i>

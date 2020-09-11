@@ -1,8 +1,8 @@
 <?php
 // session_start();
-include($_SERVER['DOCUMENT_ROOT']."/php/mail.php");
-include($_SERVER['DOCUMENT_ROOT']."/php/user_login.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/mail.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/user_login.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $sentMessage="";
 if(isset($_POST['action']) && $_POST['action']=="getResetToken"){
@@ -64,23 +64,23 @@ if(isset($_POST['action']) && $_POST['action']=="setPasswort"){
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$affRows=mysqli_affected_rows ( $verbindung );
 	if($affRows<0){
-		echo "<script>window.location = '/module/user/PasswortReset.php?e=1';</script>";  //Fehler bei der Abfrage aufgetreten
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/PasswortReset.php?e=1';</script>";  //Fehler bei der Abfrage aufgetreten
 	}elseif($affRows==0){
-		echo "<script>window.location = '/module/user/PasswortReset.php?e=2';</script>";  //Nutzer nicht gefunden
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/PasswortReset.php?e=2';</script>";  //Nutzer nicht gefunden
 	}elseif($affRows>0){
-		echo "<script>window.location = '/module/user/PasswortReset.php?e=3';</script>";  //Alles OK
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/PasswortReset.php?e=3';</script>";  //Alles OK
 	}
 }
 
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 		<br>
 		<style></style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container-fluid">
 			<div class="row" style='margin-top:50px;'>
 				<div class="col-md-4"></div>
@@ -170,10 +170,9 @@ if(isset($_POST['action']) && $_POST['action']=="setPasswort"){
 				<div class="col-md-4"></div>
 			</div>
 		</div>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 
 	</body>
 </html>
 
 <?php
-

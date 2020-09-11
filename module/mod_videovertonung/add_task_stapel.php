@@ -1,8 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 // var_dump($_SESSION);
 $ausserhalbKurs=1;
 // ========================
@@ -11,17 +11,17 @@ $ausserhalbKurs=1;
 // ========================
 // ========================
 
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videovertonung";
 $modID=getModIDFromTitel($modTitel);
@@ -68,9 +68,9 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 
 		<script>
 			// 			function resetTinyMCE(){
@@ -152,7 +152,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 		</style>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div id="container" class="container" style="margin-bottom:150px;">
 			<div class="row">
@@ -160,8 +160,8 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-3">
-							<a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>
-							<a href='/module/mod_videovertonung/add_task.php?ft=<?php echo $ftoken; ?>' class='btn btn-info'>zur Einzelerstellung</a>
+							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>
+							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/add_task.php?ft="<?php echo $ftoken; ?>' class='btn btn-info'>zur Einzelerstellung</a>
 						</div>
 						<div class="col-md-7"><p class="lead" style='margin:0'>Aufgabe zur Videovertonung hinzufügen</p></div>
 						<div class="col-md-1"></div>
@@ -289,4 +289,3 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 	</script>
 
 </html>
-

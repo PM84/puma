@@ -4,7 +4,7 @@
 // ====== EVALUATION
 // ========================
 // ========================
-include_once($_SERVER['DOCUMENT_ROOT']."/php/frage.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 $fGroups=Get_Fragen_Gruppen($_SESSION['uID']);
 ?>
 
@@ -31,7 +31,7 @@ $fGroups=Get_Fragen_Gruppen($_SESSION['uID']);
 	}
 
 </style>
-<script src="/js/jqueryUI/jquery-ui.js"></script>
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.js"></script>
 
 
 <form action="" method="post">

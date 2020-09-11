@@ -1,16 +1,16 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/php/teilnehmer.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $TNListe=getTeilnehmerListeInfos($_SESSION['k']);
 
 if(count($TNListe)==0){echo "<h2>Sie haben noch keine Teilnehmer eingetragen!</h2>"; exit;}
 
-$template=file_get_contents($_SERVER['DOCUMENT_ROOT']."/vorlagen/tmpl_token_uebersicht.php");
+$template=file_get_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/vorlagen/tmpl_token_uebersicht.php");
 
 
 ?>

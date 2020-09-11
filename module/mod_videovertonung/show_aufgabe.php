@@ -7,14 +7,15 @@ if(isset($_SERVER['HTTPS'])){
 
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
-}include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay_token.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/abgabe.php");
+}
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay_token.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
 
 // echo $_SESSION['s'];
 
@@ -107,7 +108,7 @@ if(intval($_GET['f'])>0){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 
 		<script src="AudioRecorder/MediaStreamRecorder.js"></script>
 		<script src="AudioRecorder/gumadapter.js"></script>
@@ -133,7 +134,7 @@ if(intval($_GET['f'])>0){
 
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="padding-bottom:50px;">
 			<div class="row" style='margin-top:0px;'>
@@ -153,7 +154,7 @@ if(intval($_GET['f'])>0){
 							foreach($FBArr as $Feedback){
 								$FabID=$Feedback['F_abID'];
 								$Name=$Feedback['name'].", ".$Feedback['vname'];
-								array_push($fbArr,"<a href='/module/mod_videovertonung/show_feedback_vertonung.php?abID=$FabID' target='blank'>Feedback von: $Name</a>");
+								array_push($fbArr,"<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_feedback_vertonung.php?abID=$FabID' target='blank'>Feedback von: $Name</a>");
 							}
 							$fbLinks=join("<br>",$fbArr);
 							echo $fbLinks;
@@ -224,7 +225,7 @@ if(intval($_GET['f'])>0){
 						?>
 						<div class="row" style="padding:0; border-bottom:solid lightgray 2px; padding-bottom:5px; padding-top:5px;">
 							<div class="col-md-4" style="text-align:center; margin-bottom:5px;">
-								<audio id="<?php echo $id;?>" controls="" src="/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
+								<audio id="<?php echo $id;?>" controls="" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
 								<button type="button" class="glyphicon glyphicon-step-backward btn btn-default" onclick="StepBackwardAll('<?php echo $id;?>')"></button>
 								<button type="button" class="glyphicon glyphicon-stop btn btn-default" onclick="StopAll('<?php echo $id;?>')"></button>
 								<button type="button" class="glyphicon glyphicon-pause btn btn-default" onclick="PauseAll('<?php echo $id;?>')"></button>
@@ -232,7 +233,7 @@ if(intval($_GET['f'])>0){
 								<button type="button" class="glyphicon glyphicon-step-forward btn btn-default" onclick="StepForwardAll('<?php echo $id;?>')"></button>
 							</div>
 							<div class="col-md-4" style="margin-bottom:5px;">
-								<a href="/media/audio/<?php echo $audio->fileName;?>" download="Diese Aufnahme downloaden" class="btn btn-default" style="width:100%;">Diese Aufnahme downloaden</a>
+								<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" download="Diese Aufnahme downloaden" class="btn btn-default" style="width:100%;">Diese Aufnahme downloaden</a>
 							</div>
 							<div class="col-md-4"style="margin-bottom:5px;">
 								<form method="post" action="" style='margin-bottom:0;'>
@@ -254,7 +255,7 @@ if(intval($_GET['f'])>0){
 
 						<div class="row" style="padding:0">
 							<div class="col-md-4" style="text-align:center;margin-bottom:5px;">
-								<audio id="<?php echo $id;?>" controls="" src="/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
+								<audio id="<?php echo $id;?>" controls="" src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" style="display: none;"></audio>
 								<!--<div class="glyphicon glyphicon-stop" style="width:100%;" onclick="Video_Audio_Play('<?php echo $id;?>')">abspielen</div>//-->
 								<button class="glyphicon glyphicon-step-backward btn btn-default" onclick="StepBackwardAll('<?php echo $id;?>')"></button>
 								<button class="glyphicon glyphicon-stop btn btn-default" onclick="StopAll('<?php echo $id;?>')"></button>
@@ -264,7 +265,7 @@ if(intval($_GET['f'])>0){
 								<!--<div class="glyphicon glyphicon-stop" style="width:100%;" onclick="Video_Audio_Play('<?php echo $id;?>')">abspielen</div>//-->
 							</div>
 							<div class="col-md-4" style="margin-bottom:5px;">
-								<a href="/media/audio/<?php echo $audio->fileName;?>" download="Diese Aufnahme downloaden" class="btn btn-default" style="width:100%;">Diese Aufnahme downloaden</a>
+								<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/media/audio/<?php echo $audio->fileName;?>" download="Diese Aufnahme downloaden" class="btn btn-default" style="width:100%;">Diese Aufnahme downloaden</a>
 							</div>
 							<div class="col-md-4" style="margin-bottom:5px;">
 								<div class="btn btn-danger" value="" type="button" style="width:100%;">Bereits abgeben</div>
@@ -289,11 +290,11 @@ if(intval($_GET['f'])>0){
 		</div>
 		<?php
 		// 		if($abgegeben==0 ){
-		include($_SERVER['DOCUMENT_ROOT']."/module/mod_videovertonung/modal_erklaerung.php");
+		include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/modal_erklaerung.php");
 		// 		}
 		?>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 
 	<script>

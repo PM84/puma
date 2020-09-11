@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $tmp_filename=$_FILES["file"]["tmp_name"];
 $ZielDateiname=htmlspecialchars($_POST["fileName"], ENT_QUOTES);
@@ -9,8 +9,8 @@ $uniqueID=htmlspecialchars($_POST['uniqueID'], ENT_QUOTES);
 // $uniqid=uniqid();
 // $ZielDateiname=$fID."_".$token."_".$uniqueID.".wav";
 // echo "===$ZielDateiname===";
-rename($tmp_filename,$_SERVER['DOCUMENT_ROOT']."/media/audio/$ZielDateiname");
-chmod($_SERVER['DOCUMENT_ROOT']."/media/audio/$ZielDateiname",0755);
+rename($tmp_filename,$_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/audio/$ZielDateiname");
+chmod($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/audio/$ZielDateiname",0755);
 
 $audioArr=array();
 $query="SELECT * FROM abgabe WHERE fID='$fID' and token='$token'";

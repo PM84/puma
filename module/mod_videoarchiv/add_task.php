@@ -1,21 +1,21 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=1;
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/videos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/videos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
 
 
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $modTitel="Videoarchiv";
 $modID=getModIDFromTitel($modTitel);
@@ -80,7 +80,7 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 		}
 	}
 	/* 	array_walk_recursive($tnarr, function($value, $key) {
-		include($_SERVER['DOCUMENT_ROOT']."/config.php");
+		include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 		$value=intval($value);
 	});
  */	$AufgabeInfo['tnarr']=$tnarr;
@@ -93,18 +93,18 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10">
 					<div class="row" style='margin-top:20px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
-						<div class="col-md-1"><a href='/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Videoarchiv</p></div>
 						<div class="col-md-1"></div>
 					</div>
@@ -194,7 +194,7 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 						</div>
 						<hr>
 						<p class="lead" style='margin-top:25px'>Anzeige - Einstellungen</p>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 						<input type="submit" class="btn btn-primary" style='' value="<?php if(isset($_SESSION['edit_fID'])){echo "Aufgabe updaten";}else{echo "Aufgabe eintragen";}  ?>">
 					</form>
 
@@ -226,7 +226,7 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 						</div>
 						<hr>
 						<p class="lead" style='margin-top:25px'>Anzeige - Einstellungen</p>
-						<?php include($_SERVER['DOCUMENT_ROOT']."/includes/folieAnzeigeOptionen.php") ?>
+						<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/folieAnzeigeOptionen.php") ?>
 						<input type="submit" class="btn btn-primary" style='' value="<?php if(isset($_SESSION['edit_fID'])){echo "Aufgabe updaten";}else{echo "Aufgabe eintragen";}  ?>">
 					</form>
 
@@ -239,6 +239,6 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

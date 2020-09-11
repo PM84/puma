@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT']."/php/user_login.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/user_login.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $UserListe=GetUserList();
 $uID_List=Get_uID_List();
@@ -61,7 +61,7 @@ if(isset($_POST['name'])){
 		foreach($usergroups as $value){
 			SetUserGroup($Edit_uID,intval($value));
 		}
-		header("LOCATION: /module/user/user_admin.php");
+		header("LOCATION:  " . $_SESSION['DOCUMENT_ROOT_DIR']."module/user/user_admin.php");
 	}
 }
 
@@ -80,10 +80,10 @@ if(isset($Edit_uID) && in_array($Edit_uID,$uID_List)){
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row" style=''>
@@ -93,7 +93,7 @@ if(isset($Edit_uID) && in_array($Edit_uID,$uID_List)){
 						<div class="row" style='border-bottom: 1px lightgray solid; padding-bottom: 10px;margin-bottom:10px;'>
 							<div class="col-md-4">
 								<button type="submit" value="Speichern" class="btn btn-success">Speichern</button>
-								<a href="/module/user/user_admin.php" class="btn btn-danger">Abbrechen</a>
+								<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/user/user_admin.php" class="btn btn-danger">Abbrechen</a>
 							</div>
 						</div>
 
@@ -255,6 +255,6 @@ if(isset($Edit_uID) && in_array($Edit_uID,$uID_List)){
 		</script>
 
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

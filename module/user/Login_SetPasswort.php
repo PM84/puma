@@ -1,9 +1,9 @@
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
@@ -91,5 +91,3 @@ if(isset($_POST['username']) && strlen($_POST['username'])>3){
 	echo $query;
 
 }
-
-

@@ -7,20 +7,20 @@
 
 // var_dump($_POST);
 
-include($_SERVER['DOCUMENT_ROOT']."/includes/header_php.php");
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
 $ausserhalbKurs=1;
-include_once($_SERVER['DOCUMENT_ROOT']."/includes/session_delay.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/session_delay.php");
 
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/kursInfos.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/system.php");
-// include_once($_SERVER['DOCUMENT_ROOT']."/php/folie.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/module.php");
-include_once($_SERVER['DOCUMENT_ROOT']."/php/bausteine.php");
-include($_SERVER['DOCUMENT_ROOT']."/config.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
+// include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/bausteine.php");
+include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $SessionInfos=Get_SessionInfos($_SESSION['s']);
 $uID=$SessionInfos['uID'];
@@ -123,7 +123,7 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 		default:
 			unset($_SESSION['edit_bTypID']);
 			unset($_SESSION['edit_bID']);
-			echo "<script>window.location = '/module/admin/baustein_erstellen.php';</script>";
+			echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/admin/baustein_erstellen.php';</script>";
 			break;
 
 		case 1:
@@ -145,8 +145,8 @@ if(isset($_SESSION['edit_bID'])){
 ?>
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_backend.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_backend.php");?>
 		<style>
 			.clickable{
 				cursor: pointer;   
@@ -156,18 +156,18 @@ if(isset($_SESSION['edit_bID'])){
 				font-size: 15px;
 			}
 		</style>
-		<script src="/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+		<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector: 'textarea',
-				<?php include($_SERVER['DOCUMENT_ROOT']."/plugins/tinymce/include/init_pfreferences_lehrer.php"); ?>
+				<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/plugins/tinymce/include/init_pfreferences_lehrer.php"); ?>
 			});
 		</script>
 
 	</head>
 	<body>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container" style="<?php if(isset($_GET['bTypID'])){ ?>padding:0; <?php } ?>">
 			<?php
@@ -179,7 +179,7 @@ if(isset($_SESSION['edit_bID'])){
 				<div class="col-md-10">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 
-						<div class="col-md-1"><a href='/module/admin/baustein_erstellen.php' class='btn btn-success'>zurück</a></div>
+						<div class="col-md-1"><a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/baustein_erstellen.php' class='btn btn-success'>zurück</a></div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Baustein hinzufügen - <?php echo $bTypInfo['titel']; ?></p></div>
 						<div class="col-md-1"></div>
 
@@ -196,13 +196,13 @@ if(isset($_SESSION['edit_bID'])){
 				<div class="col-md-8">
 					<?php
 
-					include($_SERVER['DOCUMENT_ROOT'].$bTypInfo['bs_dir']."/".$bTypInfo['bs_add']);
+					include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR'].$bTypInfo['bs_dir']."/".$bTypInfo['bs_add']);
 					?>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 		</div>
 
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/bottom_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/bottom_main.php");?>
 	</body>
 </html>

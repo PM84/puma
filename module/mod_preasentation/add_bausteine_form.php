@@ -27,18 +27,18 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 			break;
 		case 2:
 			$tem_vID_Block=$Block;  // => tem_vID_top
-			include($_SERVER['DOCUMENT_ROOT']."/includes/video_auswahl_panel.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/video_auswahl_panel.php");
 			break;
 		case 3:
 			$tem_simID_Block=$Block;  // => tem_vID_top
-			include($_SERVER['DOCUMENT_ROOT']."/includes/sim_auswahl_panel.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/sim_auswahl_panel.php");
 			break;
 		case 4:
 			break;
 		case 5:
 			$bsArrTyp=getBausteineTypen();
 			echo "<p class='lead' style='margin:0'>Baustein auswählen</p>";
-			include($_SERVER['DOCUMENT_ROOT']."/module/mod_bausteine/baustein_auswahl_panel.php");
+			include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/baustein_auswahl_panel.php");
 			break;
 	}
 }

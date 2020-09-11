@@ -2,20 +2,20 @@
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/php/Sessions.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/Sessions.php");
 $SessionInfos=Get_SessionInfos($_SESSION['s']);
 if($SessionInfos==null){
 	session_destroy();
-	echo "<script>window.location = '/module/user/login.php';</script>"; 
+	echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/login.php';</script>"; 
 };
 
-include_once($_SERVER['DOCUMENT_ROOT']."/php/agb.php");
+include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/agb.php");
 
 
 if(isset($_POST['action']) && $_POST['action']=="confirm"){
 	set_confirm_status(intval($_POST['status']));
 	if(intval($_POST['status'])==1){
-		echo "<script>window.location = '/module/admin/kurs_erstellen.php';</script>"; 
+		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/admin/kurs_erstellen.php';</script>"; 
 	}
 }
 
@@ -27,7 +27,7 @@ $_SESSION['agbID']=$actAGB['agbID'];
 
 <html>
 	<head>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/head_main.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head_main.php");?>
 		<script>
 			(function(document, history, location) {
 				var HISTORY_SUPPORT = !!(history && history.pushState);
@@ -111,7 +111,7 @@ $_SESSION['agbID']=$actAGB['agbID'];
 		</script>
 	</head>
 	<body>
-		<?php include($_SERVER['DOCUMENT_ROOT']."/includes/header_bar.php");?>
+		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 
 		<div class="container">
 			<div class="row">

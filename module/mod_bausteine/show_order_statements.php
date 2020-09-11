@@ -1,5 +1,5 @@
-<script src="/js/jqueryUI/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="/js/jqueryUI/jquery-ui.css">
+<script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.css">
 <style>
 	.placeholder{
 		/* background-color:lightgray; */
