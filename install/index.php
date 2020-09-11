@@ -65,25 +65,25 @@ if(is_file ("../config.php")){
                     <div class="form-group row">
                         <label for="db_host" class="col-sm-3 col-form-label" style="text-align:right;">Database-Host</label>
                         <div class="col-sm-9">
-                            <input type="text" required class="form-control-plaintext" id="db_host" name="db_host" value="localhost">
+                            <input type="text" required class="form-control-plaintext" id="db_host" name="db_host" placeholder="localhost">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="db_user" class="col-sm-3 col-form-label" style="text-align:right;">Database-User</label>
                         <div class="col-sm-9">
-                            <input type="text" required class="form-control-plaintext" id="db_user" name="db_user" value="DB User">
+                            <input type="text" required class="form-control-plaintext" id="db_user" name="db_user" placeholder="DB User">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="db_name" class="col-sm-3 col-form-label" style="text-align:right;">Database-Name</label>
                         <div class="col-sm-9">
-                            <input type="text" required class="form-control-plaintext" id="db_name" name="db_name" value="DB Name">
+                            <input type="text" required class="form-control-plaintext" id="db_name" name="db_name" placeholder="DB Name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="db_pwd" class="col-sm-3 col-form-label" style="text-align:right;">Database-Passwort</label>
                         <div class="col-sm-9">
-                            <input type="text" required class="form-control-plaintext" id="db_pwd" name="db_pwd" value="DB Passwort">
+                            <input type="text" required class="form-control-plaintext" id="db_pwd" name="db_pwd" placeholder="DB Passwort">
                         </div>
                     </div>
                     <br>
@@ -265,7 +265,7 @@ $index_Sim_path="$VideoURL/VideoVerwaltung/indexFile/index_sim.txt";';
 ", $dump);
 
         foreach ($sqls as $sql) {
-            mysqli_query($verbindung, $sql) or print('Error performing query \'<strong>:' . mysqli_error($verbindung) . '<br /><br />');
+            mysqli_query($verbindung, $sql) or print('Error performing query \'<strong>:' . $sql . "<br>" . mysqli_error($verbindung) . '<br /><br />');
         }
         echo  $filename . " erfolgreich verarbeitet<br>";
     }

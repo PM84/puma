@@ -36,6 +36,7 @@ DROP TABLE IF EXISTS `user_groups`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `kurs_uID_match`;
 DROP TABLE IF EXISTS `media`;
+SET SESSION sql_mode = '';
 CREATE TABLE `kurs` (
   `kursID` int(11) NOT NULL AUTO_INCREMENT,
   `titel` tinytext NOT NULL,
