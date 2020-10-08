@@ -59,7 +59,7 @@ include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_kl
 						if(count($TerminListe)>0){
 							foreach($TerminListe as $Termin){
 								$parameter=json_decode($Termin['parameter'],true);
-								$jgStArr=array();
+								$jgStArr=[];
 								 if(isset($parameter['Gym']) && count($parameter['Gym'])>0){array_push($jgStArr,"Gym: ".join(",",$parameter['Gym']));}
 								 if(isset($parameter['RS']) && count($parameter['RS'])>0){array_push($jgStArr,"RS: ".join(",",$parameter['RS']));}
 								 if(isset($parameter['MS']) && count($parameter['MS'])>0){array_push($jgStArr,"MS: ".join(",",$parameter['MS']));}

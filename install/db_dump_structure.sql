@@ -237,6 +237,8 @@ CREATE TABLE `media_kurs_match` (
   `fID` int(11) NOT NULL,
   `kursID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `media_kurs_match`
+  ADD UNIQUE KEY `mediaID` (`mediaID`,`uID`,`fID`,`kursID`);
 CREATE TABLE `Newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hash` varchar(255) NOT NULL,

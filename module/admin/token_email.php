@@ -32,7 +32,7 @@ foreach($TNListe as $TN){
 			$Anrede = "Sehr geehrte Frau ";
 			break;
 	}
-	// var_dump($TN);
+	
 	$briefanrede=$Anrede.$TN['name'];
 	$template_conv=str_replace ( "{BRIEFANREDE}", $briefanrede , $template);
 	$template_conv=str_replace ( "{NACHRICHT}", html_entity_decode ($message, ENT_QUOTES , "UTF-8"), $template_conv);

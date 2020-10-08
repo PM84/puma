@@ -10,9 +10,8 @@ include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $_SESSION['fID']=intval($_GET['f']);
 $folieInfo=getFolieInfo(intval($_GET['f']));
-// var_dump($folieInfo);
+
 $parameter=json_decode($folieInfo['parameter'],true);
-var_dump($parameter);
 $videos=Get_Videos_Liste();
 ?>
 

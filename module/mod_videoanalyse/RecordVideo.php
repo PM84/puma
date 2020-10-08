@@ -45,7 +45,7 @@ if(isset($_POST['action'])&&$_POST['action']=="kid"){
 
 if(isset($_POST['action'])&&$_POST['action']=="tnid"){
 	if(isset($_SESSION['va']['fID']) && $_SESSION['va']['fID']>0){$fID=$_SESSION['va']['fID'];}else{$fID=0;}
-	$_SESSION['va']['tnIDs']=array();
+	$_SESSION['va']['tnIDs']=[];
 	foreach($_POST['tnIDs'] as $tnID){
 		array_push($_SESSION['va']['tnIDs'],intval($tnID));
 	}
@@ -147,7 +147,7 @@ if(isset($_SESSION['va']['kID']) && isset($_POST['action']) && $_POST['action']=
 
 
 // Folie-Details laden
-// var_dump($_SESSION['va']['fID']);
+
 if(isset($_SESSION['va']['fID']) && $_SESSION['va']['fID']>0){
 	$folieInfo=getFolieInfo($_SESSION['va']['fID']);
 	$TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['va']['kID']);

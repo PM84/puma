@@ -4,7 +4,7 @@ function getTerminListe(){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM studie_termine WHERE aktiv=1";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$retArr=array();
+	$retArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($retArr,$row);
 	}
@@ -17,7 +17,7 @@ function getBuchungen_by_TerminID($TerminID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM studie_buchung WHERE TerminID=$TerminID";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$retArr=array();
+	$retArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($retArr,$row);
 	}

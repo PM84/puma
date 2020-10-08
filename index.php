@@ -4,9 +4,6 @@ if(!is_file ("config.php")){
 }
 session_start();
 include("config.php");
-echo $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR'];
-echo "<br>" . $_SERVER['DOCUMENT_ROOT'];
-echo "<br>" . $_SESSION['DOCUMENT_ROOT_DIR'];
 
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
@@ -50,13 +47,11 @@ if(isset($_GET['t'])){
 // ====== KURS AUSWAHL
 // ========================
 
-// var_dump($_POST);
 if(isset($_POST['kursID']) || isset($_GET['kt'])){
 
 	if(isset($_GET['kt'])){
 		$kt=mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($_GET['kt']), ENT_QUOTES , "UTF-8"));
 		$KursInfo=getKursInfos_by_kursToken($kt);
-// 		var_dump($KursInfo);
 		$_SESSION['kursID']=$KursInfo['kursID'];
 	}else{
 		$_SESSION['kursID']=intval($_POST['kursID']);
@@ -68,7 +63,6 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 	switch($_SESSION['kTyp']){
 		case 2:
 			$ersteFolie=get_erste_Folie($_SESSION['kursID']);
-			// 			var_dump($ersteFolie);
 			if(intval($ersteFolie['fID'])>0){
 				$FolieInfo=getFolieInfo($ersteFolie['fID']);
 				$parameterFolie=json_decode($FolieInfo['parameter']);
@@ -95,7 +89,7 @@ if(isset($_POST['kursID']) || isset($_GET['kt'])){
 	if(isset($ersteFolie['fID']) && $ersteFolie['fID']>0 && $error==0){
 		$firstFolie=$_SESSION['DOCUMENT_ROOT_DIR'] . "/".$modInfo['mod_dir']."/".$modInfo['mod_show']."?f=".$ersteFolie['fID'];
 		// 		echo $firstFolie;
-		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."$firstFolie';</script>";  //Fehler bei der Abfrage aufgetreten
+		echo "<script>window.location = '$firstFolie';</script>";  //Fehler bei der Abfrage aufgetreten
 	}else{
 		$error=404;
 	}

@@ -31,7 +31,7 @@ if(intval($_GET['f'])>0){
 	$AufgabeInfo=json_decode($FolieArr['parameter']);
 	// 	$_SESSION['vID']=$AufgabeInfo->vID;
 	$videos=Get_Videos_Liste();
-	// 	var_dump($AufgabeInfo);
+	
 
 	if(isset($AufgabeInfo->vID)){$_SESSION['vID']=$AufgabeInfo->vID;}
 	if(isset($AufgabeInfo->eig_vID)){$_SESSION['eig_vID']=$AufgabeInfo->eig_vID;}
@@ -66,7 +66,7 @@ if(intval($_GET['f'])>0){
 // ====== KORREKTUR SPEICHERN
 // ========================
 if(count($_POST)>0){
-	$insertArr=array();
+	$insertArr=[];
 	$AbgabeInfoRow=getAbgabeInfo($fID,$token);
 	$abID=$AbgabeInfoRow['abID'];
 	$zu_token=$AbgabeInfoRow['token'];
@@ -80,7 +80,7 @@ if(count($_POST)>0){
 	foreach ($FragenIDs as $key => $input_arr) {
 		$FragenIDs[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 	}
-	$FrageArr2=array();
+	$FrageArr2=[];
 	$jLauf=0;
 	foreach($FragenIDs as $FrageID){
 		$FrageArr2[$FrageID]=$FragenArr[$jLauf];
@@ -102,8 +102,8 @@ if(count($_POST)>0){
 			$PosTimeArr[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 		} 
 	}else{
-		$PosTimeArr=array();
-		$PosTxtArr=array();
+		$PosTimeArr=[];
+		$PosTxtArr=[];
 
 	}
 	$insertArr['PosTimeArr']=$PosTimeArr;
@@ -126,21 +126,21 @@ if(count($_POST)>0){
 // $KorrekturRow=getAbgabeBy_abID_token_aTyp($token,$abTyp,$abID);
 $KorrekturRow=getAbgabeBy_fID_token_aTyp($token,$abTyp,$fID); //getAbgabeBy_abID_token_aTyp($token,$abTyp,$abID);
 // $KorrekturRow=getAbgabeBy_abID_token_aTyp($abTyp);
-// var_dump($KorrekturRow);
+
 if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 	$KorrParameter=json_decode($KorrekturRow[0]['parameter'],true);
 	$KorrFragenArr=$KorrParameter['FragenWerte'];
 	$PosTimeArr=$KorrParameter['PosTimeArr'];
 	$PosTxtArr=$KorrParameter['PosTxtArr'];
 
-	if($KorrFragenArr===NULL){$KorrFragenArr=array();}
-	if($PosTimeArr===NULL){$PosTimeArr=array();}
-	if($PosTxtArr===NULL){$PosTxtArr=array();}
+	if($KorrFragenArr===NULL){$KorrFragenArr=[];}
+	if($PosTimeArr===NULL){$PosTimeArr=[];}
+	if($PosTxtArr===NULL){$PosTxtArr=[];}
 
 }else{
-	$KorrFragenArr=array();
-	$PosTimeArr=array();
-	$PosTxtArr=array();
+	$KorrFragenArr=[];
+	$PosTimeArr=[];
+	$PosTxtArr=[];
 }
 
 

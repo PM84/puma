@@ -5,15 +5,15 @@ error_reporting(E_ALL & ~E_NOTICE);
 // $fnParts=array("0001_Cepheid","0002_Cepheid","0003_Cepheid","0004_Cepheid","0005_Cepheid","0006_Cepheid","0007_Cepheid","0008_Cepheid","0009_Cepheid","0010_Cepheid");
 
 $files=scandir ( "data/raw/" );
-$fileList=array();
+$fileList=[];
 foreach($files as $file){
     if(strlen($file)>3){
         array_push($fileList,$file);
     }
 }
-// var_dump($fileList);
 
-$LK_files=array();
+
+$LK_files=[];
 foreach($fileList as $fn){
     $LK_file=calculate_light_curves($fn);
     array_push($LK_files,$LK_file);
@@ -27,24 +27,24 @@ fclose($outputfile);
 // $cepheid_FILE="0006_Cepheid"; 
 function calculate_light_curves($cepheid_FILE){
     $StarArr=ParseCSV_to_AssocArray("data/0000_Cepheiden_uebersicht.csv",";");
-    // var_dump($StarArr);
+    
 
-    $periodes=array();
-    $StarDetails=array();
+    $periodes=[];
+    $StarDetails=[];
     foreach($StarArr as $star){
         $periodes[$star['source_id']]=$star['pf'];
         $StarDetails[$star['source_id']]=$star;
     }
 
     // echo "<hr>";
-    // var_dump($periodes);
+    
     $MesurmentPoints=ParseCSV_to_AssocArray("data/raw/$cepheid_FILE",",");
     // echo "<hr>";
-    $lightCurve=array();
+    $lightCurve=[];
 
-    // var_dump($MesurmentPoints);
+    
     bcscale(20);
-    $MagArr=array();
+    $MagArr=[];
     foreach($MesurmentPoints as $key => $MpArr){
         if($MpArr['band']=="G" && $MpArr['rejected_by_photometry']=="false" && $MpArr['rejected_by_variability']=="false" ){
             $PtP_G=str_replace ( "," , "." ,strval($StarDetails[$MpArr['source_id']]['peak_to_peak_g']));
@@ -73,7 +73,7 @@ function calculate_light_curves($cepheid_FILE){
     //     $pf_star=str_replace ( "," , "." ,strval($periodes[$star['source_id']]));
 
     bcscale(6);
-    $Cepheid=array();
+    $Cepheid=[];
     $meanMag=bcdiv(strval(bcadd(bcsub($MagMin,$a_g_val),bcsub($MagMax,$a_g_val))),2);//-2.8; // -2.8 Extinktion
     $meanMagOhneAgVal=bcdiv(bcadd($MagMin,$MagMax),"2");
 //     echo "<br>Teff:$teff_val=>$pf=>$meanMag=$MagMin,$a_g_val,$MagMax";
@@ -118,7 +118,7 @@ function bclog10($n){
 
 function ParseCSV_to_AssocArray($path,$separator=","){
     $row = 1;
-    $AssocArray=array();
+    $AssocArray=[];
     if (($handle = fopen($path, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 0, $separator)) !== FALSE) {
             $num = count($data);

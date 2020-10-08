@@ -86,8 +86,8 @@ if(isset($_POST['btn_back']) && intval($_POST['btn_back'])==1){
 if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 
 
-	$insertArr=array();
-	$bsArr=array();
+	$insertArr=[];
+	$bsArr=[];
 	$insertArr['DesignTyp']=$_SESSION[$ftoken]['edit_DesignTyp'];
 	foreach($_POST as $key => $value){
 		if(is_array($value)){
@@ -95,7 +95,7 @@ if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 			$Block=$Blocks[0];
 			$ignoreKeyPartArr=array("img_hov_x_$Block","img_hov_y_$Block","img_hov_txt_$Block","img_hov_filename_$Block");
 			if(is_int(strpos($key,"hov_MarkID_$Block"))){
-				$valArr=array();
+				$valArr=[];
 				foreach($value as $markKey => $MarkID){
 					$valArr[$MarkID]["x"]=$_POST["img_hov_x_$Block"][$markKey];
 					$valArr[$MarkID]["y"]=$_POST["img_hov_y_$Block"][$markKey];
@@ -125,12 +125,12 @@ if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 		default:
 			if(isset($_POST['tnarr'])){
 				$tnArrTmp=$_POST['tnarr'];
-				$tnArr=array();
+				$tnArr=[];
 				foreach($tnArrTmp as $TN){
 					array_push($tnArr,intval($TN));
 				}
 			}else{
-				$tnArr=array();
+				$tnArr=[];
 			}
 			$insertArr['tnarr']=$tnArr;
 			break;
@@ -182,7 +182,7 @@ if($_SESSION[$ftoken]['edit_fID']>0){
 	$FolieArr=getFolieInfo_bytoken($ftoken);
 	$_SESSION[$ftoken]['edit_fID']=$FolieArr['fID'];
 	$AufgabeInfo=json_decode($FolieArr['parameter'],true);
-	// 	var_dump($AufgabeInfo);
+	
 	// 	echo "==".$_SESSION['bereitsgeladen']."==";
 	if(!isset($_SESSION[$ftoken]['bereitsgeladen'])){
 		// echo "Folie wird geladen";
@@ -244,10 +244,10 @@ if($_SESSION[$ftoken]['edit_fID']>0){
 }/* else{
 	echo "nix zum laden";
 } */
-// var_dump($_SESSION[$ftoken]);
+
 if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POST['DesignTyp']);}
 
-// var_dump($_SESSION[$ftoken]);
+
 
 
 
@@ -307,7 +307,6 @@ if(isset($_POST['DesignTyp'])){$_SESSION[$ftoken]['edit_DesignTyp']=intval($_POS
 							<form id="backForm" action="" method="POST" style="margin:0;">
 								<button type=submit  class='btn btn-success hidden-xs hidden-sm' name="btn_back" value=1>zurück</button>
 							</form>
-							<!--							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
 						</div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Präsentationsfolie hinzufügen</p></div>
 						<div class="col-md-1"></div>

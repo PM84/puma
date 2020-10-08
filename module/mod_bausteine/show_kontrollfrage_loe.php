@@ -39,7 +39,7 @@ if(isset($bInfo['antwortOption'])){
 		<input name='KoFra_Option_<?php echo $Block; ?>[]' id="opt_<?php echo $iLauf; ?>" type="checkbox" class='form-control' data-toggle='toggle' data-on='stimmt' data-off='stimmt nicht' data-onstyle='success' data-offstyle='danger' value='<?php echo $iLauf; ?>' disabled <?php if(in_array($iLauf+1,$abInfo['KoFra_Option_'.$Block])){echo "checked";} ?>>
 	</div>
 	<div class="col-md-1" >
-		<?php if((!in_array($iLauf+1,$abInfo['KoFra_Option_'.$Block]) && !in_array($iLauf+1,$bInfo['richtigeOption'])) || (in_array($iLauf+1,$bInfo['richtigeOption']) && in_array($iLauf+1,$abInfo['KoFra_Option_'.$Block]))){echo "<img src='/images/correct.png' height=32px;>";}else{echo "<img src='/images/wrong.png' height=32px;>";} ?>
+		<?php if((!in_array($iLauf+1,$abInfo['KoFra_Option_'.$Block]) && !in_array($iLauf+1,$bInfo['richtigeOption'])) || (in_array($iLauf+1,$bInfo['richtigeOption']) && in_array($iLauf+1,$abInfo['KoFra_Option_'.$Block]))){echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/correct.png' height=32px;>";}else{echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/wrong.png' height=32px;>";} ?>
 	</div>
 </div>
 <script>

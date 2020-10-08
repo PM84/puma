@@ -40,7 +40,7 @@ if($FB_fID>0){
 	$Bew_FolieArr=getFolieInfo($Bew_fID);
 	$task_fID=$Bew_FolieArr['zu_fID'];
 	$FolieArr=getFolieInfo($task_fID);
-	// 	var_dump($FolieArr);
+	
 	// 	 	echo $FolieArr['parameter'];
 	$AufgabeInfo=json_decode($FolieArr['parameter']);
 
@@ -65,7 +65,7 @@ if($FB_fID>0){
 // echo $abID;
 
 $abArrKor= getAbgabeInfos($Bew_fID);
-//  var_dump($abArrKor);
+
 ?>
 <html>
 	<head>
@@ -135,10 +135,10 @@ $abArrKor= getAbgabeInfos($Bew_fID);
 
 						<div id="comment" class="tab-pane fade">
 							<?php
-							// 								var_dump($abArr);
+							
 							foreach($abArrKor as $abgabeKor){
 
-								// 								var_dump($abgabeKor);
+								
 								$parameter=json_decode($abgabeKor['parameter']);
 								if(isset($parameter->kommentar)){
 									if(strlen($parameter->kommentar)>0){

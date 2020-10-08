@@ -97,7 +97,7 @@ $FBInfoArr=getAbgabeInfos($fID);
 						<div id="comment" class="tab-pane fade  in active">
 							<?php
 	$parameter_fb=json_decode($FBInfoArr[0]['parameter']);
-// 	var_dump($FBInfoArr);
+
 	if(isset($parameter_fb->kommentar)){
 		if(strlen($parameter_fb->kommentar)>0){
 							?>

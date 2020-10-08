@@ -12,7 +12,7 @@ function getSchulen_Liste(){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM schule_daten";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$retArr=array();
+	$retArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($retArr,$row);
 	}

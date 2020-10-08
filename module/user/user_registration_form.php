@@ -13,7 +13,7 @@ $Edit_uID = null;
 
 if (isset($_POST['name'])) {
 	if ($Edit_uID == null) {
-		// 	var_dump($_POST);
+		
 		$name = mysqli_real_escape_string($verbindung, htmlentities(mynl2br($_POST['name']), ENT_QUOTES, "UTF-8"));
 		$vname = mysqli_real_escape_string($verbindung, htmlentities(mynl2br($_POST['vname']), ENT_QUOTES, "UTF-8"));
 		$geschlecht = mysqli_real_escape_string($verbindung, htmlentities(mynl2br($_POST['geschlecht']), ENT_QUOTES, "UTF-8"));

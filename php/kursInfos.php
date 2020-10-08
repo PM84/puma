@@ -45,7 +45,7 @@ function GetKursListeInfos($uID,$KursTyp=1,$all=0){
 
 	$query="SELECT * FROM kurs_uID_match WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query." => ".mysqli_error($verbindung));
-	$KursArray=array();
+	$KursArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$kursID=$row['kursID'];
 		$KursInfo=GetKursInfos($kursID);
@@ -109,7 +109,7 @@ function shared_Kurse_Liste_Infos(){
 
 	$query="SELECT * FROM kurs_share WHERE share_group=2";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$KursArray=array();
+	$KursArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$kursID=$row['kursID'];
 		$KursInfo=GetKursInfos($kursID);
@@ -131,9 +131,9 @@ function shared_Kurse_Liste_Infos(){
 }
 
 function get_kursIDs_from_Kurse_Liste_Infos($Kurse_Liste_Infos){
-	$kursIDs=array();
+	$kursIDs=[];
 	foreach($Kurse_Liste_Infos as $Kurs){
-		// 		var_dump($Kurs);
+		
 		array_push($kursIDs,$Kurs['kursID']);
 	}
 	return $kursIDs;
@@ -144,13 +144,13 @@ function shared_Kurse_Liste_Infos_filtered($search_arr){
 	$SharedKurseInfos=shared_Kurse_Liste_Infos();
 	$KursIDs=get_kursIDs_from_Kurse_Liste_Infos($SharedKurseInfos);
 
-	$query_part_ids=array();
+	$query_part_ids=[];
 	foreach($KursIDs as $kursID_tmp){
 		array_push($query_part_ids," kursID = $kursID_tmp ");
 	}
 	$searchstr_ids=join(" OR ",$query_part_ids);
 
-	$query_part=array();
+	$query_part=[];
 	foreach($search_arr as $searchtmp){
 		array_push($query_part,"(beschreibung LIKE '%$searchtmp%' OR titel LIKE '%$searchtmp%')");
 	}
@@ -158,7 +158,7 @@ function shared_Kurse_Liste_Infos_filtered($search_arr){
 
 	$query="SELECT * FROM kurs WHERE ($searchstr) AND ($searchstr_ids)";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$KursArray=array();
+	$KursArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$kursID=$row['kursID'];
 		$KursInfo=GetKursInfos($kursID);

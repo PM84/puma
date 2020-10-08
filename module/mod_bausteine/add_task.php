@@ -5,7 +5,7 @@
 // ========================
 // ========================
 
-// var_dump($_POST);
+
 
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
@@ -38,7 +38,7 @@ if(isset($_GET['bTypID'])){
 }else{
 	$bTypInfo=getBausteinTypInfo($_SESSION['edit_bTypID']);
 }
-// var_dump($bTypInfo);
+
 
 
 
@@ -47,13 +47,13 @@ if(isset($_GET['bTypID'])){
 // ========================
 // ====== BAUSTEIN EINTRAGEN
 // ========================
-// var_dump($_POST);
+
 if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 	if(isset($_POST['smBut_stay'])){
 		$stayOnSite=1;
 	}else{$stayOnSite=0;}
 
-	$insertArr=array();
+	$insertArr=[];
 
 
 	foreach($_POST as $key => $value){
@@ -62,7 +62,7 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 			$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
 			$insertArr[$Tempkey]=$Tempvalue;
 		}else{
-			$tempArr=array();
+			$tempArr=[];
 			foreach($value as $option){
 				array_push($tempArr,mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($option), ENT_QUOTES , "UTF-8")));
 			}
@@ -73,8 +73,8 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 	// Aussagen ordnen
 	if(isset($_POST['BS_Typ'])&& $_POST['BS_Typ']=="StatementOrder"){
 // 		echo "<hr>";
-// 		var_dump($_POST['antwortOption']);
-		$insertArr['order']=array();
+
+		$insertArr['order']=[];
 		if(isset($_POST['StatementOrder']) && !$_POST['StatementOrder']==0){
 			$antwortOptionIDs=json_decode($_POST['StatementOrder'],true);
 			foreach($antwortOptionIDs as $optionID){
@@ -89,7 +89,7 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 		}
 
 		$insertArr['CombinedOptions']=array_combine ( $insertArr['order'] , $insertArr['antwortOption'] );
-// var_dump($insertArr['CombinedOptions']);
+
 
 		unset($insertArr['StatementOrder']);
 		unset($insertArr['BS_Typ']);
@@ -97,7 +97,7 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 
 	// YouTube Video-ID ermitteln
 	if(isset($_POST['ytlink'])){
-		$YouTube=array();
+		$YouTube=[];
 		$ytLink=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['ytlink']), ENT_QUOTES , "UTF-8"));
 		preg_match('/[\\?\\&]v=([^\\?\\&]+)/',$ytLink, $matches);
 		$ytID = mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($matches[1]), ENT_QUOTES , "UTF-8"));
@@ -138,7 +138,7 @@ if(isset($_POST['smBut']) or isset($_POST['smBut_stay'])){
 
 if(isset($_SESSION['edit_bID'])){
 	$bsInfoRow=getBausteinInfo($_SESSION['edit_bID']);
-// 	 	var_dump($bsInfoRow);
+
 	$bsInfo=json_decode($bsInfoRow['parameter'],true);
 }
 

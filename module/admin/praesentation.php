@@ -66,7 +66,7 @@ if(isset($_POST['saved'])){
 // ========================
 // ====== PRÄSENTATIONSEINSTELLUNGEN LADEN
 // ========================
-// var_dump($_POST);
+
 if(isset($_POST['action']) && $_POST['action']=="edit"){
 	// isset($_POST['fID_praes']) &&
 	$_SESSION['fID_praes']=intval($_POST['fID_praes']);
@@ -78,7 +78,7 @@ if(isset($_POST['action']) && $_POST['action']=="edit"){
 // ========================
 // ====== FOLIE LÖSCHEN
 // ========================
-// var_dump($_POST);
+
 if(isset($_POST['action']) && $_POST['action']=="delete"){
 	// isset($_POST['fID_praes']) &&
 	$del_fID=intval($_POST['fID_praes']);
@@ -197,9 +197,9 @@ if(isset($_POST['action']) && $_POST['action']=="aktivStatus"){
 
 					<div class="row grid totWidth" style=margin-left:0>
 						<?php
-						// 						var_dump($FolienListe);
+						
 						foreach($FolienListe as $folie){
-							// 							var_dump($folie);
+							
 							$parameter=json_decode($folie['parameter']);
 							if(isset($folie['noOrder'])){
 

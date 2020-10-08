@@ -101,8 +101,8 @@ if(isset($_SESSION['eig_vID'])){
 
 if(isset($_POST['beschreibung'])){
 	// 	echo intval($_POST['KorrTask']);
-	// 	var_dump($_POST);
-	$taskArr=array();
+	
+	$taskArr=[];
 	// 	if(isset($_POST['vID']) &&intval($_POST['vID'])>0 ){
 	// 		$taskArr['vID']=intval($_POST['vID']);
 	// 	}else{
@@ -128,11 +128,11 @@ if(isset($_POST['beschreibung'])){
 		default:
 			if(isset($_POST['tnarr'])){
 				$tnArrTmp=$_POST['tnarr'];
-				$tnArr=array();
+				$tnArr=[];
 				foreach($tnArrTmp as $TN){
 					array_push($tnArr,intval($TN));
 				}}else{
-				$tnArr=array();
+				$tnArr=[];
 			}
 			$taskArr['tnarr']=$tnArr;
 			break;
@@ -147,14 +147,14 @@ if(isset($_POST['beschreibung'])){
 
 	$fGroups=$_POST['fGroups'];
 	if(isset($_POST['fGroups'])){
-		$fGroupsArr=array();
+		$fGroupsArr=[];
 		foreach($fGroups as $frageGruppeID){
 			array_push($fGroupsArr,intval($frageGruppeID));
 		}
 	}
 	$taskArr['fGroupsArr']=$fGroupsArr;
 
-	$fArr=array();
+	$fArr=[];
 	if(isset($_POST['fIDs'])){
 		$FragenIDs=$_POST['fIDs'];
 		foreach($FragenIDs as $frageID){
@@ -311,7 +311,7 @@ if(isset($_POST['beschreibung'])){
 								<div class="panel-body">
 									<?php
 							foreach($videos as $video){
-								// 							var_dump($video);
+								
 								if(in_array($thema->themaID,$video->themen)){
 									$status=1;
 									?>
@@ -392,7 +392,7 @@ if(isset($_POST['beschreibung'])){
 						$fragen=getFragenByUser($_SESSION['uID']);
 						foreach($fragen as $frage){
 
-							// 									var_dump($frage);
+							
 							$frageParameter=json_decode($frage['parameter']);
 								?>
 								<option value="<?php echo $frage['FrageID']; ?>" <?php if(isset($AufgabeInfo)){if(is_array($AufgabeInfo->fArr)){if(in_array($frage['FrageID'],$AufgabeInfo->fArr)){echo "selected";} }}?>><?php echo html_entity_decode ($frageParameter->titel, ENT_QUOTES , "UTF-8"); ?></option>

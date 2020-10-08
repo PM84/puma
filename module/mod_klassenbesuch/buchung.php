@@ -10,12 +10,12 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/m
 $TerminInfo=getTermin_by_TerminID($_SESSION['TerminID']);
 $Termin_parameter=json_decode($TerminInfo['parameter'],true);
 
-// var_dump($TerminInfo);
+
 $Buchungen=getBuchungen_by_TerminID($_SESSION['TerminID']);
 
 if(isset($_POST['BuchungsID'])){
-	// 	var_dump($_POST);
-	$insertArr=array();
+	
+	$insertArr=[];
 	foreach($_POST as $key => $value){
 		$Tempkey=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
 		$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
@@ -24,7 +24,7 @@ if(isset($_POST['BuchungsID'])){
 	$insertArr['SchulNr']=intval($insertArr['SchulNr']);
 	if($insertArr['SchulNr']==0){$insertArr['SchulNr']=intval($_POST['SchulName']);}
 
-	$parameter=array();
+	$parameter=[];
 	$parameter['bem']=$insertArr['bem'];
 	$parameter['JgSt']=$insertArr['JgSt'];
 
@@ -73,7 +73,7 @@ if(isset($_POST['BuchungsID'])){
 	emailSenden($TerminInfo['betreuer_mail'],array($imap_user_name,$insertArr['email'],$TerminInfo['betreuer_mail']),$subject, $message);
 
 	$SchulInfo=getSchulInfo_by_SchulNr($insertArr['SchulNr']);
-	// 	var_dump($SchulInfo);
+	
 	if(count($Buchungen)==0){
 		//BUCHUNG
 		$subject_dozent="Anmeldung zum Klassenbesuch - HINWEISE FÜR DOZENTEN";

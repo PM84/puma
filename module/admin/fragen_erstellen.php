@@ -82,8 +82,8 @@ if(isset($_POST['action']) && $_POST['action']=="f_import"){
 
 if(isset($_POST['action']) && ($_POST['action']=="range" or $_POST['action']=="input")){
 	if(isset($_POST['titel']) && isset($_POST['FrageTXT'])){
-		$PostArr=array();
-		$GroupArr=array();
+		$PostArr=[];
+		$GroupArr=[];
 		foreach($_POST as $key => $val){
 			if(strpos($key,"FrageGroupsSel")===FALSE){
 				$PostArr[$key]=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($val), ENT_QUOTES , "UTF-8"));
@@ -224,13 +224,13 @@ if(isset($_SESSION['FrageID'])){
 									<?php
 							$FrageArr=getFragenByGroups(intval($fGroup['FGroupID']));
 							foreach($FrageArr as $FrageID){
-								// 							var_dump($video);
+								
 								/* 							if(in_array($thema->themaID,$video->themen)){
  */								$status=1;
-								$FrageMenuInfo=array();
+								$FrageMenuInfo=[];
 								$FrageInfoRow=getFrageInfo($FrageID);
 								$FrageInfoPanel=json_decode($FrageInfoRow['parameter']);
-								// 								var_dump($frage['parameter']);
+								
 								// 								$FrageMenuInfo=json_decode($frage['parameter']);
 									?>
 									<form action='' method="POST" style='margin:0;'>
@@ -276,7 +276,7 @@ if(isset($_SESSION['FrageID'])){
 									<?php
 									$FragenArr=getFragenByUser($uID);
 									foreach($FragenArr as $frage){
-										$FrageMenuInfo=array();
+										$FrageMenuInfo=[];
 										$FrageMenuInfo=json_decode($frage['parameter']);
 									?>
 									<form action='' method="POST" style='margin:2px 0 0 0;'>

@@ -16,7 +16,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/
 
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 $SessionInfos = Get_SessionInfos($_SESSION['s']);
-// var_dump($SessionInfos);
+
 $uID = $SessionInfos['uID'];
 
 $userInfos = getUserInfos($uID);
@@ -107,7 +107,7 @@ if (isset($_POST['fID'])) {
 					$folienArr = getFolienListeInfos($_SESSION['k']);
 					if (count($folienArr) > 0) {
 				?>
-						<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php?kt=" <?php echo $aktKursInfo['kursToken']; ?>&t="<?php echo $preview_teilnehmer_infos['token']; ?>" class="btn btn-primary btn-block" target="blank"><span class="glyphicon glyphicon-eye-open" style="margin-right:20px;"></span>Vorschau</a>
+						<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/index.php?kt=<?php echo $aktKursInfo['kursToken']; ?>&t=<?php echo $preview_teilnehmer_infos['token']; ?>" class="btn btn-primary btn-block" target="blank"><span class="glyphicon glyphicon-eye-open" style="margin-right:20px;"></span>Vorschau</a>
 						<?php
 					}
 					foreach ($folienArr as $folie) {

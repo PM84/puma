@@ -27,12 +27,12 @@ function get_Statistik_konfidentschart_evaluation($fID,$Block){
 	$FrArr=getAlleVerwendeteFragen_Evaluation($fID,$Block);
 	// 	$FrArr=array(17,26);
 	// 	echo "==========x";
-	// 	 	var_dump($FrArr);
+	
 	// 	echo "x==========";
 	$FragenArr=$FrArr['FragenArr'];
 	$FragenWerte=$FrArr['FragenWerte'];
 	$FragenInfoArr=$FrArr['FragenInfoArr'];
-	$retArray=array();
+	$retArray=[];
 	foreach($FragenArr as $frage){
 		$n=count($FragenWerte[$frage]);
 		$MW=getMittelwert($FragenWerte[$frage]);
@@ -42,10 +42,10 @@ function get_Statistik_konfidentschart_evaluation($fID,$Block){
 	}
 
 	// Auswertung aller DOZENTEN wird erstellt
-	// 	var_dump($FragenWerte);
+	
 	$FragenWerte=$FrArr['Dozent_FragenWerteArr'];
-	// 		var_dump($FragenWerte);
-	$Dozent_retArray=array();
+	
+	$Dozent_retArray=[];
 	if(count($FragenWerte)>0){
 		foreach($FragenArr as $frage){
 			$n=count($FragenWerte[$frage]);
@@ -55,18 +55,18 @@ function get_Statistik_konfidentschart_evaluation($fID,$Block){
 			array_push($Dozent_retArray,array("FrageID"=> $frage, "n" => $n, "MW"=>$MW, "StdAbw" => $StdAbw, "Varianz" => $Var,"FragenInfoArr"=>$FragenInfoArr));
 		}
 	}
-	// 	var_dump($Dozent_retArray);
-	$retArray['dozent']=array();
+	
+	$retArray['dozent']=[];
 	if(isset($Dozent_retArray[0]['n']) && $Dozent_retArray[0]['n']>0){
 		$retArray['dozent']=$Dozent_retArray;
 	}
 	// 	echo "==>";
-	// 	var_dump($retArray['dozent']);
+	
 	// 		echo "<==";
 	// Auswertung OWN-Values
 	$FragenWerte=$FrArr['own'];
-	// 	var_dump($FragenWerte);
-	$retArray['own']=array();
+	
+	$retArray['own']=[];
 	if(count($FragenWerte)>0){
 		$retArray['own']=$FragenWerte;
 	}
@@ -74,13 +74,13 @@ function get_Statistik_konfidentschart_evaluation($fID,$Block){
 	$retArray['FragenInfoArr']=$FragenInfoArr;
 
 	$FragenWerte=$FrArr['input_Arr'];
-	$retArray['input_Arr']=array();
+	$retArray['input_Arr']=[];
 	if(count($FragenWerte)>0){
 		$retArray['input_Arr']=$FragenWerte;
 	}
 
 	// 	echo "==>";
-	// 	var_dump($retArray['own']);
+	
 	// 		echo "<==";
 	return $retArray;
 
@@ -90,15 +90,15 @@ function get_Statistik_konfidentschart($zu_abID,$Bew_fID){
 	$FrArr=getAlleVerwendeteFragen($zu_abID,$Bew_fID);
 	// 	$FrArr=array(17,26);
 	// 	echo "==========x";
-	// 	var_dump($FrArr);
+	
 	// 	echo "x==========";
 	$FragenArr=$FrArr['FragenArr'];
 	$FragenWerte=$FrArr['FragenWerte'];
 	$FragenInfoArr=$FrArr['FragenInfoArr'];
 
-	// var_dump($FragenInfoArr);
+	
 	// Auswertung aller Teilnehmer wird erstellt
-	$retArray=array();
+	$retArray=[];
 	foreach($FragenArr as $frage){
 		$n=count($FragenWerte[$frage]);
 		$MW=getMittelwert($FragenWerte[$frage]);
@@ -108,10 +108,10 @@ function get_Statistik_konfidentschart($zu_abID,$Bew_fID){
 	}
 
 	// Auswertung aller DOZENTEN wird erstellt
-	// 	var_dump($FragenWerte);
+	
 	$FragenWerte=$FrArr['Dozent_FragenWerteArr'];
-	// 		var_dump($FragenWerte);
-	$Dozent_retArray=array();
+	
+	$Dozent_retArray=[];
 	if(count($FragenWerte)>0){
 		foreach($FragenArr as $frage){
 			$n=count($FragenWerte[$frage]);
@@ -121,24 +121,24 @@ function get_Statistik_konfidentschart($zu_abID,$Bew_fID){
 			array_push($Dozent_retArray,array("FrageID"=> $frage, "n" => $n, "MW"=>$MW, "StdAbw" => $StdAbw, "Varianz" => $Var,"FragenInfoArr"=>$FragenInfoArr));
 		}
 	}
-	// 	var_dump($Dozent_retArray);
-	$retArray['dozent']=array();
+	
+	$retArray['dozent']=[];
 	if(isset($Dozent_retArray[0]['n']) && $Dozent_retArray[0]['n']>0){
 		$retArray['dozent']=$Dozent_retArray;
 	}
 	// 	echo "==>";
-	// 	var_dump($retArray['dozent']);
+	
 	// 		echo "<==";
 	// Auswertung OWN-Values
 	$FragenWerte=$FrArr['own'];
-	// 	var_dump($FragenWerte);
-	$retArray['own']=array();
+	
+	$retArray['own']=[];
 	if(count($FragenWerte)>0){
 		$retArray['own']=$FragenWerte;
 	}
 
 	// 	echo "==>";
-	// 	var_dump($retArray['own']);
+	
 	// 		echo "<==";
 	return $retArray;
 }
@@ -148,14 +148,14 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 	// echo "Test";
-	$Dozent_FragenWerteArr=array();
+	$Dozent_FragenWerteArr=[];
 	$dozentArr=getDozent_tnInfos(1);
-	$dozentTokenArr=array();
-	$own_FragenWerteArr=array();
+	$dozentTokenArr=[];
+	$own_FragenWerteArr=[];
 	foreach($dozentArr as $dozent){
 		array_push($dozentTokenArr,$dozent['token']);
 	}
-	// 	var_dump($dozentArr);
+	
 	// echo $fID;
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 		echo "===>$zu_abID<===";
@@ -166,9 +166,9 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 	}
 	//  		echo $query;
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$inputArr=array();
-	$FragenArr=array();
-	$FragenWerteArr=array();
+	$inputArr=[];
+	$FragenArr=[];
+	$FragenWerteArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		//  		echo $row['parameter'];
 		// 		echo "FragenWerte_$Block";
@@ -178,7 +178,7 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 			/* 
 		if($row['token']==$_SESSION['t']){
 			//	Die eigenen Antworten werden in das Return Array geschrieben. 
-			$FragenInfoArr["own"]=array();
+			$FragenInfoArr["own"]=[];
 			$FragenInfoArr["own"]=$FragenWerte;
 		}
  */	
@@ -192,8 +192,8 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 						}
 						if(!isset($FragenWerteArr[$key]) || !is_array($FragenWerteArr[$key])){
 							//	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-							$FragenWerteArr[$key]=array();
-							$FragenInfoArr[$key]=array();
+							$FragenWerteArr[$key]=[];
+							$FragenInfoArr[$key]=[];
 						}
 						//	die Fragen Details (Titel Text etc.) werden in das Rückmelde Array geschrieben.
 						array_push($FragenInfoArr[$key],json_decode($FrageInfo['parameter'],true));
@@ -202,14 +202,14 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 						if(in_array($row['token'],$dozentTokenArr)){
 							if(!isset($Dozent_FragenWerteArr[$key]) || !is_array($Dozent_FragenWerteArr[$key])){
 								//	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-								$Dozent_FragenWerteArr[$key]=array();
+								$Dozent_FragenWerteArr[$key]=[];
 							}
 							array_push($Dozent_FragenWerteArr[$key],$value);
 						}
 						if($row['token']==$_SESSION['t']){
 							// 		 if(isset($own_FragenWerteArr[$key]) || !is_array($own_FragenWerteArr[$key]) ){
 							//	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-							$own_FragenWerteArr[$key]=array();
+							$own_FragenWerteArr[$key]=[];
 							// 				}
 							$own_FragenWerteArr[$key]=$value;
 						}
@@ -217,8 +217,8 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 					case 3:
 						if(!isset($inputArr[$key]) || !is_array($inputArr[$key])){
 							//	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-							$inputArr[$key]=array();
-							$FragenInfoArr[$key]=array();
+							$inputArr[$key]=[];
+							$FragenInfoArr[$key]=[];
 						}
 						array_push($inputArr[$key],$value);
 						array_push($FragenInfoArr[$key],json_decode($FrageInfo['parameter'],true));
@@ -228,7 +228,7 @@ function getAlleVerwendeteFragen_Evaluation($fID,$Block){
 		}
 	}
 	// 	echo "==========";
-	//  var_dump($Dozent_FragenWerteArr);
+	
 	// 	echo "==========";
 	return array("FragenWerte"=>$FragenWerteArr, "FragenArr" => $FragenArr,"FragenInfoArr"=>$FragenInfoArr,"Dozent_FragenWerteArr"=>$Dozent_FragenWerteArr,"own"=>$own_FragenWerteArr,"input_Arr"=>$inputArr);
 }
@@ -238,14 +238,14 @@ function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
 	// echo "Test";
-	$Dozent_FragenWerteArr=array();
+	$Dozent_FragenWerteArr=[];
 	$dozentArr=getDozent_tnInfos(1);
-	$dozentTokenArr=array();
-	$own_FragenWerteArr=array();
+	$dozentTokenArr=[];
+	$own_FragenWerteArr=[];
 	foreach($dozentArr as $dozent){
 		array_push($dozentTokenArr,$dozent['token']);
 	}
-	// 	var_dump($dozentArr);
+	
 
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 		echo "===>$zu_abID<===";
@@ -257,14 +257,14 @@ function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	// 		echo $query;
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 
-	$FragenArr=array();
-	$FragenWerteArr=array();
+	$FragenArr=[];
+	$FragenWerteArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$parameter=json_decode($row['parameter'],true);
 		$FragenWerte=$parameter['FragenWerte'];
 		/* 		if($row['token']==$_SESSION['t']){
 			//	Die eigenen Antworten werden in das Return Array geschrieben. 
-			$FragenInfoArr["own"]=array();
+			$FragenInfoArr["own"]=[];
 			$FragenInfoArr["own"]=$FragenWerte;
 		}
  */		foreach($FragenWerte as $key=>$value){
@@ -274,8 +274,8 @@ function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	 }
 	 if(!isset($FragenWerteArr[$key]) || !is_array($FragenWerteArr[$key])){
 		 //	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-		 $FragenWerteArr[$key]=array();
-		 $FragenInfoArr[$key]=array();
+		 $FragenWerteArr[$key]=[];
+		 $FragenInfoArr[$key]=[];
 	 }
 	 //	die Fragen Details (Titel Text etc.) werden in das Rückmelde Array geschrieben.
 	 $FrageInfo=getFrageInfo($key);
@@ -285,21 +285,21 @@ function getAlleVerwendeteFragen($zu_abID,$Bew_fID){
 	 if(in_array($row['token'],$dozentTokenArr)){
 		 if(!isset($Dozent_FragenWerteArr[$key]) || !is_array($Dozent_FragenWerteArr[$key])){
 			 //	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-			 $Dozent_FragenWerteArr[$key]=array();
+			 $Dozent_FragenWerteArr[$key]=[];
 		 }
 		 array_push($Dozent_FragenWerteArr[$key],$value);
 	 }
 	 if($row['token']==$_SESSION['t']){
 		 // 		 if(isset($own_FragenWerteArr[$key]) || !is_array($own_FragenWerteArr[$key]) ){
 		 //	ein Unterarray wird erstellt, das im Anschluss gefüllt werden kann.
-		 $own_FragenWerteArr[$key]=array();
+		 $own_FragenWerteArr[$key]=[];
 		 // 				}
 		 $own_FragenWerteArr[$key]=$value;
 	 }
  }
 	}
 	// 	echo "==========";
-	// 	var_dump($Dozent_FragenWerteArr);
+	
 	// 	echo "==========";
 	return array("FragenWerte"=>$FragenWerteArr, "FragenArr" => $FragenArr,"FragenInfoArr"=>$FragenInfoArr,"Dozent_FragenWerteArr"=>$Dozent_FragenWerteArr,"own"=>$own_FragenWerteArr);
 }

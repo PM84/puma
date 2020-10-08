@@ -12,7 +12,7 @@ $uniqueID=htmlspecialchars($_POST['uniqueID'], ENT_QUOTES);
 rename($tmp_filename,$_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/audio/$ZielDateiname");
 chmod($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/audio/$ZielDateiname",0755);
 
-$audioArr=array();
+$audioArr=[];
 $query="SELECT * FROM abgabe WHERE fID='$fID' and token='$token'";
 $ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 if(mysqli_num_rows($ergebnis)==1){
@@ -20,7 +20,7 @@ if(mysqli_num_rows($ergebnis)==1){
 	$parameter=json_decode($row['parameter']);
 	$audioArr=$parameter->audioArr;
 	if($audioArr===NULL){
-		$audioArr=array();
+		$audioArr=[];
 	}
 }
 

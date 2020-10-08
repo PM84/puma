@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -49,8 +49,8 @@ if(isset($_GET['f'])){
 
 if(isset($_POST['beschreibung'])){
 	// 	echo intval($_POST['KorrTask']);
-	// 	var_dump($_POST);
-	$taskArr=array();
+	
+	$taskArr=[];
 	// 	if(isset($_POST['vID']) &&intval($_POST['vID'])>0 ){
 	// 		$taskArr['vID']=intval($_POST['vID']);
 	// 	}else{
@@ -77,12 +77,12 @@ if(isset($_POST['beschreibung'])){
 		default:
 			if(isset($_POST['tnarr'])){
 				$tnArrTmp=$_POST['tnarr'];
-				$tnArr=array();
+				$tnArr=[];
 				foreach($tnArrTmp as $TN){
 					array_push($tnArr,intval($TN));
 				}
 			}else{
-				$tnArr=array();
+				$tnArr=[];
 			}
 			$taskArr['tnarr']=$tnArr;
 			break;
@@ -141,7 +141,7 @@ $_SESSION[$ftoken]['edit_fID']=$FolieArr['fID'];
 if(isset($_SESSION[$ftoken]['edit_fID'])){
 	$FolieArr=getFolieInfo(intval($_SESSION[$ftoken]['edit_fID']));
 	$AufgabeInfo=json_decode($FolieArr['parameter']);
-	// 	var_dump($AufgabeInfo);
+	
 	if(isset($AufgabeInfo->vID)){$_SESSION['vID']=$AufgabeInfo->vID;}
 }
 
@@ -236,7 +236,6 @@ if(isset($_POST['tem_vID'])){
 
 		<div class="container" style="margin-bottom:150px;">
 			<div class="row">
-				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-3">
@@ -247,11 +246,9 @@ if(isset($_POST['tem_vID'])){
 						<div class="col-md-1"></div>
 					</div>
 				</div>
-				<!--<div class="col-md-1"></div>//-->
 			</div>
 
 			<div class="row" style=''>
-				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-4">
 					<p class="lead" style='margin:0'>Video auswählen</p>
 					<div class="panel-group" id="accordion">
@@ -276,7 +273,7 @@ if(isset($_POST['tem_vID'])){
 								<div class="panel-body">
 									<?php
 							foreach($videos as $video){
-								// 							var_dump($video);
+								
 								if(in_array($thema->themaID,$video->themen)){
 									$status=1;
 									?>

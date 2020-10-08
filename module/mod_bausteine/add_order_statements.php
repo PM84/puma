@@ -5,7 +5,7 @@
 // ========================
 // ========================
 
-// var_dump($bsInfo);
+
 
 ?>
 <script src="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/js/jqueryUI/jquery-ui.js"></script>
@@ -32,7 +32,7 @@
 
 				<?php 
 				if(isset($bsInfo['CombinedOptions'])){
-					// 					var_dump($bsInfo['CombinedOptions']);
+					
 					// 					for ( $iLauf=0; $iLauf<count($bsInfo['antwortOption']); $iLauf++ ){ 
 					foreach($bsInfo['CombinedOptions'] as $StatementID=>$StatementTXT){
 						include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_order_statements_options.php");

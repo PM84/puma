@@ -11,11 +11,11 @@ function getFrageInfo($FrageID){
 
 function getFragenByUser($uID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$fragenArray=array();
+	$fragenArray=[];
 	$query="SELECT * FROM fragen WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	while($row=mysqli_fetch_assoc($ergebnis)){
-		// 		var_dump($row);
+		
 		array_push($fragenArray,$row);
 	}
 	return $fragenArray;
@@ -55,11 +55,11 @@ function InsertFrageGruppe($uID,$PostJson){
 
 function Get_Fragen_Gruppen($uID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$groupArray=array();
+	$groupArray=[];
 	$query="SELECT * FROM fragen_groups WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	while($row=mysqli_fetch_assoc($ergebnis)){
-		// 		var_dump($row);
+		
 		array_push($groupArray,$row);
 	}
 	return $groupArray;
@@ -74,8 +74,8 @@ function InsertGroupMatches($GroupArr=array(),$FrageID){
 
 	foreach($GroupArr as $group){
 		// 		$FGroupID=
-		// 		var_dump($GroupArr);
-		// 		var_dump($group);
+		
+		
 		$query="INSERT INTO fragen_groups_fragen_match (FGroupID,FrageID) VALUES ('$group','$FrageID')";
 		$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	}
@@ -93,7 +93,7 @@ function getFrageGroupsByFrageID($FrageID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen_groups_fragen_match WHERE FrageID=$FrageID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$groupArray=array();
+	$groupArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($groupArray,$row['FGroupID']);
 	}
@@ -112,7 +112,7 @@ function getFragenByGroups($FGroupID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM fragen_groups_fragen_match WHERE FGroupID=$FGroupID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$FrageArray=array();
+	$FrageArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($FrageArray,$row['FrageID']);
 	}
@@ -128,18 +128,18 @@ function import_txt_frageListe($csvFile,$del_Fragen_in_Fragegruppen){
 		set_time_limit(0);
 
 		$row = 0;
-		$delFGroupArr=array();
+		$delFGroupArr=[];
 
 		while(($data = fgetcsv($handle, 1000, ';')) !== FALSE) {
 			if($row==0){
-				// 					var_dump($data);
+				
 				$colTitelArr=get_col_titel_from_first_row($data);
-// 				var_dump($colTitelArr);
+
 			}else{
 				// number of fields in the csv
 				//                 $col_count = count($data);
-				$PostArr=array();
-				// $FrageGruppe=array();
+				$PostArr=[];
+				// $FrageGruppe=[];
 				foreach($colTitelArr as $colTitel => $colID){
 					if($colTitel!="FrageGruppe"){
 						switch($colTitel){
@@ -196,7 +196,7 @@ function import_txt_frageListe($csvFile,$del_Fragen_in_Fragegruppen){
 				}
 				$PostJson=json_encode($PostArr);
 				// 				echo $PostJson;
-				// 				var_dump($FrageGruppe);
+				
 				$FrageID=InsertFrage($_SESSION['uID'],intval($PostArr['SkalaTyp']),$PostJson);
 
 				if($del_Fragen_in_Fragegruppen==1){
@@ -223,6 +223,5 @@ function import_txt_frageListe($csvFile,$del_Fragen_in_Fragegruppen){
 		}
 		fclose($handle);
 	}
-	// 	var_dump ($csv);
 
 }

@@ -2,7 +2,7 @@
 
 function insert_baustein_folie_match($fID,$bsArray){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$insertArr=array();
+	$insertArr=[];
 	foreach($bsArray as $key => $value){
 		array_push($insertArr,"($fID,'$key','$value')");
 	}
@@ -13,7 +13,7 @@ function insert_baustein_folie_match($fID,$bsArray){
 
 function get_bIDs_from_match($fID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$bsArray=array();
+	$bsArray=[];
 	$query="SELECT * FROM baustein_folie_position_match where fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query."==".mysqli_error($verbindung));
 	while($row=mysqli_fetch_assoc($ergebnis)){
@@ -24,7 +24,7 @@ function get_bIDs_from_match($fID){
 
 function getBausteineTypen($aktiv=1,$show=1){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$bsArray=array();
+	$bsArray=[];
 	$query="SELECT * FROM bausteine_typen where aktiv=$aktiv AND `show`=$show";
 	$ergebnis=mysqli_query($verbindung,$query) or die($query."==".mysqli_error($verbindung));
 	while($row=mysqli_fetch_assoc($ergebnis)){
@@ -35,7 +35,7 @@ function getBausteineTypen($aktiv=1,$show=1){
 
 function getBausteinTypInfo($bTypID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
-	$bsArray=array();
+	$bsArray=[];
 	$query="SELECT * FROM bausteine_typen where aktiv=1 AND bTypID='$bTypID'";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
@@ -55,14 +55,12 @@ function getBausteineListeInfos($uID,$gruppiert=1){
 
 	$query="SELECT * FROM bausteine WHERE uID=$uID order by bID DESC";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$bsArray=array();
+	$bsArray=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$bID=$row['bID'];
 		$bsInfo=getBausteinInfo($bID);
-		// 		var_dump($bsInfo);
 		if($gruppiert==1){
-			// 			echo $bsInfo['bTypID'];
-			if(count($bsArray)==0 || !isset($bsArray[$bsInfo['bTypID']])){$bsArray[$bsInfo['bTypID']]=array();}
+			if(count($bsArray)==0 || !isset($bsArray[$bsInfo['bTypID']])){$bsArray[$bsInfo['bTypID']]=[];}
 			array_push($bsArray[$bsInfo['bTypID']],$bsInfo);
 		}else{
 			array_push($bsArray,$bsInfo);

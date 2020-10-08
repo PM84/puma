@@ -125,8 +125,7 @@ $parameter=json_decode($folieInfo['parameter']);*/
 
 	// ========================
 	// ====== ABGEBEN
-	// ========================
-	// 	 var_dump($_POST);
+	
 	if(isset($_POST['abgegeben'])){
 		if($_POST['abgegeben']==1){$abgegeben=1;}else{$abgegeben=0;}
 		$fID=$_SESSION['fID'];
@@ -146,8 +145,8 @@ $parameter=json_decode($folieInfo['parameter']);*/
 			$parameter_insert=array("abgegeben"=>$abgegeben);
 		}
 		// 	$parameter_insert['abgegeben']=1;
-		// var_dump($_POST);
-		$FragenWerte=array();
+		
+		$FragenWerte=[];
 		foreach($_POST as $key => $value){
 			if($key!="submit"){
 				$Tempkey=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
@@ -155,14 +154,14 @@ $parameter=json_decode($folieInfo['parameter']);*/
 				if(!is_array($value)){
 					$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
 				}else{
-					$tempArr=array();
+					$tempArr=[];
 					foreach($value as $option){
 						array_push($tempArr,mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($option), ENT_QUOTES , "UTF-8")));
 					}
 					$Tempvalue=$tempArr;
 				}
 				if(strpos($Tempkey,"Cloud")!==false){
-					if(isset($parameter_insert[$Tempkey])){$WC_ArrTemp=$parameter_insert[$Tempkey];}else{$WC_ArrTemp=array();}
+					if(isset($parameter_insert[$Tempkey])){$WC_ArrTemp=$parameter_insert[$Tempkey];}else{$WC_ArrTemp=[];}
 					$Tempvalue=strip_tags($Tempvalue);
 					$Tempvalue=removeWhiteSpacesVorKomma($Tempvalue);
 					$WC_Arr=explode(",",$Tempvalue);
@@ -174,7 +173,7 @@ $parameter=json_decode($folieInfo['parameter']);*/
 					$parameter_insert[$Tempkey]=$WC_Arr;
 				}elseif(strpos($Tempkey,"KoFra")!==false || strpos($Tempkey,"abstOption")!==false){
 					if(is_array($Tempvalue)){
-						$tempOptions=array();
+						$tempOptions=[];
 						foreach($Tempvalue as $option){
 							array_push($tempOptions,$option);
 						}
@@ -194,7 +193,7 @@ $parameter=json_decode($folieInfo['parameter']);*/
 					foreach ($FragenIDs as $key => $input_arr) {
 						$FragenIDs[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 					}
-					$FrageArr2=array();
+					$FrageArr2=[];
 					$jfLauf=0;
 					foreach($FragenIDs as $FrageID){
 						$FrageArr2[$FrageID]=$FragenArr[$jfLauf];
@@ -236,7 +235,7 @@ $parameter=json_decode($folieInfo['parameter']);*/
 	if($_SESSION['fID']>0){
 		$AbgabeInfoRow=getAbgabeInfo($_SESSION['fID'],$token);
 		$AbgabeInfo=json_decode($AbgabeInfoRow['parameter'],true);
-		// 		var_dump($AbgabeInfoRow);
+		
 		if($AbgabeInfo['abgegeben']!=0){
 			$abgegeben=$AbgabeInfo['abgegeben'];
 		}else{
@@ -298,7 +297,7 @@ $parameter=json_decode($folieInfo['parameter']);*/
 		<?php 
 
 
-		// 		var_dump(FolienAnzeige_Menu($_SESSION['kursID'],$_SESSION['t']));
+		
 		?>
 		<div class="container">
 			<div class="row" style='margin:30 0;'>

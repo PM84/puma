@@ -18,16 +18,16 @@ function get_video_array_thema_video()
 	$videos = Get_Videos_Liste();
 	$themen = Get_VideoThemen();
 
-	$videoArr = array();
+	$videoArr = [];
 	foreach ($themen as $thema) {
 
 		// 		if(!isset($videoArr[$thema])){}
 
 		foreach ($videos as $video) {
-			// 							var_dump($video);
+			
 			if (in_array($thema->themaID, $video->themen)) {
 				if (!isset($videoArr[$thema->titel])) {
-					$videoArr[$thema->titel] = array();
+					$videoArr[$thema->titel] = [];
 				}
 				array_push($videoArr[$thema->titel], $video);
 			}
@@ -36,7 +36,7 @@ function get_video_array_thema_video()
 	return $videoArr;
 }
 
-// var_dump(get_video_array_thema_video());
+
 
 function Get_VideoThemen()
 {
@@ -52,7 +52,6 @@ function Get_VideoInfos_By_vID($videosArr, $vID)
 	// Eingabe: z.B. return value von Get_Videos_Liste
 	foreach ($videosArr as $video) {
 		if ($video->vID == $vID) {
-			// 			var_dump($video)."<hr>";
 			return $video;
 		}
 	}
@@ -61,7 +60,7 @@ function Get_VideoInfos_By_vID($videosArr, $vID)
 function get_video_link($videoList, $preferedQual)
 {
 	include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/system.php");
-	// 	var_dump($videoList);
+	
 	// 	$retVal="";
 	$url = "https://www2.didaktik.physik.uni-muenchen.de/expvid/" . $videoList->pfad . "/$preferedQual/" . $videoList->dateiname;
 	if (!check_if_url_exists($url)) {

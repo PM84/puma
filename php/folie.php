@@ -201,7 +201,7 @@ function get_KursID_By_fID($fID)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM folien WHERE fID=$fID";
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
-	$KursArray = array();
+	$KursArray = [];
 	$row = mysqli_fetch_assoc($ergebnis);
 	return $row['kursID'];
 }
@@ -220,7 +220,7 @@ function get_folieListe_Infos_by_kurs_aTyp($kursID, $aTyp)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM folien WHERE kursID=$kursID AND aTyp=$aTyp";
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
-	$tempArr = array();
+	$tempArr = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($tempArr, $row);
 	}
@@ -233,7 +233,7 @@ function getFolieInfo($fID)
 	$query = "SELECT * FROM folien WHERE fID=$fID";
 	$ergebnis = mysqli_query($verbindung, $query) or die($query . mysqli_error($verbindung));
 	$row = mysqli_fetch_assoc($ergebnis);
-	// 	var_dump($row);
+	
 	return $row;
 }
 
@@ -247,7 +247,7 @@ function getFolieInfo_bytoken($ftoken)
 	if (!is_array($row)) {
 		$row = [];
 	}
-	// 	var_dump($row);
+	
 	return $row;
 }
 
@@ -256,7 +256,7 @@ function Get_zugeordnete_Folien($fID)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM folien WHERE zu_fID=$fID";
 	$ergebnis = mysqli_query($verbindung, $query) or die($query . mysqli_error($verbindung));
-	$zuFolien = array();
+	$zuFolien = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($zuFolien, $row);
 	}
@@ -282,7 +282,7 @@ function Get_zugeordnete_Folien_join_master($fID, $all = 1)
 			break;
 	}
 	$ergebnis = mysqli_query($verbindung, $query) or die($query . mysqli_error($verbindung));
-	$zuFolien = array();
+	$zuFolien = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($zuFolien, $row);
 	}
@@ -295,7 +295,7 @@ function Get_zugeordnete_Folien_by_module($fID, $modID)
 	$query = "SELECT * FROM folien WHERE zu_fID=$fID AND modID='$modID'";
 	// 	echo $query;
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
-	$zuFolien = array();
+	$zuFolien = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($zuFolien, $row);
 	}
@@ -307,7 +307,7 @@ function getFolienListeInfos($kursID)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$folArr = getFolienListeInfos_ORDER_all($kursID);
 	// 	$folArr=getFolienByKurs($kursID);
-	$folienArray = array();
+	$folienArray = [];
 	foreach ($folArr as $folie) {
 		$fID = $folie['fID'];
 		$query = "SELECT * FROM folien WHERE fID='$fID'";
@@ -325,7 +325,7 @@ function getFolienListeInfos_by_kurs_modID($kursID, $modID)
 	$query = "SELECT *,tF.fID as fID, tF.parameter as FParameter, tA.parameter as AParameter, tAbl.parameter as AblaufParameter FROM folien tF INNER JOIN ablauf_master tAbl on tF.fID=tAbl.fID Left JOIN abgabe tA ON tA.fID=tF.fID WHERE tF.kursID='$kursID' && tF.modID='$modID' Order By OrderID ASC";
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
 
-	$folienArray = array();
+	$folienArray = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($folienArray, $row);
 	}
@@ -352,7 +352,7 @@ function getFolienListeInfos_ORDER_all($kursID)
 		}
 	}
 
-	$folienArray = array();
+	$folienArray = [];
 	foreach ($folArr as $folie) {
 		$fID = $folie['fID'];
 		$query = "SELECT * FROM folien WHERE fID='$fID'";
@@ -388,7 +388,7 @@ function getFolienListeInfos_ORDER($kursID)
  */
 	}
 
-	$folienArray = array();
+	$folienArray = [];
 	foreach ($folArr as $folie) {
 		$fID = $folie['fID'];
 		$query = "SELECT * FROM folien WHERE fID='$fID'";
@@ -404,7 +404,7 @@ function getFolienListeInfos_ORDER($kursID)
 
 function drop_aTyp($FolienListeInfos_ORDER, $aTyp_toDrop)
 {
-	$tempArr = array();
+	$tempArr = [];
 	foreach ($FolienListeInfos_ORDER as $folie) {
 		if ($aTyp_toDrop != $folie['aTyp']) {
 			array_push($tempArr, $folie);
@@ -416,7 +416,7 @@ function drop_aTyp($FolienListeInfos_ORDER, $aTyp_toDrop)
 function getFolienByKursOrder($kursID)
 {
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
-	$folienArray = array();
+	$folienArray = [];
 	$query = "SELECT * FROM ablauf_master WHERE kursID=$kursID and aktiv=1 Order By OrderID ASC";
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
@@ -428,7 +428,7 @@ function getFolienByKursOrder($kursID)
 function getFolienByKurs($kursID)
 {
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
-	$folienArray = array();
+	$folienArray = [];
 	$query = "SELECT * FROM folien WHERE kursID=$kursID";
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
@@ -463,8 +463,8 @@ function getFolienListe($token)
 	// 	$kursIDRow=getKursByTnID($tnID);
 	// 	$FolienInfos=getFolienListeInfos($_SESSION['kursID']);
 	$FolienInfos = getFolienListeInfos_ORDER($_SESSION['kursID']);
-	// 	var_dump($FolienInfos);
-	$ShowArr = array();
+	
+	$ShowArr = [];
 	foreach ($FolienInfos as $folie) {
 		$parameter = json_decode($folie['parameter']);
 		if (isset($parameter->tnarr)) {
@@ -504,8 +504,8 @@ function getFolienListe_ORDER($token)
 	$tnID = $TNInfo['tnID'];
 	// 	$kursIDRow=getKursByTnID($tnID);
 	$FolienInfos = getFolienListeInfos_ORDER($_SESSION['kursID']);
-	// 	var_dump($FolienInfos);
-	$ShowArr = array();
+	
+	$ShowArr = [];
 	foreach ($FolienInfos as $folie) {
 		$parameter = json_decode($folie['parameter']);
 		// 			array_push($ShowArr,$folie);
@@ -540,7 +540,7 @@ function ArrayPush_Ablauf_Status($folieListe)
 {
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/module/mod_preasentation/praesentationseinstellungen.php");
-	$folieListeNeu = array();
+	$folieListeNeu = [];
 	foreach ($folieListe as $folie) {
 		$settings = load_einstellungen($folie['fID'], $_SESSION['kursID']);
 		$folie['aktiv'] = $settings['aktiv'];
@@ -554,7 +554,7 @@ function GetFolieListe_by_aTyp($kursID, $aTyp)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM folien WHERE kursID=$kursID AND aTyp=$aTyp";
 	// 	echo $query;
-	$folienArray = array();
+	$folienArray = [];
 	$ergebnis = mysqli_query($verbindung, $query) or die(mysqli_error($verbindung));
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($folienArray, $row);
@@ -565,7 +565,7 @@ function GetFolieListe_by_aTyp($kursID, $aTyp)
 
 function Remove_inaktiv_from_FolieListe($folieListe)
 {
-	$folieListeNeu = array();
+	$folieListeNeu = [];
 	foreach ($folieListe as $folie) {
 		if ($folie['aktiv'] != 0) {
 			array_push($folieListeNeu, $folie);
@@ -576,7 +576,7 @@ function Remove_inaktiv_from_FolieListe($folieListe)
 
 function Remove_aTyp_from_FolieListe($folienListe, $aTyp)
 {
-	$folieListeNeu = array();
+	$folieListeNeu = [];
 	foreach ($folienListe as $folie) {
 		if (intval($folie['aTyp']) != $aTyp) {
 			array_push($folieListeNeu, $folie);
@@ -589,7 +589,7 @@ function Remove_zugriff_from_folieListe($folienListe)
 {
 	include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/teilnehmer.php");
 	$tnInfo = getTeilnehmerInfosByToken($_SESSION['t']);
-	$folieListeNeu = array();
+	$folieListeNeu = [];
 	foreach ($folienListe as $folie) {
 		$parameter = json_decode($folie['parameter'], true);
 		$titel = $parameter['titel'];
@@ -607,9 +607,9 @@ function Remove_zugriff_from_folieListe($folienListe)
 function Remove_nicht_abgegebene($folienListe)
 {
 	include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/abgabe.php");
-	$folieListeNeu = array();
+	$folieListeNeu = [];
 	foreach ($folienListe as $folie) {
-		// 		var_dump($folie);
+		
 		if ($folie['zu_fID'] > 0) {
 			// 			$boolval=check_ob_folie_abgegeben_overall($folie['zu_fID']) ? 'true' : 'false';
 			// 			echo $folie['fID']."=>".$folie['zu_fID']."=>". $boolval."<br>";

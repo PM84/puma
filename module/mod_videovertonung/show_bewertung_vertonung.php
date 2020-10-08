@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -61,7 +61,7 @@ $token=$_SESSION['t_own'];
 
 // 	$abID=$AbgabeInfo['abID'];
 
-	$insertArr=array();
+	$insertArr=[];
 	$zu_token=$abtoken;
 
 	// ====== Kommentar
@@ -80,8 +80,8 @@ $token=$_SESSION['t_own'];
 			$PosTimeArr[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 		} 
 	}else{
-		$PosTimeArr=array();
-		$PosTxtArr=array();
+		$PosTimeArr=[];
+		$PosTxtArr=[];
 	}
 	$insertArr['PosTimeArr']=$PosTimeArr;
 	$insertArr['PosTxtArr']=$PosTxtArr;
@@ -94,7 +94,7 @@ $token=$_SESSION['t_own'];
 	$query="INSERT INTO abgabe (fID,abTyp,token,zu_abID,parameter,datum) VALUES ('$zu_fID','$abTyp','$token','$abID','$insertArr','$datum') ON DUPLICATE KEY UPDATE parameter='$insertArr'";
 	// 	echo $query;
 	mysqli_query($verbindung,$query);
-// var_dump($_POST);
+
 	if($_POST['saveBtn']==1){
 		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/show_abgabe_uebersicht.php';</script>";
 	}
@@ -111,21 +111,21 @@ $token=$_SESSION['t_own'];
 	$KorrekturRow= get_zu_AbgabeInfoByAbID($abID,$fID);
 // $KorrekturRow=getAbgabeBy_fID_token_aTyp($token,$abTyp,$fID); //getAbgabeBy_abID_token_aTyp($token,$abTyp,$abID);
 // $KorrekturRow=getAbgabeBy_abID_token_aTyp($abTyp);
-// var_dump($KorrekturRow);
+
 if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 	$KorrParameter=json_decode($KorrekturRow[0]['parameter'],true);
 	$KorrFragenArr=$KorrParameter['FragenWerte'];
 	$PosTimeArr=$KorrParameter['PosTimeArr'];
 	$PosTxtArr=$KorrParameter['PosTxtArr'];
 
-	if($KorrFragenArr===NULL){$KorrFragenArr=array();}
-	if($PosTimeArr===NULL){$PosTimeArr=array();}
-	if($PosTxtArr===NULL){$PosTxtArr=array();}
+	if($KorrFragenArr===NULL){$KorrFragenArr=[];}
+	if($PosTimeArr===NULL){$PosTimeArr=[];}
+	if($PosTxtArr===NULL){$PosTxtArr=[];}
 
 }else{
-	$KorrFragenArr=array();
-	$PosTimeArr=array();
-	$PosTxtArr=array();
+	$KorrFragenArr=[];
+	$PosTimeArr=[];
+	$PosTxtArr=[];
 }
 
 ?>
@@ -157,7 +157,6 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 
 		<div id="container" class="container" style="margin-bottom:150px;">
 			<div class="row">
-				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-1">
@@ -169,7 +168,6 @@ if($KorrekturRow!==NULL && isset($KorrekturRow[0])){
 						<div class="col-md-1"></div>
 					</div>
 				</div>
-				<!--<div class="col-md-1"></div>//-->
 			</div>
 			<div class="row" style="margin-top:15px;">
 

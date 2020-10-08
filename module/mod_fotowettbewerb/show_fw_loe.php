@@ -2,16 +2,16 @@
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_fotowettbewerb/fw.php");
 
 $zuFolienArr=Get_zugeordnete_Folien_join_master($fID,2);
-$Punkte=array();
-$Punkte_Durchschnitt=array();
+$Punkte=[];
+$Punkte_Durchschnitt=[];
 
 $AnzahlBewertungen=0;
 
 foreach($zuFolienArr as $folieRow){
 	$fID_temp=$folieRow['fID'];
-	$Punkte_Durchschnitt[$fID_temp]=array();
-	$Anzahl[$fID_temp]=array();
-	// 	var_dump($folieRow);
+	$Punkte_Durchschnitt[$fID_temp]=[];
+	$Anzahl[$fID_temp]=[];
+	
 	// 	echo "<h2>{$folieRow['uID']}</h2>";
 	$abgabeArr=getAbgabeInfos($fID_temp);
 
@@ -34,7 +34,7 @@ foreach($zuFolienArr as $folieRow){
 	}
 }
 
-$anzahlAbgabe=array();
+$anzahlAbgabe=[];
 foreach($Anzahl as $key => $value){
 	foreach($value as $key2=>$value2){
 		$anzahlAbgabe[$key]=$value2;
@@ -44,7 +44,7 @@ foreach($Anzahl as $key => $value){
 // echo "==>".$AnzahlBewertungen."<==";
 foreach($zuFolienArr as $folieRow){
 	$fID_temp=$folieRow['fID'];
-	// 	$Punkteschnitt_gesamt[$fID_temp]=array();
+	// 	$Punkteschnitt_gesamt[$fID_temp]=[];
 	$AnzahlAufgaben=count($Punkte_Durchschnitt[$fID_temp]);
 	foreach($Punkte_Durchschnitt[$fID_temp] as $key => $value){
 		$Punkteschnitt_gesamt[$fID_temp]= $Punkteschnitt_gesamt[$fID_temp] + $value;
@@ -59,7 +59,7 @@ foreach($zuFolienArr as $folieRow){
 
 foreach($zuFolienArr as $folieRow){
 	$fID_temp=$folieRow['fID'];
-	// 	$Punkte_gesamt[$fID_temp]=array();
+	// 	$Punkte_gesamt[$fID_temp]=[];
 	$AnzahlAufgaben=count($Punkte[$fID_temp]);
 	foreach($Punkte[$fID_temp] as $key => $value){
 		$Punkte_gesamt[$fID_temp]= $Punkte_gesamt[$fID_temp] + $value;

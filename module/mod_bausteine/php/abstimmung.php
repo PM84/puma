@@ -17,12 +17,12 @@ function get_abstimmung_OptArray($fID,$abst_name,$bID,$Block){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM abgabe WHERE fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$Stimmen=array();
+	$Stimmen=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$parameter=json_decode($row['parameter'],true);
 		if(array_key_exists ( $abst_name , $parameter)){
 			$Stimme=$parameter[$abst_name];
-			// var_dump($Stimme);	
+				
 			if(is_array($Stimme)){
 				foreach($Stimme as $vote){
 					if(isset($Stimmen[$vote])){
@@ -55,11 +55,11 @@ function convertToGoogleAPI_json_Data($Stimmen,$bID=0,$Block){
 
 	for($iLauf=0;$iLauf<count($abstOptionen);$iLauf++) {
 
-		$temp = array();
+		$temp = [];
 
 
 		$temp[] = array('v' => (string) $abstOptionen[$iLauf]); 
-		// var_dump($Stimmen);
+		
 		if(isset($Stimmen[$iLauf])){
 			$temp[] = array('v' => (int) $Stimmen[$iLauf]); 
 			$rows[] = array('c' => $temp);
@@ -69,7 +69,7 @@ function convertToGoogleAPI_json_Data($Stimmen,$bID=0,$Block){
 
 		}
 	}
-	$table['rows'] =array();
+	$table['rows'] =[];
 	$table['rows'] = $rows;
 
 	$jsonTable = json_encode($table);

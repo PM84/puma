@@ -2,7 +2,7 @@
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
 
-$csv = array();
+$csv = [];
 
 // check there are no errors
 if($_FILES['csv']['error'] == 0){
@@ -17,21 +17,21 @@ if($_FILES['csv']['error'] == 0){
 		WriteDataToDB($schule);
 // 		echo "<hr>";
 	}
-//  	var_dump($csv);
+
 }
 
 // echo htmlspecialchars ("﻿SchulNr",ENT_COMPAT,'ISO-8859-1', true);
 function WriteDataToDB($valueArray){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/system.php");
-	$values=array();
+	$values=[];
 	foreach($valueArray as $key => $value ){
 		if($key=="﻿SchulNr"){$key="sNr";}
 		$values[mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"))]=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
 //  		echo mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"))." => $value<br>";
 	}
 // 	echo "===".$values['SchulNr']."===<br>";
-// 	var_dump($values);
+
 	$query="INSERT IGNORE INTO schule_daten (SchulNr,Bundesland,Name,sTyp,rechtlicherStatus,strasse,plz,ort,url,email) VALUES ('".$values['sNr']."','1','".$values['Name']."','".$values['Schultyp']."','".$values['rechtlicherStatus']."','".$values['Strasse']."','".$values['PLZ']."','".$values['Ort']."','".$values['Webadresse']."','".$values['Email']."')";
 	echo "<br>".$query."<br>"; 
 	 mysqli_query($verbindung,$query)or die(mysqli_error($verbindung));

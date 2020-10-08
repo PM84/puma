@@ -139,7 +139,7 @@ function getFileList(){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from va_video WHERE uID=1";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$FileList=array();
+	$FileList=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($FileList,$row);
 	}

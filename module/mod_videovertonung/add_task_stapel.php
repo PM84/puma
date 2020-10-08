@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -34,7 +34,7 @@ $videoArr=get_video_array_thema_video();
 $uID=$SessionInfos['uID'];
 $kursID=intval($_SESSION['k']);
 
-// var_dump($videoArr);
+
 
 // ==================================
 // =========== Folien erstellen
@@ -45,7 +45,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 	$viewTyp=2; //nur der ausgewählte Teilnehmer hat Zugriff.
 	$aTyp=1; // entspricht Aufgabe
 	$zu_fID=0; //keiner anderen Folie zugeordnet
-	// var_dump($_POST);
+	
 	foreach($_POST as $tnID=>$tnArr){
 
 		$taskArr['vID']=intval($tnArr['vID']);
@@ -156,7 +156,6 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 
 		<div id="container" class="container" style="margin-bottom:150px;">
 			<div class="row">
-				<!--<div class="col-md-1"></div>//-->
 				<div class="col-md-12">
 					<div class="row" style='margin-top:10px; text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-3">
@@ -167,7 +166,6 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 						<div class="col-md-1"></div>
 					</div>
 				</div>
-				<!--<div class="col-md-1"></div>//-->
 			</div>
 			<div class="col-xs-1"></div>
 			<div class="col-xs-10">

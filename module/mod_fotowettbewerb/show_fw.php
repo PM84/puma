@@ -32,12 +32,12 @@ if(intval($_GET['f'])>0){
 // ====== ABGABE LADEN
 // ========================
 $AbgabeRow=getAbgabeBy_fID_token_aTyp($token,$abTyp,$fID); //getAbgabeBy_abID_token_aTyp($token,$abTyp,$abID);
-// var_dump($AbgabeRow);
+
 if($AbgabeRow!==NULL && isset($AbgabeRow[0])){
 	$AbgabeParameter=json_decode($AbgabeRow[0]['parameter'],true);
 	$abID=$AbgabeRow[0]['abID'];
 }else{
-	$AbgabeParameter=array();
+	$AbgabeParameter=[];
 }
 
 
@@ -46,10 +46,10 @@ if($AbgabeRow!==NULL && isset($AbgabeRow[0])){
 // ====== KORREKTUR SPEICHERN
 // ========================
 
-// var_dump($_POST);
+
 
 if(isset($_POST['action']) && $_POST['action']=="save" ){
-	$insertArr=array();
+	$insertArr=[];
 	foreach ($_POST as $key => $value) {
 		$key=mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
 		$value=mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
@@ -168,7 +168,7 @@ $AbgabeRow=getAbgabeBy_fID_token_aTyp($token,$abTyp,$fID); //getAbgabeBy_abID_to
 if($AbgabeRow!==NULL && isset($AbgabeRow[0])){
 	$AbgabeParameter=json_decode($AbgabeRow[0]['parameter'],true);
 }else{
-	$AbgabeParameter=array();
+	$AbgabeParameter=[];
 }
 
 

@@ -25,7 +25,7 @@
 <div class="panel-group" id="accordion">
 	<?php
 	foreach($themen as $thema){
-		// 								var_dump($thema);
+		
 		$status=0;
 	?>
 	<div class="panel panel-default">
@@ -43,7 +43,7 @@
 			<div class="panel-body">
 				<?php
 		foreach($Sims as $Sim){
-			// 							var_dump($video);
+			
 			if(in_array($thema->themaID,$Sim->themen)){
 				$status=1;
 				?>

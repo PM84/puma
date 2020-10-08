@@ -8,15 +8,15 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/m
 
 
 $TerminInfo=getTermin_by_TerminID($_SESSION['TerminID']);
-// var_dump($TerminInfo);
+
 
 $Buchungen=getBuchungen_by_TerminID($_SESSION['TerminID']);
 $from="pe.mayer@lmu.de";
 
 
 if(isset($_POST['BuchungsID'])){
-// 	var_dump($_POST);
-	$insertArr=array();
+
+	$insertArr=[];
 	foreach($_POST as $key => $value){
 		$Tempkey=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
 		$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
@@ -29,7 +29,7 @@ if(isset($_POST['BuchungsID'])){
 	$insertArr['ende']=date("Y-m-d",strtotime($TerminInfo['start']))." ".date("H:i:s", strtotime("+120 minutes", strtotime($insertArr['start'])));
 	$insertArr['start']=date("Y-m-d",strtotime($TerminInfo['start']))." ".date("H:i:s", strtotime($insertArr['start']));
 
-	$parameter=array();
+	$parameter=[];
 	$parameter['bem']=$insertArr['bem'];
 
 	$parameter_insert=json_encode($parameter);
@@ -79,7 +79,7 @@ if(isset($_POST['BuchungsID'])){
 // 	emailSenden($imap_user_name,array($insertArr['email']),$subject, $message);
 
 	$SchulInfo=getSchulInfo_by_SchulNr($insertArr['SchulNr']);
-// 	var_dump($SchulInfo);
+
 		if(count($Buchungen)==0){
 	$subject_dozent="Anmeldung SchILF - HINWEISE FÜR DOZENTEN";
 	$message_dozent="

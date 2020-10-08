@@ -4,7 +4,7 @@ include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 $query="SELECT * FROM folien WHERE parameter LIKE '%bID_%'";
 $ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-$tempArr=array();
+$tempArr=[];
 while($row=mysqli_fetch_assoc($ergebnis)){
 	$parameter=json_decode($row['parameter'],true);
 	$fID=$row['fID'];

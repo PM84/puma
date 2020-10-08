@@ -42,10 +42,10 @@ if(isset($_POST['fileName'])){
 		$parameter=json_decode($row['parameter']);
 		$audioArr=$parameter->audioArr;
 		if($audioArr===NULL){
-			$audioArr=array();
+			$audioArr=[];
 		}
 	}
-	$tmpArr=array();
+	$tmpArr=[];
 	foreach($parameter->audioArr as $audiofile){
 		if($audiofile->fileName==$fileName){
 			$audiofile->abgegeben=1;
@@ -74,7 +74,7 @@ if(intval($_GET['f'])>0){
 	$FolieArr=getFolieInfo($_SESSION['fID']);
 	//   	echo $FolieArr['parameter'];
 	$AufgabeInfo=json_decode($FolieArr['parameter']);
-	// 	var_dump($AufgabeInfo);
+	
 	$_SESSION['vID']=$AufgabeInfo->vID;
 	$videos=Get_Videos_Liste();
 	$videoInfo=Get_VideoInfos_By_vID($videos,intval($_SESSION['vID']));
@@ -91,7 +91,7 @@ if(intval($_GET['f'])>0){
 	//  	echo $_GET['f'];
 	$token=$_SESSION['t'];
 	$AbgabeArr=getAbgabeInfo($_SESSION['fID'],$token,1);
-	// 	 	var_dump($AbgabeArr);
+	
 	if(isset($AbgabeArr['parameter'])){
 		$AbgabeInfo=json_decode($AbgabeArr['parameter']);
 		$audioArr=$AbgabeInfo->audioArr;
@@ -150,11 +150,11 @@ if(intval($_GET['f'])>0){
 					?>
 					<div class="alert alert-success"><h3>Feedback vorhanden:</h3>
 						<?php
-							$fbArr=array();
+							$fbArr=[];
 							foreach($FBArr as $Feedback){
 								$FabID=$Feedback['F_abID'];
 								$Name=$Feedback['name'].", ".$Feedback['vname'];
-								array_push($fbArr,"<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_videovertonung/show_feedback_vertonung.php?abID=$FabID' target='blank'>Feedback von: $Name</a>");
+								array_push($fbArr,"<a href='".$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videovertonung/show_feedback_vertonung.php?abID=$FabID' target='blank'>Feedback von: $Name</a>");
 							}
 							$fbLinks=join("<br>",$fbArr);
 							echo $fbLinks;

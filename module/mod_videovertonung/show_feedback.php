@@ -37,7 +37,7 @@ $abID=getAbgabe_abID($task_fID);
 // 	$abID=intval($_GET['ab']);
 $AbgabeInfoRow=getAbgabeInfoByAbID($abID);
 $AbgabeInfo=json_decode($AbgabeInfoRow['parameter']);
-//  	var_dump($AbgabeInfo);
+
 $audioArr=$AbgabeInfo->audioArr;
 foreach($audioArr as $audioTMP){
 	if($audioTMP->abgegeben==1){
@@ -56,14 +56,14 @@ if($FB_fID>0){
 	$Bew_FolieArr=getFolieInfo($Bew_fID);
 	$task_fID=$Bew_FolieArr['zu_fID'];
 	$FolieArr=getFolieInfo($task_fID);
-	// 	var_dump($FolieArr);
+	
 	// 	 	echo $FolieArr['parameter'];
 	$AufgabeInfo=json_decode($FolieArr['parameter']);
 	$_SESSION['vID']=$AufgabeInfo->vID;
 	// 	echo $_SESSION['vID']."<hr>";
 	$videos=Get_Videos_Liste();
 	$videoInfo=Get_VideoInfos_By_vID($videos,intval($_SESSION['vID']));
-	// 	var_dump($videoInfo);
+	
 	$link_src=get_video_link($videoInfo,"sd");
 	// 	$link_src_arr=$videoInfo->link_src;
 }
@@ -75,7 +75,7 @@ if($FB_fID>0){
 // echo $abID;
 
 $abArrKor= get_zu_AbgabeInfoByAbID($abID,$Bew_fID);
-// var_dump($abArrKor);
+
 ?>
 <html>
 	<head>
@@ -140,10 +140,10 @@ $abArrKor= get_zu_AbgabeInfoByAbID($abID,$Bew_fID);
 
 						<div id="comment" class="tab-pane fade">
 							<?php
-							// 								var_dump($abArr);
+							
 							foreach($abArrKor as $abgabeKor){
 
-								// 								var_dump($abgabeKor);
+								
 								$parameter=json_decode($abgabeKor['parameter']);
 								if(isset($parameter->kommentar)){
 									if(strlen($parameter->kommentar)>0){

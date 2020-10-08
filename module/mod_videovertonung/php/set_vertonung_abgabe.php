@@ -9,11 +9,11 @@ if(mysqli_num_rows($ergebnis)==1){
 	$parameter=json_decode($row['parameter']);
 	$audioArr=$parameter->audioArr;
 	if($audioArr===NULL){
-		$audioArr=array();
+		$audioArr=[];
 	}
 }
 $fileName=htmlspecialchars($_POST['fileName'], ENT_QUOTES);
-$tmpArr=array();
+$tmpArr=[];
 foreach($parameter->audioArr as $audiofile){
 	if($audiofile->fileName==$fileName){
 		array_push($tmpArr,array('filename'=>$fileName,'abgegeben' => 1));

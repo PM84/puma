@@ -11,13 +11,13 @@ $chiPerseiden='{"0":{"name":"chi Persei","starList":[{"VisMag":15.47,"BV":0.72},
 
 $persArr=json_decode($chiPerseiden,true);
 
-$VisMaxArr=array();
-$BVMaxArr=array();
-$TeffMaxArr=array();
-$LMaxArr=array();
-$AbsMaxArr=array();
+$VisMaxArr=[];
+$BVMaxArr=[];
+$TeffMaxArr=[];
+$LMaxArr=[];
+$AbsMaxArr=[];
 
-$calc_Star_List=array();
+$calc_Star_List=[];
 foreach($persArr["0"]["starList"] as $star){
     $tempArr['VisMag']=$star['VisMag'];
     $tempArr['AbsMag']=round(($star['VisMag']-5 * log10(2300)+5)*10)/10;
@@ -35,7 +35,7 @@ foreach($persArr["0"]["starList"] as $star){
 //     echo "=>".$tempArr['AbsMag'];
 //     echo "=>".$tempArr['L'];
 }
-$cluster_data=array();
+$cluster_data=[];
 $cluster_data["chiPers"]["Cluster"]="chi Perseiden";
 $cluster_data["chiPers"]["distance_pc"]="830";
 $cluster_data["chiPers"]["starList"]=$calc_Star_List;
@@ -54,5 +54,5 @@ echo "min Teff: ".min($TeffMaxArr)."<br>";
 echo "max L: ".max($LMaxArr)."<br>";
 echo "min L: ".min($LMaxArr)."<br>";
  */
-// var_dump($persArr);
+
 ?>

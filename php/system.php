@@ -108,7 +108,7 @@ function shuffle_assoc($array) {
 
 	$keys = array_keys($array); 
 	shuffle($keys); 
-	$random = array(); 
+	$random = []; 
 	foreach ($keys as $key) { 
 		$random[$key] = $array[$key]; 
 	}

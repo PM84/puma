@@ -1,16 +1,16 @@
 <?php 
-$FolienListe=array();
-$FBArrTMP=array();
+$FolienListe=[];
+$FBArrTMP=[];
 // $FolienListe=getFolienListe($_SESSION['t']);
 $FolienListe=getFolienListe_ORDER($_SESSION['t']);
 $FolienListe=ArrayPush_Ablauf_Status($FolienListe);
 $FolienListe=Remove_inaktiv_from_FolieListe($FolienListe);
-// var_dump($FolienListe);
+
 // echo "xxx";
 $FolienListe=Remove_aTyp_from_FolieListe($FolienListe,2);
-// var_dump($FolienListe);
+
 $FolienListe=Remove_aTyp_from_FolieListe($FolienListe,3);
-// var_dump($FolienListe);
+
 
 // $bewArr=array_push($FolienListe,GetFolieListe_by_aTyp($_SESSION['kursID'],2));
 $bewArr=GetFolieListe_by_aTyp($_SESSION['kursID'],2);
@@ -20,7 +20,7 @@ $FBArrTmp=GetFolieListe_by_aTyp($_SESSION['kursID'],3);
 
 // array_push($FolienListe,$FBArrTmp);
 // 			$bewArr=getAbgabeBy_abID_token_aTyp($token,1);
-// var_dump($FolienListe);
+
 foreach($FolienListe as $folie){
 	$parameterFolie=json_decode($folie['parameter']);
 	$modID=$folie['modID'];
@@ -28,7 +28,7 @@ foreach($FolienListe as $folie){
 	if(isset($parameterFolie->tnarr)){
 		$tnarr=$parameterFolie->tnarr;
 	}else{
-		$tnarr=array();
+		$tnarr=[];
 	}
 
 	if($folie['viewTyp']==1 || ($folie['viewTyp']==2 && in_array ( $tnInfo['tnID'] , $tnarr )) || ($folie['viewTyp']==3 && !in_array (  $tnInfo['tnID'] ,$tnarr)) )
@@ -44,11 +44,11 @@ foreach($FolienListe as $folie){
 //===========================================
 //======= BEWERTUNGS MENÜ
 //===========================================
-// var_dump($bewArr);
+
 $bewArr=Remove_zugriff_from_folieListe($bewArr);
-// var_dump($bewArr);
+
 $bewArr=Remove_nicht_abgegebene($bewArr);
-// var_dump($bewArr);
+
 
 if(count($bewArr)>0){
 ?>
@@ -62,13 +62,13 @@ if(count($bewArr)>0){
 			<?php
 	foreach($bewArr as $bewFolie){
 		$modID=$bewFolie['modID'];
-// 		var_dump($bewFolie);
+
 		$parameter=json_decode($bewFolie['parameter'],true);
 		$modInfo=getModulInfos($modID);
 		// 		$modInfo=$bewFolie['modInfo'];
 		$zu_fID=$bewFolie['zu_fID'];
 		$abArr=getAbgabeInfos($zu_fID);
-		// 		var_dump($abArr);
+		
 		foreach($abArr as $abgabe){
 			if($abgabe['abTyp']==1){
 			?>
@@ -89,14 +89,14 @@ if(count($bewArr)>0){
 //======= FEEDBACK MENÜ
 //===========================================
 
-$FBArr=array();
+$FBArr=[];
 $FBArr=get_folieListe_Infos_by_kurs_aTyp($_SESSION['kursID'],3);
 $FBArr=Remove_zugriff_from_folieListe($FBArr);
-// var_dump($FBArr);
-$FBArr=Remove_nicht_abgegebene($FBArr);
-// var_dump($FBArr);
 
-// var_dump($FBArr);
+$FBArr=Remove_nicht_abgegebene($FBArr);
+
+
+
 if(count($FBArr)>0){
 ?>
 <li>

@@ -10,16 +10,16 @@ $istAnzahl=intval($_POST['istAnzahl']);
 
 
 $zuFolienArr=Get_zugeordnete_Folien_join_master($fID,2);
-$Punkte=array();
-$Punkte_Durchschnitt=array();
+$Punkte=[];
+$Punkte_Durchschnitt=[];
 
 $AnzahlBewertungen=0;
 
 foreach($zuFolienArr as $folieRow){
 	$fID_temp=$folieRow['fID'];
-	$Punkte_Durchschnitt[$fID_temp]=array();
-	$Anzahl[$fID_temp]=array();
-	// 	var_dump($folieRow);
+	$Punkte_Durchschnitt[$fID_temp]=[];
+	$Anzahl[$fID_temp]=[];
+	
 	// 	echo "<h2>{$folieRow['uID']}</h2>";
 	$abgabeArr=getAbgabeInfos($fID_temp);
 

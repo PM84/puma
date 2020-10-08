@@ -15,7 +15,7 @@ function get_WC_WortArray($fID,$WC_name){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM abgabe WHERE fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$woerter=array();
+	$woerter=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$parameter=json_decode($row['parameter'],true);
 		if(array_key_exists ( $WC_name , $parameter)){

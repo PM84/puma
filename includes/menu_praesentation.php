@@ -5,7 +5,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/modu
 // $FolienListe_Praes=FolienAnzeige_Menu($_SESSION['kursID'],$_SESSION['t']);
 $FolienArr = get_aktuellen_Ablauf($_SESSION['kursID']);
 // 			$bewArr=getAbgabeBy_abID_token_aTyp($token,1);
-// 	var_dump($FolienArr);
+
 $fID_previous = 0;
 foreach ($FolienArr as $folieTemp) {
 

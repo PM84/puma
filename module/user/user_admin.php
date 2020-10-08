@@ -59,7 +59,7 @@ $UserListe = GetUserList();
 								<?php
 								$iLauf = 1;
 								foreach ($UserListe as $user) {
-									$GroupInfos = array();
+									$GroupInfos = [];
 									foreach ($user['uGroups'] as $GroupID) {
 										$GroupInfo = GetUserGroupInfo($GroupID);
 										array_push($GroupInfos, $GroupInfo['titel']);

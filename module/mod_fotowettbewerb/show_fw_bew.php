@@ -38,8 +38,8 @@ if(isset($_POST['action']) && $_POST['action']=="save" ){
 		$parameter_insert=array("abgegeben"=>$abgegeben);
 	}
 	// 	$parameter_insert['abgegeben']=1;
-	// var_dump($_POST);
-	$FragenWerte=array();
+	
+	$FragenWerte=[];
 	foreach($_POST as $key => $value){
 		if($key!="submit"){
 			$Tempkey=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
@@ -47,7 +47,7 @@ if(isset($_POST['action']) && $_POST['action']=="save" ){
 			if(!is_array($value)){
 				$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
 			}else{
-				$tempArr=array();
+				$tempArr=[];
 				foreach($value as $option){
 					array_push($tempArr,mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($option), ENT_QUOTES , "UTF-8")));
 				}
@@ -65,7 +65,7 @@ if(isset($_POST['action']) && $_POST['action']=="save" ){
 				foreach ($FragenIDs as $key => $input_arr) {
 					$FragenIDs[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 				}
-				$FrageArr2=array();
+				$FrageArr2=[];
 				$jfLauf=0;
 				foreach($FragenIDs as $FrageID){
 					$FrageArr2[$FrageID]=$FragenArr[$jfLauf];
@@ -134,20 +134,20 @@ $AbgabeRow=getAbgabeInfoByAbID($FolieParam['zu_abID']);
 if($AbgabeRow!==NULL && isset($AbgabeRow)){
 	$AbgabeParameter=json_decode($AbgabeRow['parameter'],true);
 }else{
-	$AbgabeParameter=array();
+	$AbgabeParameter=[];
 }
-// var_dump($AbgabeParameter);
+
 
 // ========================
 // ====== Korrektur 
 // ========================
 $abTyp=3;
 $korrRow=getAbgabeBy_fID_token_aTyp($token,$abTyp,$fID); //getAbgabeBy_abID_token_aTyp($token,$abTyp,$abID);
-// var_dump($AbgabeRow);
+
 if($korrRow!==NULL && isset($korrRow[0])){
 	$KorrParameter=json_decode($korrRow[0]['parameter'],true);
 }else{
-	$KorrParameter=array();
+	$KorrParameter=[];
 }
 
 

@@ -18,7 +18,7 @@ function getFileList(){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from media WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$FileList=array();
+	$FileList=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($FileList,$row);
 	}
@@ -31,7 +31,7 @@ function get_mediaIDs_by_kursID($kursID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * from media_kurs_match WHERE kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$mediaIDs=array();
+	$mediaIDs=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($mediaIDs,$row['mediaID']);
 	}
@@ -120,7 +120,7 @@ function searchMedia($filename){
 	// 	$uID=1;
 	$query="SELECT * FROM folien WHERE uID=$uID AND parameter LIKE '%$filename%'";
 	$ergebnis=mysqli_query($verbindung,$query)or die($query." => ".mysqli_error($verbindung));
-	$corr_fIDs=array();
+	$corr_fIDs=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		if(!in_array($row['fID'],$corr_fIDs)){
 			array_push($corr_fIDs,$row['fID']);
@@ -147,7 +147,7 @@ function get_mediaList_by_matchingKurs($KursID,$fID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM media_kurs_match WHERE kursID=$KursID and fID=$fID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$mediaIDs=array();
+	$mediaIDs=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		if(!in_array($row['mediaID'],$mediaIDs)){
 			array_push($mediaIDs,$row['mediaID']);

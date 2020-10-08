@@ -323,12 +323,12 @@ TEILNEHMER ERSTELLEN
 .tn_used {
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: url('/images/on_off32.png');
+	background-image: url('/puma/images/on_off32.png');
 }
 .tn_not_used {
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: url('/images/on_off32.png');
+	background-image: url('/puma/images/on_off32.png');
 	background-position:-16px 50%;
 } */
 

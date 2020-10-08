@@ -18,10 +18,8 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teil
 		<?php
 		echo $_SESSION['kursID'];
 		$TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['kursID']);
-// 		var_dump($TeilnehmerListe);
-		$tnarr=array();
+		$tnarr=[];
 		$tnarr=$AufgabeInfo->tnarr;
-// 		echo $AufgabeInfo->tnarr;
 		foreach($TeilnehmerListe as $TN){
 		?>
 		<option value="<?php echo $TN['tnID']; ?>" <?php if(is_array($tnarr)){if(in_array($TN['tnID'],$tnarr)){echo "selected";} }?>><?php echo $TN['vname']." ".$TN['name']; ?></option>

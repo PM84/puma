@@ -1,9 +1,8 @@
 <?php
 $path="data/0000_Cepheiden_uebersicht.csv";
-var_dump(ParseCSV_to_AssocArray($path));
 function ParseCSV_to_AssocArray($path){
     $row = 1;
-    $AssocArray=array();
+    $AssocArray=[];
     if (($handle = fopen($path, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {
             $num = count($data);
@@ -15,4 +14,3 @@ function ParseCSV_to_AssocArray($path){
     }
     return $AssocArray;
 }
-

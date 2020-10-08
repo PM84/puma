@@ -1,6 +1,6 @@
 <?php
-$bewArr=array();
-$FBArr=array();
+$bewArr=[];
+$FBArr=[];
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/module.php");
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/teilnehmer.php");
@@ -13,12 +13,12 @@ if(isset($_SESSION['uID'])){
 	$uID_List=Get_uID_List();
 	// $my_userInfo=getUserInfos($_SESSION['uID']);
 	$userGroups=GetUserGroup($_SESSION['uID']);
-	// var_dump($my_userInfo);
+	
 }
 if(isset($_SESSION['t'])){
 	$token=htmlspecialchars($_SESSION['t'], ENT_QUOTES);
 	$tnInfo=getTeilnehmerInfosByToken($token);
-	// 	var_dump($tnInfo);
+	
 }
 ?>
 

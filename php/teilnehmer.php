@@ -17,7 +17,7 @@ function getDozent_tnInfos($dozent=1){
 	$kursID=$_SESSION['kursID'];
 	$query="SELECT * FROM user_teilnehmer_kurs_match tM INNER JOIN user_teilnehmer tT ON tT.tnID=tM.tnID WHERE tM.kursID=$kursID AND tM.dozent=$dozent";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$tnKursArr=array();
+	$tnKursArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($tnKursArr,$row);
 	}
@@ -44,9 +44,9 @@ function changeTeacherStatus($tnID){
 	$ergebnis=mysqli_query($verbindung,$query) or die($query."=>".mysqli_error($verbindung));
 	$row=mysqli_fetch_assoc($ergebnis);
 	if($row['dozent']==1){
-		$retVal="<img src='/images/professor_green.svg' style='height:22px;' onclick='changeTeacherStatus(".$tn['tnID'].")'>";
+		$retVal="<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/professor_green.svg' style='height:22px;' onclick='changeTeacherStatus(".$tn['tnID'].")'>";
 	}else{
-		$retVal="<img src='/images/professor_red.svg' style='height:22px;' onclick='changeTeacherStatus(".$tn['tnID'].")'>";
+		$retVal="<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/professor_red.svg' style='height:22px;' onclick='changeTeacherStatus(".$tn['tnID'].")'>";
 	}
 	echo $retVal;
 }
@@ -66,7 +66,7 @@ function getTeilnehmerInfosByTnIDs($tnArr=array()){
 
 	$query="SELECT * FROM user_teilnehmer WHERE tnID='$tnIDstr'";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$tnInfos=array();
+	$tnInfos=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		$tnInfos[$row['tnID']]=$row;
 	}
@@ -86,7 +86,7 @@ function getKurseByTnID($tnID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM user_teilnehmer_kurs_match WHERE tnID=$tnID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$tnKursArr=array();
+	$tnKursArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($tnKursArr,$row);
 	}
@@ -105,7 +105,7 @@ function getAllTeilnehmerOfUser($uID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM user_teilnehmer WHERE uID='$uID'";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$tnArr=array();
+	$tnArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($tnArr,$row);
 	}
@@ -116,14 +116,14 @@ function getAllTeilnehmerOfUser($uID){
 function getTeilnehmerListeInfos($kursID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$kursTNArr=getTnByKurs($kursID);
-	$tnArray=array();
+	$tnArray=[];
 	foreach($kursTNArr as $tn){
 		$tnID=$tn['tnID'];
 		$row=getTeilnehmerInfos($tnID);
 		$row['dozent']=$tn['dozent'];
 		array_push($tnArray,$row);
 	}
-	// 	var_dump($tnArray);
+	
 	return $tnArray;
 }
 
@@ -137,7 +137,7 @@ function getTnByKurs($kursID){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM user_teilnehmer_kurs_match WHERE kursID=$kursID";
 	$ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
-	$kursTNArr=array();
+	$kursTNArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($kursTNArr,$row);
 	}

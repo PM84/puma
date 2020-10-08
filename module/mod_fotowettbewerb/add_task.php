@@ -48,8 +48,8 @@ $modID=getModIDFromTitel($modTitel);
 // ====== AUFGABE EINTRAGEN
 // ========================
 if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
-	$insertArr=array();
-	$bsArr=array();
+	$insertArr=[];
+	$bsArr=[];
 	foreach($_POST as $key => $value){
 		$Tempkey=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($key), ENT_QUOTES , "UTF-8"));
 		$Tempvalue=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($value), ENT_QUOTES , "UTF-8"));
@@ -60,12 +60,12 @@ if(isset($_POST['titel']) && strlen($_POST['titel'])>0){
 		default:
 			if(isset($_POST['tnarr'])){
 				$tnArrTmp=$_POST['tnarr'];
-				$tnArr=array();
+				$tnArr=[];
 				foreach($tnArrTmp as $TN){
 					array_push($tnArr,intval($TN));
 				}
 			}else{
-				$tnArr=array();
+				$tnArr=[];
 			}
 			$insertArr['tnarr']=$tnArr;
 			break;
@@ -197,7 +197,6 @@ if($_SESSION['edit_fID']>0){
 							<form id="backForm" action="" method="POST" style="margin:0;">
 								<button type=submit  class='btn btn-success hidden-xs hidden-sm' name="btn_back" value=1>zurück</button>
 							</form>
-							<!--							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
 						</div>
 						<div class="col-md-10"><p class="lead" style='margin:0'>Fotowettbewerb hinzufügen</p></div>
 						<div class="col-md-1"></div>

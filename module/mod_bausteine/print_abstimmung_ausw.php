@@ -30,7 +30,7 @@ $parameter=json_decode($FolieInfos['parameter'],true);
 $bID=$parameter["bID_$Block"];
 $bsInfo=getBausteinInfo($bID);
 $bInfo=json_decode($bsInfo['parameter'],true);
-// var_dump($bInfo);
+
 $abRows=getAbgabeInfos($_SESSION['fID']);
 $ab_iLauf=0;
 foreach($abRows as $abRow){

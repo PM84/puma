@@ -13,18 +13,18 @@
 <div class="row grid_<?php echo $Block; ?>" style="overflow:hidden; margin-left:5px; margin-right:5px">
 	<?php 
 	$iLauf=1;
-	// 	var_dump($bInfo['antwortOption']);
+	
 
 
 	if(isset($bInfo['CombinedOptions'])){
 
-		// 		var_dump($bInfo['order']);
+		
 		$OptionsOrder=$bInfo['CombinedOptions'];
-		// 		var_dump($OptionsOrder);
+		
 		$OptionsOrder=shuffle_assoc($OptionsOrder);
 		// 		echo "<hr>";
-		// 		var_dump($OptionsOrder);
-		$shuffledOrder=array();
+		
+		$shuffledOrder=[];
 		foreach($OptionsOrder as $optionID=>$optionTXT){
 			array_push($shuffledOrder,$optionID);
 	?>

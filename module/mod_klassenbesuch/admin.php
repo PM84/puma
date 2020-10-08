@@ -36,12 +36,12 @@ if(isset($_POST['action'])&&$_POST['action']=="save"){
 	$start=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['start']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
 	$ende=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['ende']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
 
-	$jgstGymArr=array();
-	$jgstRSArr=array();
-	$jgstMSArr=array();
-	$jgstGSArr=array();
+	$jgstGymArr=[];
+	$jgstRSArr=[];
+	$jgstMSArr=[];
+	$jgstGSArr=[];
 	$jgStArr=array('GS'=>array(),'MS'=>array(),'RS'=>array(),'Gym'=>array());
-	// var_dump($jgSt);
+	
 
 	if(isset($_POST['JgSt_GS'])){
 		foreach($_POST['JgSt_GS'] as $jgSt){
@@ -62,7 +62,7 @@ if(isset($_POST['action'])&&$_POST['action']=="save"){
 		if(count($jgstRSArr)>0){$jgStArr['RS']=$jgstRSArr;}
 	}
 	if(isset($_POST['JgSt_Gym'])){
-		// 		var_dump($_POST['JgSt_Gym']);
+		
 		foreach($_POST['JgSt_Gym'] as $jgSt){
 			array_push($jgstGymArr,intval($jgSt));
 		}
@@ -130,7 +130,7 @@ $Terminliste=getTerminListe(1);
 	</head>
 	<body>
 		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");
-		// 		var_dump($Terminliste);
+		
 
 		?>
 
@@ -142,7 +142,6 @@ $Terminliste=getTerminListe(1);
 					<div class="row" style=' text-align:center; background-color:lightgray; padding:10px; border-radius: 10px;'>
 						<div class="col-md-1">
 							<a href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/kb" target="blank"  class='btn btn-primary'>Vorschau</a>
-							<!--							<a href='<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/admin/folie_erstellen.php' class='btn btn-success'>zurück</a>//-->
 						</div>
 						<div class="col-md-10">
 							<p class="lead" style='margin:0'>Klassenbesuch Termin hinzufügen</p>
@@ -239,7 +238,7 @@ $Terminliste=getTerminListe(1);
 							<?php
 
 							foreach($Terminliste as $Termin){
-								// 										var_dump($Termin);
+								
 							?>
 							<tr>
 								<td><?php echo $Termin['titel'] ?></td>

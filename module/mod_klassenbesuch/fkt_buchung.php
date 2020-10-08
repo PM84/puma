@@ -43,7 +43,7 @@ function getTerminListe($all=0){
 			break;
 	}
 	$ergebnis=mysqli_query($verbindung,$query);
-	$retArr=array();
+	$retArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($retArr,$row);
 	}
@@ -57,7 +57,7 @@ function getBuchungen_by_TerminID($TerminID){
 	$query="SELECT * FROM z_klassenbesuch_buchung WHERE TerminID=$TerminID ORDER BY BuchungsID ASC";
 	// 	 	echo $query;
 	$ergebnis=mysqli_query($verbindung,$query);
-	$retArr=array();
+	$retArr=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($retArr,$row);
 	}

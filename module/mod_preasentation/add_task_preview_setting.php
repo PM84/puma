@@ -4,11 +4,10 @@
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/frage.php");
 
 if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
-	// 	var_dump($AufgabeInfo);
+	
 	// 	echo 'tem_vID_'.$Block;
 	// 	echo $_SESSION[$ftoken]['tem_vID_'.$Block];
-	// 	
-	// 					var_dump($_SESSION[$ftoken]);
+	
 
 
 	switch($_SESSION[$ftoken]['edit_Baustein_'.$Block]){
@@ -132,9 +131,9 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 					$_SESSION[$ftoken]['edit_tem_vID_'.$Block]=intval($_POST['tem_vID_'.$Block]);
 				}
 				$videoInfo=Get_VideoInfos_By_vID($videos,$_SESSION[$ftoken]['edit_tem_vID_'.$Block]);
-				// 				var_dump($videoInfo);
+				
 				$link_src=get_video_link($videoInfo,"sd");
-				// 				var_dump($link_src);
+				
 
 ?>
 <input type="hidden" name="<?php echo 'Baustein_'.$Block; ?>" value='<?php echo $_SESSION[$ftoken]['edit_Baustein_'.$Block]; ?>'>
@@ -215,7 +214,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 						break;				
 					case 5: //Evaluation
 						$parameter=json_decode($bsRow['parameter'],true);
-						$fArr=array();
+						$fArr=[];
 						foreach($parameter['FrageGroupsSel'] as $FGroupID){
 							$FrageID_arr=getFragenByGroups($FGroupID);
 							foreach($FrageID_arr as $FrageID_tmp){
@@ -259,7 +258,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 
 				?>
 				ticks: [<?php if(isset($FrageInfo->noAnswer) && $FrageInfo->noAnswer=='on'){echo (intval($FrageInfo->FrageMin)-1).",";} echo intval($FrageInfo->FrageMin); ?>, <?php echo intval($FrageInfo->FrageMax); ?>],
-				<?php }else{ $valLaufArr=array();
+				<?php }else{ $valLaufArr=[];
 							if(isset($FrageInfo->noAnswer) && $FrageInfo->noAnswer=='on'){array_push($valLaufArr,intval($FrageInfo->FrageMin)-1);}
 							for($valLauf=intval($FrageInfo->FrageMin);$valLauf<=intval($FrageInfo->FrageMax);$valLauf++){
 								array_push($valLaufArr,$valLauf);
@@ -272,7 +271,7 @@ if(isset($_SESSION[$ftoken]['edit_Baustein_'.$Block])){
 				<?php if(abs(intval($FrageInfo->FrageMax)-intval($FrageInfo->FrageMin))>6){ ?>
 				ticks_labels: ['<?php if(isset($FrageInfo->noAnswer) && $FrageInfo->noAnswer=='on'){echo '<span style="font-size:8px;">keine<br>Antwort</span>'; ?>', '<?php } echo html_entity_decode ($FrageInfo->FrageLabMin, ENT_QUOTES , "UTF-8"); ?>', '<?php echo html_entity_decode ($FrageInfo->FrageLabMax, ENT_QUOTES , "UTF-8");  ?>'],
 
-				<?php }else{ $valLaufLabArr=array();
+				<?php }else{ $valLaufLabArr=[];
 							if(isset($FrageInfo->noAnswer) && $FrageInfo->noAnswer=='on'){array_push($valLaufLabArr,'<span style="font-size:8px;">keine<br>Antwort</span>');}
 							array_push($valLaufLabArr,html_entity_decode ($FrageInfo->FrageLabMin, ENT_QUOTES , "UTF-8"));
 							for($valLauf=intval($FrageInfo->FrageMin);$valLauf<intval($FrageInfo->FrageMax)-1;$valLauf++){

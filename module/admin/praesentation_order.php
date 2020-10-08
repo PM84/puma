@@ -9,4 +9,3 @@ foreach ($_POST['folie'] as $fID) {
 	InsertOrderSetting($fID,$kursID,$i);
 	$i++;
 }
-var_dump($_POST);

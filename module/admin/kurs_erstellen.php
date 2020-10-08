@@ -159,7 +159,7 @@ if (isset($_POST['k'])) {
 				<?php
 				}
 				foreach ($Kurse as $KursInfo) {
-					// 						var_dump($KursInfo);
+					
 				?>
 					<div class="row" style="margin-bottom:3px;">
 						<div class="col-md-11" style='padding-right:0; padding-left:10px;'>

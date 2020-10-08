@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -25,7 +25,7 @@ include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 
 // Teilnehmerliste laden:
 // $TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['kursID']);
-// var_dump($_SESSION);
+
 $uID=$SessionInfos['uID'];
 $kursID=intval($_SESSION['kursID']);
 $fID=intval($_GET['fID']);
@@ -37,13 +37,13 @@ $abTyp=1; // Dies ist eine Abgabe-Folie
 $FolieInfo=getFolieInfo($fID);
 $folieParameter=json_decode($FolieInfo['parameter'],true);
 $TnListe=getTeilnehmerInfosByTnIDs($folieParameter['tnarr']);
-$tnNames=array();
+$tnNames=[];
 foreach($TnListe as $tnID => $tnInfo){
 	array_push($tnNames,$tnInfo['name'].", ".$tnInfo['vname']);
 }
 $VideoArr=$folieParameter['videoArr'];
 $abgabeStatus=0;
-// 				var_dump($folieParameter);
+
 if(is_array($VideoArr)){
 	foreach($VideoArr as $videoTMP){
 
@@ -58,7 +58,7 @@ if(is_array($VideoArr)){
 // ========================
 // ====== VIDEOANALYSE - BEWERTUNG SPEICHERN
 // ========================
-// var_dump($SessionInfos);
+
 
 if(isset($_POST['action']) && $_POST['action']=="save"){
 	// 	$zu_fID=$fID;
@@ -66,7 +66,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 
 	// 	$abID=$AbgabeInfo['abID'];
 
-	$insertArr=array();
+	$insertArr=[];
 	$zu_token=$abtoken;
 
 	// ====== Kommentar
@@ -85,8 +85,8 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 			$PosTimeArr[$key] =mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($input_arr), ENT_QUOTES , "UTF-8"));
 		} 
 	}else{
-		$PosTimeArr=array();
-		$PosTxtArr=array();
+		$PosTimeArr=[];
+		$PosTxtArr=[];
 	}
 	$insertArr['PosTimeArr']=$PosTimeArr;
 	$insertArr['PosTxtArr']=$PosTxtArr;
@@ -99,7 +99,7 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 	$query="INSERT INTO abgabe (fID,abTyp,token,zu_abID,parameter,datum) VALUES ('$fID','$abTyp','{$_SESSION['t_own']}','$abID','$insertArr','$datum') ON DUPLICATE KEY UPDATE parameter='$insertArr'";
 // 	echo $query;
 	mysqli_query($verbindung,$query);
-	// var_dump($_POST);
+	
 	if($_POST['saveBtn']==1){
 		echo "<script>window.location = '" . $_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_videoanalyse/show_abgabe_uebersicht.php';</script>";
 	}
@@ -117,13 +117,13 @@ if(is_array($Abgabe[0])){
 		$PosTimeArr=$KorrParameter['PosTimeArr'];
 		$PosTxtArr=$KorrParameter['PosTxtArr'];
 
-		if($KorrFragenArr===NULL){$KorrFragenArr=array();}
-		if($PosTimeArr===NULL){$PosTimeArr=array();}
-		if($PosTxtArr===NULL){$PosTxtArr=array();}
+		if($KorrFragenArr===NULL){$KorrFragenArr=[];}
+		if($PosTimeArr===NULL){$PosTimeArr=[];}
+		if($PosTxtArr===NULL){$PosTxtArr=[];}
 }else{
-	$KorrFragenArr=array();
-	$PosTimeArr=array();
-	$PosTxtArr=array();
+	$KorrFragenArr=[];
+	$PosTimeArr=[];
+	$PosTxtArr=[];
 }
 ?>
 <html>

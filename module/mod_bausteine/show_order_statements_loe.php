@@ -24,7 +24,7 @@ $abInfo=json_decode($abRow['parameter'],true);
 	</thead>
 	<?php
 	$iLauf=1;
-	// 	var_dump($abRow);
+	
 	if(isset($bInfo['CombinedOptions'])){
 		foreach($abInfo['StatementOrder_'.$Block] as $optionID){
 	?>
@@ -35,9 +35,9 @@ $abInfo=json_decode($abRow['parameter'],true);
 		<td>
 			<?php 
 			if( array_search ( $optionID , $bInfo['order'] )+1==$iLauf){
-				echo "<img src='/images/correct.png' height=32px;>";
+				echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/correct.png' height=32px;>";
 			}else{
-				echo "<img src='/images/wrong.png' height=32px;>";
+				echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/wrong.png' height=32px;>";
 			} ?>
 		</td>
 	</tr>

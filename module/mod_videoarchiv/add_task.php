@@ -55,7 +55,7 @@ if(isset($_POST['vidTyp'])){
 // ========================
 
 if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
-	$AufgabeInfo=array();
+	$AufgabeInfo=[];
 	if(isset($_POST['ytlink'])){
 		preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $_POST['ytlink'], $matches);
 		$ytID = mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($matches[1]), ENT_QUOTES , "UTF-8"));
@@ -72,11 +72,11 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 	$AufgabeInfo['beschreibung']=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['beschreibung']), ENT_QUOTES , "UTF-8"));
 	$AufgabeInfo['CopyToKursID']=intval($_POST['CopyToKursID']);
 	$AufgabeInfo['aktivStatus']=1;
-	$tnarr=array();
+	$tnarr=[];
 	if(isset($_POST['tnarr'])){
 		$tnarr=$_POST['tnarr'];
 		if($tnarr===NULL){
-			$tnarr=array();
+			$tnarr=[];
 		}
 	}
 	/* 	array_walk_recursive($tnarr, function($value, $key) {
@@ -138,7 +138,7 @@ if(isset($_POST['titel']) && isset($_POST['beschreibung'])){
 								<div class="panel-body">
 									<?php
 							foreach($videos as $video){
-								// 							var_dump($video);
+								
 								if(in_array($thema->themaID,$video->themen)){
 									$status=1;
 									?>

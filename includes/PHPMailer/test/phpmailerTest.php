@@ -40,21 +40,21 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
      * @private
      * @var string[]
      */
-    public $ChangeLog = array();
+    public $ChangeLog = [];
 
     /**
      * Holds the note log.
      * @private
      * @var string[]
      */
-    public $NoteLog = array();
+    public $NoteLog = [];
 
     /**
      * PIDs of any processes we need to kill
      * @var array
      * @access private
      */
-    private $pids = array();
+    private $pids = [];
 
     /**
      * Default include path
@@ -122,8 +122,8 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
     {
         // Clean global variables
         $this->Mail = null;
-        $this->ChangeLog = array();
-        $this->NoteLog = array();
+        $this->ChangeLog = [];
+        $this->NoteLog = [];
 
         foreach ($this->pids as $pid) {
             $p = escapeshellarg($pid);
@@ -621,13 +621,13 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
             'first.last@xn--j1ail.xn--p1ai',
             'first.last@xn--phplst-6va.com',
         );
-        $goodfails = array();
+        $goodfails = [];
         foreach (array_merge($validaddresses, $asciiaddresses) as $address) {
             if (!PHPMailer::validateAddress($address)) {
                 $goodfails[] = $address;
             }
         }
-        $badpasses = array();
+        $badpasses = [];
         foreach (array_merge($invalidaddresses, $unicodeaddresses) as $address) {
             if (PHPMailer::validateAddress($address)) {
                 $badpasses[] = $address;

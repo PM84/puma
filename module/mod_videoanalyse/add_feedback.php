@@ -43,7 +43,7 @@ if(isset($_SESSION['kID'])){
 if(isset($_POST['beschreibung'])){
 	$aTyp=3; // Feedbackaufgabe
 
-	$taskArr=array();
+	$taskArr=[];
 	$taskArr['titel']=mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($_POST['titel']), ENT_QUOTES , "UTF-8"));
 	$taskArr['beschreibung']=mysqli_real_escape_string ($verbindung,  htmlentities (mynl2br($_POST['beschreibung']), ENT_QUOTES , "UTF-8"));
 	// 	$tArr['KorrTask']=$KorrTask=intval($_POST['KorrTask']);
@@ -59,7 +59,7 @@ if(isset($_POST['beschreibung'])){
 	switch($viewTyp){
 		default:
 			$tnArrTmp=$_POST['tnarr'];
-			$tnArr=array();
+			$tnArr=[];
 			foreach($tnArrTmp as $TN){
 				array_push($tnArr,intval($TN));
 			}

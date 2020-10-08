@@ -92,7 +92,7 @@ function getOrderID($fID,$kursID){
 function getPraesentationsSettingsListe($kursID){
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$FolienListe=getFolienListeInfos_ORDER($kursID);
-	$tempArr=array();
+	$tempArr=[];
 	foreach($FolienListe as $folie){
 		if($folie['aTyp']==1){
 			$row=load_einstellungen($folie['fID'],$kursID);
@@ -103,15 +103,15 @@ function getPraesentationsSettingsListe($kursID){
 }
 
 
-// var_dump(GetAblaufArrFiltered(GetAblaufArr(111)));
+
 
 function GetAblaufArr($kursID){
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/folie.php");
 	$FolienListe=getFolienListeInfos_ORDER($kursID);
-	// 	var_dump($FolienListe);
-	$tempArr=array();
+	
+	$tempArr=[];
 	foreach($FolienListe as $folie){
-		$tempRow=array();
+		$tempRow=[];
 		if($folie['aTyp']==1){
 			$row=load_einstellungen($folie['fID'],$kursID);
 			if($row!=null){
@@ -134,10 +134,10 @@ function GetAblaufArr($kursID){
 }
 
 function set_nextShow_to_AblaufArr($ablaufArr){
-	$tempArr=array();
+	$tempArr=[];
 	$iLauf=0;
 	foreach($ablaufArr as $folie){
-		// 		if(!isset($tempArr[$iLauf]) && !is_array($tempArr[$iLauf])){$tempArr[$iLauf]=array();}
+		// 		if(!isset($tempArr[$iLauf]) && !is_array($tempArr[$iLauf])){$tempArr[$iLauf]=[];}
 		foreach($folie as $key => $value){
 			$tempArr[$iLauf][$key]=$value;
 			if($iLauf>0){
@@ -150,20 +150,20 @@ function set_nextShow_to_AblaufArr($ablaufArr){
 		$iLauf_prev=$iLauf;
 		$iLauf++;
 	}
-	$tempArr2=array();
+	$tempArr2=[];
 	foreach($tempArr as $key => $row){
 		array_push($tempArr2,$row);
 	}
-	// 	var_dump($tempArr2);
+	
 	return $tempArr2;
 }
 
 function GetAblaufArrFiltered($AblaufArr){
-	// 	var_dump($AblaufArr);
+	
 	// Eingabe ist die Ausgabe von GetAblaufArr
 	$abArr=GetAblaufArr_CheckForAbgabe($AblaufArr);
-	//  	var_dump($abArr);
-	$tempArr=array();
+	
+	$tempArr=[];
 	$iLauf_prev=0;
 	$auto=1;
 	$tmpAbgabe_prev=0;
@@ -184,7 +184,7 @@ function GetAblaufArrFiltered($AblaufArr){
 		array_push($tempArr,$abArr[$iLauf]);
 	}
 	// 	echo "<hr>";
-	//  	var_dump($tempArr);
+	
 
 	return $tempArr;
 }
@@ -192,7 +192,7 @@ function GetAblaufArrFiltered($AblaufArr){
 /* function GetAblaufArrFiltered($AblaufArr){
 	// Eingabe ist die Ausgabe von GetAblaufArr
 	$abArr=GetAblaufArr_CheckForAbgabe($AblaufArr);
-	$tempArr=array();
+	$tempArr=[];
 	$iLauf_prev=0;
 	$auto=1;
 	for($iLauf=0;$iLauf<count($abArr);$iLauf++){
@@ -212,7 +212,7 @@ function GetAblaufArrFiltered($AblaufArr){
 		// 		 		$iLauf_prev=$iLauf; 
 	}
 
-	//  	var_dump($tempArr);
+	
 	if(isset($_SESSION['uID'])){
 		return $tempArr;
 	}else{
@@ -228,8 +228,8 @@ function GetAblaufArrFiltered($AblaufArr){
 
 
 function remove_fIDs_not_shown($FilteredArr){
-	//  		var_dump($FilteredArr);
-	$tempArr=array();
+	
+	$tempArr=[];
 	$showAuto=0;
 	foreach($FilteredArr as $folie){
 
@@ -240,12 +240,12 @@ function remove_fIDs_not_shown($FilteredArr){
 			array_push($tempArr,$folie);
 		}
 	}
-	// 	var_dump($tempArr);
+	
 	return $tempArr;
 }
 function GetAblaufArr_CheckForAbgabe($AblaufArr){
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/abgabe.php");
-	$retArr=array();
+	$retArr=[];
 	foreach($AblaufArr as $folie){
 		$fID=$folie['fID'];
 		$folie['abgegeben']=check_ob_folie_abgegeben($fID);

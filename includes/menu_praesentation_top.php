@@ -4,14 +4,14 @@ if(!isset($abgabeErforderlich)){$abgabeErforderlich=0;}
 if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 
 	include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_preasentation/praesentationseinstellungen.php");
-	// var_dump($FolienListe_Praes);
+	
 
 	$zurueck_btn_aktiv=1;
 	$weiter_btn_aktiv=1;
 	// 	$FolieInfoAkt=getFolieInfo($_SESSION['fID']);
 	if(isset($_SESSION['fID'])){
 		$next_fID_Arr=get_next_fID_Arr($_SESSION['kursID'],$_SESSION['fID']);
-		//    		var_dump($next_fID_Arr);
+		
 		if(isset($next_fID_Arr['previous'])){
 			if($next_fID_Arr['previous']!=$next_fID_Arr['aktuell']){
 				$FolieInfo=getFolieInfo($next_fID_Arr['previous']);
@@ -191,7 +191,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 			$syncRow=getLehrerSync($_SESSION['kursID']);
 	?>
 	<button style="float:right;" type="button" class="navbar-toggle glyphicon glyphicon-cog"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-	<a style="float:right;" class="navbar-toggle" style="color:black;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/add_task.php?f="<?php echo $_SESSION['fID']; ?>" target="blank"><span class="glyphicon glyphicon-pencil"></span></a>
+	<a style="float:right;" class="navbar-toggle" style="color:black;" href="<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/module/mod_preasentation/add_task.php?f=<?php echo $_SESSION['fID']; ?>" target="blank"><span class="glyphicon glyphicon-pencil"></span></a>
 	<ul class="dropdown-menu" style="left:auto; right:20px; padding:15px;">
 		<li>
 			<div class="checkbox">
@@ -212,7 +212,7 @@ if(isset($ausserhalbKurs) && $ausserhalbKurs=1){}else{
 		<li role="separator" class="divider"></li>
 		<li>
 			<div class="checkbox">
-				<label><?php //var_dump($next_fID_Arr);?>
+				<label>
 					<input name='show_freigabe'  type="hidden" value=0>
 					<input name='show_freigabe' id='show_freigabe'  type="checkbox" data-toggle="toggle" data-on="Ja" data-off="Nein" data-onstyle="success" data-offstyle="danger" value=1 data-size="small" onchange="SetFreigabeStatus()" <?php if(isset($next_fID_Arr['freigabeStatus']) && $next_fID_Arr['freigabeStatus']==1){echo "checked";}?>>Diese Folie freigeben.</label>
 				<script>

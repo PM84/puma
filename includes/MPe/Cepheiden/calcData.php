@@ -3,13 +3,13 @@ $jsonStr='[{"source_id":4663665946029020000,"pf":3.823404169,"epoch_g":1680.5270
 
 $jsonArr=json_decode($jsonStr,true);
 
-$VisMaxArr=array();
-$BVMaxArr=array();
-$TeffMaxArr=array();
-$LMaxArr=array();
-$AbsMaxArr=array();
+$VisMaxArr=[];
+$BVMaxArr=[];
+$TeffMaxArr=[];
+$LMaxArr=[];
+$AbsMaxArr=[];
 
-$calc_Star_List=array();
+$calc_Star_List=[];
 foreach($jsonArr as $star){
     $tempArr['VisMag']=$star['phot_g_mean_mag'];
     $tempArr['Dist_g']= round((((149.6*10^9)/(tan($star['parallax'])))*10)/(3.09*10^16))/10;
@@ -36,7 +36,7 @@ foreach($jsonArr as $star){
     //     echo "=>".$tempArr['AbsMag'];
     //     echo "=>".$tempArr['L'];
 }
-// $cluster_data=array();
+// $cluster_data=[];
 // $cluster_data["chiPers"]["Cluster"]="chi Perseiden";
 // $cluster_data["chiPers"]["distance_pc"]="830";
 // $cluster_data["chiPers"]["starList"]=$calc_Star_List;

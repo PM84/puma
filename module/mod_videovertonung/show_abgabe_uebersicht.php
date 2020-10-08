@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -107,7 +107,7 @@ if( (isset($_POST['action']) && $_POST['action']="SelKurs") ){
 										$AbgabeParameter=json_decode($folie['AParameter'],true);
 										$AudioArr=$AbgabeParameter['audioArr'];
 										$audioStatus=0;
-										// 				var_dump($folieParameter);
+										
 										if(is_array($AudioArr)){
 											foreach($AudioArr as $audioTMP){
 

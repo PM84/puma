@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_php.php");
-// var_dump($_SESSION);
+
 $ausserhalbKurs=1;
 // ========================
 // ========================
@@ -103,11 +103,11 @@ if( (isset($_POST['action']) && $_POST['action']="SelKurs") ){
 							</tr>
 						</thead>
 						<?php foreach($FolienListe as $folie){
-										// 										 										var_dump($folie);
+										
 										$folieParameter=json_decode($folie['FParameter'],true);
 										$VideoArr=$folieParameter['videoArr'];
 										$abgabeStatus=0;
-										// 				var_dump($folieParameter);
+										
 										if(is_array($VideoArr)){
 											foreach($VideoArr as $videoTMP){
 
@@ -128,7 +128,7 @@ if( (isset($_POST['action']) && $_POST['action']="SelKurs") ){
 											unset($ergebnisAbgabe);
 										}
 										$TnListe=getTeilnehmerInfosByTnIDs($folieParameter['tnarr']);
-										$tnNames=array();
+										$tnNames=[];
 										foreach($TnListe as $tnID => $tnInfo){
 											array_push($tnNames,$tnInfo['name'].", ".$tnInfo['vname']);
 										}

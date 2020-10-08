@@ -11,7 +11,7 @@ $return="";
 	//get all of the tables
 	if($tables == '*')
 	{
-		$tables = array();
+		$tables = [];
 		$result = mysqli_query($verbindung,'SHOW TABLES');
 		while($row = mysqli_fetch_row($result))
 		{

@@ -35,7 +35,7 @@ if(isset($_GET['u'])){
 
 if(isset($_POST['name'])){
 	if($Edit_uID==null || in_array($Edit_uID,$uID_List)){
-		// 	var_dump($_POST);
+		
 		$name=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['name']), ENT_QUOTES , "UTF-8"));
 		$vname=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['vname']), ENT_QUOTES , "UTF-8"));
 		$geschlecht=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['geschlecht']), ENT_QUOTES , "UTF-8"));
@@ -61,7 +61,7 @@ if(isset($_POST['name'])){
 		foreach($usergroups as $value){
 			SetUserGroup($Edit_uID,intval($value));
 		}
-		header("LOCATION:  " . $_SESSION['DOCUMENT_ROOT_DIR']."module/user/user_admin.php");
+		header("LOCATION:  " . $_SESSION['DOCUMENT_ROOT_DIR']."/module/user/user_admin.php");
 	}
 }
 
@@ -72,7 +72,7 @@ if(isset($_POST['name'])){
 if(isset($Edit_uID) && in_array($Edit_uID,$uID_List)){
 	$userInfo=getUserInfos($Edit_uID);
 	$edit_userGroups=GetUserGroup($Edit_uID);
-// 	var_dump($userGroups);
+
 }
 
 

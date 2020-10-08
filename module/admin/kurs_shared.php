@@ -6,7 +6,7 @@ include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/head
 include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kursInfos.php");
 include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/media.php");
-// var_dump($SharedKurseInfos);
+
 check_used_media();;
 if(isset($_POST['search_input'])){
 	$search_input=mysqli_real_escape_string ($verbindung, htmlentities ($_POST['search_input'], ENT_QUOTES , "UTF-8"));

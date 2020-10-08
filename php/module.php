@@ -4,7 +4,7 @@
 function getModulListeInfos($kTyp=0){
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	// 	$kursTNArr=getTnByKurs($kursID);
-	$modArray=array();
+	$modArray=[];
 	switch($kTyp){
 		case 1:
 			$query="SELECT * FROM module where aktiv=1";

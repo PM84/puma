@@ -33,7 +33,9 @@
 			<div class="panel-heading" role="tab" id="headingOne">
 				<h4 class="panel-title">
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?php echo $Block . "_" . $bTypID; ?>" aria-expanded="true" aria-controls="collapse_<?php echo $Block . "_" . $bTypID; ?>">
-						<?php echo $bs['titel'] . "   (" . count($bsArr[$bTypID]) . ")"; ?>
+						<?php 
+						if(is_array($bsArr[$bTypID])){ $cnt = count($bsArr[$bTypID]);}else{ $cnt = '0';}
+						echo $bs['titel'] . "   (" . $cnt . ")"; ?>
 					</a>
 				</h4>
 			</div>

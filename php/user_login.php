@@ -16,7 +16,7 @@ if (isset($_POST['PostFktn'])) {
 	include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/config.php");
 	$query="SELECT * FROM user_uID_groups_match WHERE uID=$uID";
 	$ergebnis=mysqli_query($verbindung,$query);
-	$userGroups=array();
+	$userGroups=[];
 	while($row=mysqli_fetch_assoc($ergebnis)){
 		array_push($userGroups,$row['uGroupID']);
 	}
@@ -117,7 +117,7 @@ function GetUserGroup($uID)
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM user_uID_groups_match WHERE uID='$uID'";
 	$ergebnis = mysqli_query($verbindung, $query);
-	$userGroups = array();
+	$userGroups = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($userGroups, $row['uGroupID']);
 	}
@@ -145,7 +145,7 @@ function GetUserGroupListInfo($GroupsToShow, $all = 0)
 		$query = "SELECT * FROM user_groups where uGroupID";
 	}
 	$ergebnis = mysqli_query($verbindung, $query);
-	$GroupListe = array();
+	$GroupListe = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($GroupListe, $row);
 	}
@@ -206,7 +206,7 @@ function getSchulListe()
 	include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
 	$query = "SELECT * FROM schule_daten order by Name ASC";
 	$ergebnis = mysqli_query($verbindung, $query);
-	$SchulListe = array();
+	$SchulListe = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		array_push($SchulListe, $row);
 	}
@@ -231,7 +231,7 @@ function Get_uID_List()
 		$query = "SELECT * FROM user WHERE SchulNr='$mySchulNr'";
 	}
 	$ergebnis = mysqli_query($verbindung, $query);
-	$UserList = array();
+	$UserList = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		// 		$userIDs['uGroups']=GetUserGroup($row['uID']);
 		// 		$row['uGroups']=GetUserGroup($row['uID']);
@@ -246,7 +246,7 @@ function GetUserListLogin()
 	// Administrator
 	$query = "SELECT * FROM user";
 	$ergebnis = mysqli_query($verbindung, $query);
-	$UserList = array();
+	$UserList = [];
 	return $UserList;
 }
 
@@ -268,7 +268,7 @@ function GetUserList()
 		$query = "SELECT * FROM user WHERE SchulNr='$mySchulNr'";
 	}
 	$ergebnis = mysqli_query($verbindung, $query);
-	$UserList = array();
+	$UserList = [];
 	while ($row = mysqli_fetch_assoc($ergebnis)) {
 		// 		$userIDs['uGroups']=GetUserGroup($row['uID']);
 		$row['uGroups'] = GetUserGroup($row['uID']);

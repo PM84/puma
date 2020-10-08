@@ -9,11 +9,11 @@ calculate_cepheiden_M_L($fn);
 function calculate_cepheiden_M_L($fn){
     $StarArr=ParseCSV_to_AssocArray($fn,",");
     bcscale(20);
-    $periodes=array();
-    $StarDetails=array();
+    $periodes=[];
+    $StarDetails=[];
     $i=1;
     foreach($StarArr as $star){
-        //      var_dump($star);
+        
         //     exit;
         $source_id=$star['source_id'];
         $parallax=str_replace ( "-" , "" ,strval($star['parallax']));
@@ -49,7 +49,7 @@ function bclog10($n){
 
 function ParseCSV_to_AssocArray($path,$separator=","){
     $row = 1;
-    $AssocArray=array();
+    $AssocArray=[];
     if (($handle = fopen($path, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 0, $separator)) !== FALSE) {
             $num = count($data);

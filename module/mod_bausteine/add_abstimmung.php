@@ -46,7 +46,7 @@
 		<label for="beschreibung">Wahloptionen</label>
 		<div id="AbOptDiv">
 			<?php 
-			// 			var_dump($bsInfo);
+			
 			if(isset($bsInfo['abstOption'])){for ( $iLauf=0; $iLauf<count($bsInfo['abstOption']); $iLauf++ ){ 
 				include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/module/mod_bausteine/add_abstimmung_options.php");
 				if($iLauf<count($bsInfo['abstOption'])-1){echo "<hr>";}

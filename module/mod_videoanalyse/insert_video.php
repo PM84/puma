@@ -21,7 +21,7 @@ chmod($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/video/$Zi
 $folieInfo=getFolieInfo($fID);
 $parameterTEMP=json_decode($folieInfo['parameter'],true);
 if(!isset($parameterTEMP['videoArr'])){
-	$parameterTEMP['videoArr']=array();
+	$parameterTEMP['videoArr']=[];
 }
 $videoNeu=array('fileName'=>$ZielDateiname,"datetime"=>date("Y-m-d H:i:s"),'abgegeben'=>0);
 array_push($parameterTEMP['videoArr'],$videoNeu);
@@ -32,7 +32,7 @@ $folieDetails=create_inactive_folie($_SESSION['uID'],$_SESSION['va']['kID'],$par
 $file=__DIR__."/../../tmp_video/exit_files.txt";
 $content=file_get_contents($file);
 $jsonArr=json_decode($content,true);
-$jsonArr[$ZielDateiname]=array();
+$jsonArr[$ZielDateiname]=[];
 $json_string=json_encode($jsonArr);
 $fp=fopen($file,"w")or die("Unable to open file!");;
 fwrite($fp,$json_string);
@@ -41,7 +41,7 @@ fclose($fp);
 echo $ZielDateiname;
 
 
-/* $audioArr=array();
+/* $audioArr=[];
 $query="SELECT * FROM abgabe WHERE fID='$fID' and token='$token'";
 $ergebnis=mysqli_query($verbindung,$query) or die(mysqli_error($verbindung));
 if(mysqli_num_rows($ergebnis)==1){
@@ -49,7 +49,7 @@ if(mysqli_num_rows($ergebnis)==1){
 	$parameter=json_decode($row['parameter']);
 	$audioArr=$parameter->audioArr;
 	if($audioArr===NULL){
-		$audioArr=array();
+		$audioArr=[];
 	}
 }
  */

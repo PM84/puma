@@ -8,14 +8,11 @@ $ausserhalbKurs = 1;
 
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/includes/session_delay.php");
 
-// header('Content-Type: text/html; charset=UTF-8');
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/kursInfos.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/Sessions.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/teilnehmer.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/php/system.php");
 include($_SERVER['DOCUMENT_ROOT'] . $_SESSION['DOCUMENT_ROOT_DIR'] . "/config.php");
-// $SessionInfos=Get_SessionInfos($_SESSION['s']);
-// $uID=$SessionInfos['uID'];
 $uID = $_SESSION['uID'];
 
 // ========================
@@ -137,7 +134,7 @@ if (isset($_FILES["file"])) {
 		$num = strlen($firstline) - strlen(str_replace(";", "", $firstline));
 
 		//save the different fields of the firstline in an array called fields
-		$fields = array();
+		$fields = [];
 		$fields = explode(";", trim(preg_replace('/\s+/', '', $firstline)), ($num + 1));
 
 		//array aller SOLL - Felder
@@ -148,17 +145,17 @@ if (isset($_FILES["file"])) {
 		}
 
 
-		$line = array();
+		$line = [];
 		$i = 0;
 
 		while ($line[$i] = utf8_encode(fgets($file, 4096))) {
-			$dsatz[$i] = array();
+			$dsatz[$i] = [];
 			$dsatz[$i] = explode(";", trim(preg_replace('/\s+/', '', $line[$i])), ($num + 1));
 			$i++;
 		}
 
 		$i = 0;
-		$dsatzSort = array();
+		$dsatzSort = [];
 		for ($i = 0; $i < count($dsatz); $i++) {
 			$dsatzSort[$i]['name'] = $dsatz[$i][$SollArr['name']];
 			$dsatzSort[$i]['vname'] = $dsatz[$i][$SollArr['vname']];
@@ -204,7 +201,7 @@ if (isset($_FILES["file"])) {
 				<?php
 				$Kurse = GetKursListeInfos($uID, 1, 1);
 				foreach ($Kurse as $KursInfo) {
-					// 						var_dump($KursInfo);
+					
 				?>
 					<form action='' method="POST" style='margin:0;'>
 						<input type=hidden value='<?php echo $KursInfo['kursID']; ?>' name='k'><input type="submit" class="btn <?php if (isset($_SESSION['k']) && $_SESSION['k'] == $KursInfo['kursID']) {
@@ -342,7 +339,7 @@ if (isset($_FILES["file"])) {
 							</tr>
 							<?php
 							$tnArr = getTeilnehmerListeInfos($_SESSION['k']);
-							//  						var_dump($tnArr);
+							
 							foreach ($tnArr as $tn) {
 								$abArr = get_all_Abgaben_by_token($tn['token']);
 							?>
@@ -430,7 +427,7 @@ if (isset($_FILES["file"])) {
 				var tnID = $(this).data("options").tnID;
 				$.ajax({
 					type: "POST",
-					url: "/php/teilnehmer.php",
+					url: "<?php echo $_SESSION['DOCUMENT_ROOT_DIR']; ?>/php/teilnehmer.php",
 					data: {
 						tnID: tnID,
 						PostFktn: "changeTeacherStatus"

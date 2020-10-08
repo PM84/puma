@@ -106,7 +106,7 @@ if($_SESSION['fID']>0){
 	<body>
 		<?php include($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/includes/header_bar.php");?>
 		<?php 
-		// 		var_dump(FolienAnzeige_Menu($_SESSION['kursID'],$_SESSION['t']));
+		
 		?>
 		<div class="container">
 			<div class="row" style='margin:30 0;'>

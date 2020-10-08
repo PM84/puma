@@ -24,8 +24,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kurs
 					<?php
 					echo $_SESSION['kursID'];
 					$TeilnehmerListe=getTeilnehmerListeInfos($_SESSION['k']);
-					// 		var_dump($TeilnehmerListe);
-					$tnarr=array();
+					$tnarr=[];
 					$tnarr=$AufgabeInfo->tnarr;
 					// 		echo $AufgabeInfo->tnarr;
 					foreach($TeilnehmerListe as $TN){
@@ -48,7 +47,6 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/php/kurs
 					<?php
 				echo $_SESSION['kursID'];
 				$KursListe=GetKursListeInfos($_SESSION['uID'],null,1);
-				var_dump($KursListe);
 				foreach($KursListe as $kurs){
 					?>
 					<option value="<?php echo $kurs['kursID']; ?>"><?php echo $kurs['titel']; ?></option>

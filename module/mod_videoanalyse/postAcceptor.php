@@ -26,11 +26,11 @@ $imageFolder = $_SERVER['DOCUMENT_ROOT'].$_SESSION['DOCUMENT_ROOT_DIR']."/media/
 // echo $imageFolder;
 if(!is_dir ( $imageFolder )){mkdir($imageFolder);}
 
-// var_dump($_FILES['userfile']['error']);
-// var_dump($_FILES);
+
+
 reset ($_FILES);
 $temp = current($_FILES);
-// var_dump($temp);
+
 if (is_uploaded_file($temp['tmp_name'])){
 	if (isset($_SERVER['HTTP_HOST'])) {
 		// same-origin requests won't set an origin. If the origin is set, it must be valid.

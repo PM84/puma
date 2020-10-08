@@ -33,10 +33,10 @@ if (isset($_SESSION['kID'])) {
 	$AufgabeInfo = json_decode($FolieArr['parameter']);
 	// 	$_SESSION['vID']=$AufgabeInfo->vID;
 	if (!isset($AufgabeInfo->fArr)) {
-		$AufgabeInfo->fArr = array();
+		$AufgabeInfo->fArr = [];
 	}
 	if (!isset($AufgabeInfo->fGroupsArr)) {
-		$AufgabeInfo->fGroupsArr = array();
+		$AufgabeInfo->fGroupsArr = [];
 	}
 }
 
@@ -58,7 +58,7 @@ if (isset($_POST['FBID'])) {
 if (isset($_POST['beschreibung'])) {
 	$aTyp = 2; // Korrekturaufgabe
 
-	$taskArr = array();
+	$taskArr = [];
 	$taskArr['titel'] = $titel = mysqli_real_escape_string($verbindung,  htmlentities(mynl2br($_POST['titel']), ENT_QUOTES, "UTF-8"));
 	$taskArr['beschreibung'] = mysqli_real_escape_string($verbindung,  htmlentities(mynl2br($_POST['beschreibung']), ENT_QUOTES, "UTF-8"));
 	// 	$tArr['KorrTask']=$KorrTask=intval($_POST['KorrTask']);
@@ -74,7 +74,7 @@ if (isset($_POST['beschreibung'])) {
 	switch ($viewTyp) {
 		default:
 			$tnArrTmp = $_POST['tnarr'];
-			$tnArr = array();
+			$tnArr = [];
 			foreach ($tnArrTmp as $TN) {
 				array_push($tnArr, intval($TN));
 			}
@@ -84,14 +84,14 @@ if (isset($_POST['beschreibung'])) {
 			break;
 	}
 	$fGroups = $_POST['fGroups'];
-	$fGroupsArr = array();
+	$fGroupsArr = [];
 	foreach ($fGroups as $frageGruppeID) {
 		array_push($fGroupsArr, intval($frageGruppeID));
 	}
 	$taskArr['fGroupsArr'] = $fGroupsArr;
 
 	$FragenIDs = $_POST['fIDs'];
-	$fArr = array();
+	$fArr = [];
 	foreach ($FragenIDs as $frageID) {
 		array_push($fArr, intval($frageID));
 	}
@@ -198,7 +198,7 @@ if (isset($_POST['beschreibung'])) {
 							$fragen = getFragenByUser($uID);
 							foreach ($fragen as $frage) {
 
-								// 									var_dump($frage);
+								
 								$frageParameter = json_decode($frage['parameter']);
 							?>
 								<option value="<?php echo $frage['FrageID']; ?>" <?php if (isset($AufgabeInfo)) {

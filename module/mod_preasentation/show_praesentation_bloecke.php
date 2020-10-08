@@ -32,7 +32,7 @@ $Sims=Get_Sim_Liste();
 	<div class="row">
 		<?php
 		for($jLauf=1;$jLauf<=$_SESSION['DesignTyp'];$jLauf++){
-			// var_dump($_SESSION);
+			
 		?>
 		<div class="col-md-<?php echo 12/$_SESSION['DesignTyp']; ?>" style=''>
 

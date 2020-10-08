@@ -13,14 +13,14 @@ echo "\xEF\xBB\xBF"; // UTF-8 BOM
 
 $abgabeArr=getAbgabeInfos($_SESSION['fID']);
 
-// var_dump($abgabeArr);
+
 $iLauf=0;
 foreach($abgabeArr as $abgabeRow){
 	$parameter=json_decode($abgabeRow['parameter'],true);
 	if(isset($parameter['FragenWerte_'.$Block])){
 		if($iLauf==0){
 			$FrageID_Arr=array("token");
-			$FrageValue_Arr=array();
+			$FrageValue_Arr=[];
 			foreach($parameter['FragenWerte_'.$Block] as $key => $value){
 				$FrageInfo=getFrageInfo($key);
 				$FrageParameter=json_decode($FrageInfo['parameter'],true);

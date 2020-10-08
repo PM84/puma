@@ -11,7 +11,7 @@ $bID=$parameter["bID_$Block"];
 $bsInfo=getBausteinInfo($bID);
 $bInfo=json_decode($bsInfo['parameter'],true);
 // $numberOptions=count($bs_parameter['antwortOption']);
-// var_dump($bInfo['richtigeOption']);
+
 $iLauf=1;
 ?>
 
@@ -26,7 +26,7 @@ $iLauf=1;
 		$Name=$tnInfo['name'].", ".$tnInfo['vname'];
 		$iLauf=1;
 	?>
-	<tr><td><?php echo $Name; ?></td><td><?php echo $abRow['token']; ?></td><?php foreach($bInfo['antwortOption'] as $option){ ?><td style="text-align:center;" <?php if(in_array($iLauf,$bInfo['richtigeOption'])){echo "class='success'";} ?> > <span data-toggle="tooltip" data-placement="top" title="<?php echo $option ?>" ><?php  if((!in_array($iLauf,$abInfo['KoFra_Option_'.$Block]) && !in_array($iLauf,$bInfo['richtigeOption'])) || (in_array($iLauf,$bInfo['richtigeOption']) && in_array($iLauf,$abInfo['KoFra_Option_'.$Block]))){echo "<img src='/images/correct.png' height=32px;>";}else{echo "<img src='/images/wrong.png' height=32px;>"; } $iLauf++; ?></span></td><?php } ?></tr>
+	<tr><td><?php echo $Name; ?></td><td><?php echo $abRow['token']; ?></td><?php foreach($bInfo['antwortOption'] as $option){ ?><td style="text-align:center;" <?php if(in_array($iLauf,$bInfo['richtigeOption'])){echo "class='success'";} ?> > <span data-toggle="tooltip" data-placement="top" title="<?php echo $option ?>" ><?php  if((!in_array($iLauf,$abInfo['KoFra_Option_'.$Block]) && !in_array($iLauf,$bInfo['richtigeOption'])) || (in_array($iLauf,$bInfo['richtigeOption']) && in_array($iLauf,$abInfo['KoFra_Option_'.$Block]))){echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/correct.png' height=32px;>";}else{echo "<img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/wrong.png' height=32px;>"; } $iLauf++; ?></span></td><?php } ?></tr>
 	<?php
 	}
 	?>

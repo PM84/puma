@@ -11,7 +11,7 @@ $bID=$parameter["bID_$Block"];
 $bsInfo=getBausteinInfo($bID);
 $bInfo=json_decode($bsInfo['parameter'],true);
 // $numberOptions=count($bs_parameter['antwortOption']);
-// var_dump($bInfo);
+
 ?>
 <style>
 	.correctOrderLabel{
@@ -56,16 +56,16 @@ $bInfo=json_decode($bsInfo['parameter'],true);
 		<td><?php echo $abRow['token']; ?></td>
 		<?php 
 		// 		echo "===$Block==="; 
-		// 		var_dump($abInfo['StatementOrder_'.$Block]);
+		
 		foreach($abInfo['StatementOrder_'.$Block] as  $optionID){ ?>
 		<td style="text-align:center;" <?php if(array_search ( $optionID , $bInfo['order'] )==$iLauf){echo "class='success'";} ?> > 
 			<div class="tooltipSpan" data-toggle="tooltip" data-placement="top" title="<?php echo $bInfo['CombinedOptions'][$optionID]; ?>" >
 				<?php 
-																 // 		var_dump(array_search ( $optionID , $bInfo['order'] ));
+																 
 																 if( array_search ( $optionID , $bInfo['order'] )==$iLauf){
-																	 echo "<span class='correctOrderLabel'>$optionID</span><img src='/images/correct.png' height=20px;>";
+																	 echo "<span class='correctOrderLabel'>$optionID</span><img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/correct.png' height=20px;>";
 																 }else{
-																	 echo "<span class='correctOrderLabel'>$optionID</span><img src='/images/wrong.png' height=20px;>"; 
+																	 echo "<span class='correctOrderLabel'>$optionID</span><img src='".$_SESSION['DOCUMENT_ROOT_DIR']."/images/wrong.png' height=20px;>"; 
 																 } 
 																 $iLauf++; 
 				?>

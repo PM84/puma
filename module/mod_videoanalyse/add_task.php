@@ -53,7 +53,7 @@ if(!isset($_GET['ft'])){
 // ========================
 // ====== AUFGABE EINTRAGEN
 // ========================
-// var_dump($_SESSION['vae']['videoArr']);
+
 if(isset($_POST['action']) && $_POST['action']=="save"){
 	$taskArr['videoArr']=$_SESSION['vae']['videoArr'];
 	$taskArr['titel']=mysqli_real_escape_string ($verbindung, htmlentities (mynl2br($_POST['titel']), ENT_QUOTES , "UTF-8")); //($_POST['titel'], ENT_QUOTES);
@@ -71,11 +71,11 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 		default:
 			if(isset($_POST['tnarr'])){
 				$tnArrTmp=$_POST['tnarr'];
-				$tnArr=array();
+				$tnArr=[];
 				foreach($tnArrTmp as $TN){
 					array_push($tnArr,intval($TN));
 				}}else{
-				$tnArr=array();
+				$tnArr=[];
 			}
 			$taskArr['tnarr']=$tnArr;
 			break;
@@ -85,14 +85,14 @@ if(isset($_POST['action']) && $_POST['action']=="save"){
 
 	/* 	$fGroups=$_POST['fGroups'];
 	if(isset($_POST['fGroups'])){
-		$fGroupsArr=array();
+		$fGroupsArr=[];
 		foreach($fGroups as $frageGruppeID){
 			array_push($fGroupsArr,intval($frageGruppeID));
 		}
 	}
 	$taskArr['fGroupsArr']=$fGroupsArr;
 
-	$fArr=array();
+	$fArr=[];
 	if(isset($_POST['fIDs'])){
 		$FragenIDs=$_POST['fIDs'];
 		foreach($FragenIDs as $frageID){
